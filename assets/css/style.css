@@ -1725,3 +1725,58 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
   .head2 p, .kolo__head p { font-size: 17px; line-height: 1.55; }
   .proc p, .nfz__kroki p { font-size: 16px; line-height: 1.55; }
 }
+
+/* v29: refundacja NFZ jako karty z ikonami 3D */
+.nfz2__head { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: clamp(24px, 3vw, 40px); }
+.nfz2__head h2 { font-size: clamp(28px, 3vw, 42px); text-wrap: balance; }
+.nfz2__head p { margin-top: 10px; font-size: 18px; color: var(--text); }
+.nfz2__logo { display: grid; place-items: center; flex: none; width: 120px; height: 72px; border-radius: 16px; background: #fff; border: 1px solid var(--line); }
+.nfz2__logo img { width: 88px; height: auto; }
+.nfz2 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.nfz2 li { display: flex; flex-direction: column; gap: 14px; padding: 22px; background: #fff; border: 1px solid var(--line); border-radius: 20px; }
+.nfz2__ikona { position: relative; display: grid; place-items: center; width: 88px; height: 88px; border-radius: 22px; background: #e9f3ec; flex: none; }
+.nfz2__ikona .ilu { width: 72px; height: 72px; }
+.nfz2__ikona i { position: absolute; top: -8px; left: -8px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--brand-600); color: #fff; font-style: normal; font-weight: 700; font-size: 15px; box-shadow: 0 0 0 3px #fff; }
+.nfz2 b { display: block; font-size: 20px; color: var(--ink); }
+.nfz2 p { margin-top: 6px; font-size: 16px; line-height: 1.55; color: var(--text); }
+.nfz2__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+@media (max-width: 860px) { .nfz2 { grid-template-columns: 1fr; gap: 12px; } .nfz2 li { flex-direction: row; align-items: flex-start; padding: 16px; } .nfz2__ikona { width: 72px; height: 72px; border-radius: 18px; } .nfz2__ikona .ilu { width: 58px; height: 58px; } }
+@media (max-width: 640px) {
+  .nfz2__head { align-items: flex-start; }
+  .nfz2__head h2 { font-size: 26px; }
+  .nfz2__head p { font-size: 16px; }
+  .nfz2__logo { width: 72px; height: 44px; border-radius: 12px; } .nfz2__logo img { width: 54px; }
+  .nfz2 b { font-size: 18px; } .nfz2 p { font-size: 15px; }
+  .nfz2__cta { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .nfz2__cta .btn { width: 100%; padding-inline: 10px; gap: 6px; font-size: 15px; }
+}
+
+/* Historia na ciemnozielonym tle */
+.hist2-sekcja { background: var(--brand-900); color: #d6e8dc; }
+.hist2__head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 24px 48px; align-items: center; margin-bottom: clamp(32px, 4vw, 52px); }
+.hist2__lat { display: flex; align-items: center; gap: 16px; padding-right: 48px; border-right: 1px solid rgba(255, 255, 255, .18); }
+.hist2__lat b { font-size: clamp(72px, 8vw, 112px); line-height: .9; color: #6fd08b; letter-spacing: -.05em; }
+.hist2__lat span { max-width: 15ch; font-size: 16px; line-height: 1.4; color: #d6e8dc; }
+.hist2__head h2 { color: #fff; font-size: clamp(28px, 3vw, 42px); }
+.hist2__head p { margin-top: 10px; font-size: 18px; color: #d6e8dc; max-width: 52ch; }
+.hist2 { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); position: relative; }
+.hist2::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: rgba(255, 255, 255, .2); }
+.hist2 li { position: relative; padding: 30px 16px 0 0; }
+.hist2 li::before { content: ""; position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--brand-900); border: 3px solid #6fd08b; }
+.hist2 b { display: block; font-size: 24px; color: #fff; letter-spacing: -.02em; }
+.hist2 p { margin-top: 6px; font-size: 15px; line-height: 1.45; color: #c7ddcd; }
+.hist2__dzis::before { background: #6fd08b !important; }
+.hist2__dzis b { color: #6fd08b; }
+@media (max-width: 1100px) { .hist2 { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 28px; } .hist2::before { display: none; } }
+@media (max-width: 640px) {
+  .hist2__head { grid-template-columns: 1fr; gap: 20px; }
+  .hist2__lat { padding: 0 0 20px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .18); }
+  .hist2__lat b { font-size: 72px; }
+  .hist2__head h2 { font-size: 26px; } .hist2__head p { font-size: 16px; }
+  .hist2 { grid-template-columns: 1fr; row-gap: 0; padding-left: 4px; }
+  .hist2::before { display: block; left: 11px; right: auto; top: 10px; bottom: 10px; width: 2px; height: auto; }
+  .hist2 li { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 12px; align-items: baseline; padding: 0 0 18px 30px; }
+  .hist2 li::before { top: 4px; }
+  .hist2 b { font-size: 20px; }
+  .hist2 p { margin: 0; font-size: 15px; }
+}
