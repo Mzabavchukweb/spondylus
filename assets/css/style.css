@@ -1611,3 +1611,11 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
 }
 .nowrap { white-space: nowrap; }
 .kolo__krazek { fill: #fff; } .kolo__seg image { pointer-events: none; }
+
+/* v24: koło z ikonami na całe pole */
+.kolo__seg path { fill: #f3f9f5; stroke: none; }
+.kolo__seg.is-on path, .kolo__seg:focus-visible path { fill: #fff; }
+.kolo__seg.is-on image { filter: drop-shadow(0 6px 10px rgba(12, 36, 20, .18)); }
+.kolo__srodek { fill: var(--brand-900); }
+.kolo__ty { fill: #fff; }
+.kolo__ty2 { fill: #9fd6b0; }

@@ -39,8 +39,8 @@ for i, (k, ic, t, o, h) in enumerate(OB):
     mx, my = pt((R + r) / 2, (a0 + a1) / 2)
     plik = ROOT / f"assets/img/ilu/kolo-{k}.webp"
     if plik.exists():
-        znak = (f'<circle class="kolo__krazek" cx="{mx:.1f}" cy="{my:.1f}" r="38"/>'
-                f'<image href="assets/img/ilu/kolo-{k}.webp" x="{mx - 30:.1f}" y="{my - 30:.1f}" width="60" height="60"/>')
+        IK = 124
+        znak = f'<image href="assets/img/ilu/kolo-{k}.webp" x="{mx - IK / 2:.1f}" y="{my - IK / 2:.1f}" width="{IK}" height="{IK}"/>'
     else:
         s = 44
         znak = (f'<svg x="{mx - s / 2:.1f}" y="{my - s / 2:.1f}" width="{s}" height="{s}" viewBox="0 0 24 24" fill="none" '
