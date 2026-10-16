@@ -1885,3 +1885,18 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
   .wzrost__lista li { display: grid; grid-template-rows: none; grid-row: auto; }
   .wzrost__slupek { height: auto; width: calc(var(--h) * 1%); }
 }
+
+/* Ikony 3D nad słupkami historii */
+.wzrost__lista { grid-template-rows: auto 340px auto; }
+.wzrost__lista li { grid-row: span 3; }
+.wzrost__ikona { display: flex; justify-content: center; align-items: flex-end; min-height: 0; }
+.wzrost__ikona .ilu { width: 84px; height: 84px; margin-bottom: 10px; filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .25)); }
+.wzrost__lista li .wzrost__ikona { align-self: end; margin-bottom: calc((100 - var(--h)) * -3.4px); position: relative; z-index: 1; }
+@media (max-width: 760px) {
+  .wzrost__lista { grid-template-rows: none; }
+  .wzrost__lista li { grid-row: auto; grid-template-columns: 56px minmax(0, 1fr); column-gap: 10px; align-items: center; }
+  .wzrost__lista li .wzrost__ikona { grid-row: 1 / span 2; margin: 0; }
+  .wzrost__ikona .ilu { width: 52px; height: 52px; margin: 0; }
+  .wzrost__lista li .wzrost__slupek, .wzrost__lista li p { grid-column: 2; }
+}
+@media (min-width: 761px) { .wzrost__lista li .wzrost__ikona { margin-bottom: 0; transform: translateY(calc((100 - var(--h)) * 3.4px)); } .wzrost__linia { display: none; } }

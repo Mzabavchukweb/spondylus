@@ -331,7 +331,7 @@ def przygotuj_ilustracje():
         return
     dst.mkdir(parents=True, exist_ok=True)
     for f in src.iterdir():
-        if f.suffix.lower() not in (".png", ".webp"):
+        if f.suffix.lower() not in (".png", ".webp") or "podglad" in f.stem.lower():
             continue
         out = dst / (f.stem.lower() + ".webp")
         if out.exists() and out.stat().st_mtime >= f.stat().st_mtime:
