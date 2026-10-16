@@ -1,0 +1,6 @@
+# materiały robocze i źródła grafik (poza repozytorium)
+assets/src/
+__pycache__/
+.DS_Store
+index-v1.html
+src/pages/_index-v1.html.bak
