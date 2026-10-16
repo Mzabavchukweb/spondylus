@@ -1800,3 +1800,5 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
   .os__ocena-m b { font-size: 20px; color: var(--ink); letter-spacing: -.02em; }
   .os__ocena-m-txt { font-size: 15px; }
 }
+@media (max-width: 640px) { .kolo .kolo__svg { max-width: none; width: calc(100% + 16px); margin: 0 -8px 24px; } }
+@media (min-width: 641px) and (max-width: 960px) { .kolo .kolo__svg { max-width: 460px; } }
