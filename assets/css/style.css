@@ -1900,3 +1900,32 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
   .wzrost__lista li .wzrost__slupek, .wzrost__lista li p { grid-column: 2; }
 }
 @media (min-width: 761px) { .wzrost__lista li .wzrost__ikona { margin-bottom: 0; transform: translateY(calc((100 - var(--h)) * 3.4px)); } .wzrost__linia { display: none; } }
+
+/* v34: historia w jasnym, „glinianym” stylu zgodnym z ikonami 3D */
+.hist2-sekcja { background: linear-gradient(180deg, #f3f9f5 0%, #e9f3ec 100%); color: var(--text); }
+.hist2-sekcja .hist2__lat { border-color: rgba(30, 125, 55, .18); }
+.hist2-sekcja .hist2__lat b { color: var(--brand-600); }
+.hist2-sekcja .hist2__lat span { color: var(--text); }
+.hist2-sekcja .hist2__head h2 { color: var(--ink); }
+.hist2-sekcja .hist2__head p { color: var(--text); }
+.wzrost__slupek { background: linear-gradient(180deg, #ffffff 0%, #e6f2ea 100%); border: 0;
+  box-shadow: inset 0 2px 0 #fff, inset 0 -3px 0 rgba(30, 125, 55, .10), 0 22px 34px -22px rgba(12, 36, 20, .35); }
+.wzrost__slupek b { color: var(--brand-800); }
+.wzrost__lista p { color: var(--text); }
+.wzrost__dzis .wzrost__slupek { background: linear-gradient(180deg, #2ebc55 0%, #1e7d37 100%); box-shadow: inset 0 2px 0 rgba(255, 255, 255, .35), 0 24px 40px -20px rgba(30, 125, 55, .6); }
+.wzrost__dzis .wzrost__slupek b { color: #fff; }
+.wzrost__dzis p { color: var(--ink); }
+.wzrost__ikona .ilu { filter: drop-shadow(0 12px 12px rgba(12, 36, 20, .18)); }
+@media (hover: hover) { .wzrost__lista li:hover .wzrost__slupek { border: 0; box-shadow: inset 0 2px 0 #fff, inset 0 0 0 2px var(--brand-400), 0 22px 34px -22px rgba(12, 36, 20, .35); } }
+@media (max-width: 760px) {
+  .wzrost__slupek { background: linear-gradient(90deg, #ffffff 0%, #e3f1e7 100%); }
+  .wzrost__dzis .wzrost__slupek { background: linear-gradient(90deg, #2ebc55 0%, #1e7d37 100%); }
+}
+@media (min-width: 761px) {
+  .wzrost__lista li .wzrost__ikona { transform: translateY(calc((100 - var(--h)) * 3.4px + 22px)); z-index: 2; }
+  .wzrost__ikona .ilu { width: 92px; height: 92px; }
+  .wzrost__ikona .ilu[src*="program-dzieci"] { width: 112px; height: 112px; margin-bottom: 0; }
+  .wzrost__slupek { padding-top: 30px; }
+}
+@media (max-width: 760px) { .wzrost__ikona .ilu[src*="program-dzieci"] { width: 60px; height: 60px; } .wzrost__lista li { align-items: start; } .wzrost__lista li .wzrost__ikona { align-self: start; } }
+@media (min-width: 761px) { .wzrost__ikona .ilu[src*="hist-dzis"] { width: 124px; height: 124px; margin-bottom: -6px; } } @media (max-width: 760px) { .wzrost__ikona .ilu[src*="hist-dzis"] { width: 62px; height: 62px; } }
