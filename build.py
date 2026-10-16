@@ -60,6 +60,10 @@ ICONS = {
 IKONA_OBSZARU = {"spine": "rehabilitacja", "foot": "podologia", "scan": "diagnostyka", "run": "sport", "stethoscope": "lekarze", "leaf": "dietetyka", "sparkle": "estetyka", "crutch": "zaopatrzenie"}
 
 
+def DEMO(h):
+    return "" if h != "#" else ' data-demo="1"'
+
+
 def icon(name, cls=""):
     c = f' class="{cls}"' if cls else ""
     return (f'<svg{c} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
@@ -91,7 +95,7 @@ def header(nav):
         return ' aria-current="page"' if nav == key else ""
 
     mega_items = "".join(
-        f'<a class="mega__item" href="{h}" data-demo="{"" if h != "#" else "1"}">{icon(i)}<div><b>{t}</b><span>{d}</span></div></a>'
+        f'<a class="mega__item" href="{h}"{DEMO(h)}><img class="mega__ilu" src="assets/img/ilu/kolo-{IKONA_OBSZARU[i]}.webp" alt="" width="256" height="256" loading="lazy"><div><b>{t}</b><span>{d}</span></div></a>'
         for h, i, t, d in OBSZARY
     )
     return f'''
