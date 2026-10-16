@@ -57,6 +57,9 @@ ICONS = {
 }
 
 
+IKONA_OBSZARU = {"spine": "rehabilitacja", "foot": "podologia", "scan": "diagnostyka", "run": "sport", "stethoscope": "lekarze", "leaf": "dietetyka", "sparkle": "estetyka", "crutch": "zaopatrzenie"}
+
+
 def icon(name, cls=""):
     c = f' class="{cls}"' if cls else ""
     return (f'<svg{c} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
@@ -142,17 +145,24 @@ def header(nav):
 <div class="drawer" id="drawer" aria-hidden="true">
   <div class="drawer__bg" data-drawer-close></div>
   <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu">
-    <div class="drawer__top"><img src="assets/img/logo.png" alt="Spondylus" width="312" height="97"><button class="burger" style="display:inline-flex" type="button" aria-label="Zamknij menu" data-drawer-close>{icon("close")}</button></div>
-    <div class="drawer__group">Oferta</div>
-    <div class="drawer__areas">{"".join(f'<a href="{h}" data-demo="{"" if h != "#" else "1"}">{t}</a>' for h, i, t, d in OBSZARY)}</div>
-    <a class="d-link" href="kadra.html">Nasza kadra {icon("chev-right")}</a>
-    <a class="d-link" href="#" data-demo="1">Refundacja NFZ {icon("chev-right")}</a>
-    <a class="d-link" href="#" data-demo="1">O nas {icon("chev-right")}</a>
-    <a class="d-link" href="#" data-demo="1">Blog {icon("chev-right")}</a>
-    <a class="d-link" href="kontakt.html">Kontakt i placówki {icon("chev-right")}</a>
-    <a class="d-link" href="index.html#pierwsza-wizyta">Pierwsza wizyta {icon("chev-right")}</a>
-    <button class="btn btn--primary" type="button" data-book>{icon("calendar")}Umów wizytę</button>
-    <a class="btn btn--ghost" href="tel:+48665035035">{icon("phone")}Zadzwoń: 665 035 035</a>
+    <div class="drawer__top"><a class="drawer__logo" href="index.html"><img src="assets/img/logo.png" alt="Spondylus, strona główna" width="312" height="97"></a><button class="burger burger--zamknij" type="button" aria-label="Zamknij menu" data-drawer-close>{icon("close")}</button></div>
+    <div class="drawer__tresc">
+      <div class="drawer__group">W czym pomagamy</div>
+      <div class="drawer__areas">{"".join(f'<a href="{h}"{"" if h != "#" else " data-demo=\"1\""}><img src="assets/img/ilu/kolo-{IKONA_OBSZARU[i]}.webp" alt="" width="256" height="256" loading="lazy"><span>{t}</span></a>' for h, i, t, d in OBSZARY)}</div>
+      <nav class="drawer__nav" aria-label="Menu na telefonie">
+        <a class="d-link" href="index.html#pierwsza-wizyta">Pierwsza wizyta {icon("chev-right")}</a>
+        <a class="d-link" href="kadra.html">Nasza kadra {icon("chev-right")}</a>
+        <a class="d-link" href="index.html#refundacja">Refundacja NFZ {icon("chev-right")}</a>
+        <a class="d-link" href="index.html#opinie">Opinie pacjentów {icon("chev-right")}</a>
+        <a class="d-link" href="#" data-demo="1">O nas {icon("chev-right")}</a>
+        <a class="d-link" href="kontakt.html">Kontakt i placówki {icon("chev-right")}</a>
+      </nav>
+      <p class="drawer__info">Infolinia dla wszystkich placówek, pon.–pt.: Szczecin, centrum i Koszalin 9:00–18:00, Pogodno 8:00–19:00.</p>
+    </div>
+    <div class="drawer__akcje">
+      <button class="btn btn--primary" type="button" data-book>{icon("calendar")}Umów wizytę</button>
+      <a class="btn btn--ghost" href="tel:+48665035035">{icon("phone")}665 035 035</a>
+    </div>
   </div>
 </div>
 '''

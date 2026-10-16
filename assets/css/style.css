@@ -1663,3 +1663,65 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
   .nfz__kroki p { margin-top: 4px; }
 }
 .place__godz { display: flex; align-items: center; gap: 8px; font-size: 15px; color: var(--text); } .place__godz svg { width: 18px; height: 18px; color: var(--brand-600); flex: none; }
+
+/* v27: logo stałej wielkości (bez zmniejszania przy przewijaniu) */
+.header__logo img, .header.is-scrolled .header__logo img { transition: none; }
+@media (min-width: 1341px) { .header .header__logo img, .header.is-scrolled .header__logo img { width: 196px; } }
+@media (min-width: 1261px) and (max-width: 1340px) { .header .header__logo img, .header.is-scrolled .header__logo img { width: 164px; } }
+@media (min-width: 1181px) and (max-width: 1260px) { .header .header__logo img, .header.is-scrolled .header__logo img { width: 150px; } }
+@media (min-width: 641px) and (max-width: 1180px) { .header .header__logo img, .header.is-scrolled .header__logo img { width: 176px; } }
+@media (max-width: 640px) { .header .header__logo img, .header.is-scrolled .header__logo img { width: 158px; } }
+
+/* Przycisk menu */
+.burger { width: 48px; height: 48px; border-radius: 14px; border: 1px solid var(--line); background: #fff; color: var(--ink); }
+.burger svg { width: 24px; height: 24px; }
+.burger--zamknij { display: inline-flex; align-items: center; justify-content: center; }
+
+/* Menu na telefonie */
+.drawer__panel { width: min(440px, 100%); padding: 0; display: flex; flex-direction: column; }
+.drawer__top { flex: none; display: flex; align-items: center; justify-content: space-between; margin: 0; padding: 0 16px; min-height: 81px; border-bottom: 1px solid var(--line); }
+.drawer__logo img { display: block; width: 158px; height: auto; }
+@media (min-width: 641px) { .drawer__logo img { width: 176px; } .drawer__top { padding: 0 24px; } }
+.drawer__tresc { flex: 1; overflow-y: auto; padding: 20px 16px 24px; }
+.drawer__group { padding: 0 0 12px; font-size: 14px; font-weight: 700; color: var(--brand-600); }
+.drawer__areas { gap: 10px; padding-bottom: 20px; }
+.drawer__areas a { display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 8px 10px 8px 6px; border-radius: 14px; background: #f3f9f5; font-size: 15px; font-weight: 600; line-height: 1.25; color: var(--ink); text-decoration: none; }
+.drawer__areas img { width: 48px; height: 48px; flex: none; }
+.drawer__nav { border-top: 1px solid var(--line); }
+.drawer a.d-link { padding: 16px 2px; font-size: 18px; font-weight: 600; color: var(--ink); }
+.drawer a.d-link svg { width: 20px; height: 20px; flex: none; color: var(--brand-600); }
+.drawer__info { margin: 18px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.drawer__akcje { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px 16px calc(14px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: #fff; }
+.drawer__akcje .btn { margin: 0; width: 100%; padding-inline: 10px; gap: 8px; }
+.drawer .btn { margin-top: 0; }
+
+/* Pas z wózkiem na telefonie */
+@media (max-width: 640px) {
+  .wozek .wrap { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "nfz ikona" "txt ikona" "btn btn"; gap: 10px 14px; padding-block: 20px; align-items: start; }
+  .wozek__nfz { grid-area: nfz; display: inline-grid; justify-self: start; height: 30px; padding: 0 8px; border-radius: 8px; }
+  .wozek__nfz img { width: 44px; }
+  .wozek__txt { grid-area: txt; }
+  .wozek__txt b { font-size: 20px; line-height: 1.2; }
+  .wozek__txt span { font-size: 14px; margin-top: 6px; }
+  .wozek__ikona { grid-area: ikona; width: 76px; height: 76px; align-self: center; }
+  .wozek__ikona .ilu { width: 64px; height: 64px; }
+  .wozek .btn { grid-area: btn; grid-column: auto; width: 100%; justify-content: center; text-align: center; white-space: nowrap; min-height: 50px; font-size: 16px; }
+}
+@media (max-width: 640px) { .wozek .wrap .btn { grid-column: 1 / -1; grid-row: 3; justify-self: stretch; width: 100%; } }
+@media (max-width: 360px) { .wozek .wrap .btn { font-size: 15px; padding-inline: 10px; } .wozek__ikona { width: 64px; height: 64px; } .wozek__ikona .ilu { width: 54px; height: 54px; } }
+
+/* v28: czytelność na telefonie, tekst min. 15 px, etykiety min. 14 px */
+@media (max-width: 640px) {
+  .wozek__txt span { font-size: 15px; line-height: 1.45; }
+  .objaw .objaw__txt b { font-size: 16px; }
+  .objaw .objaw__txt > span { font-size: 14px; }
+  .prog__dla { font-size: 14px; }
+  .kolo__et b { font-size: 16px; } .kolo__et span { font-size: 14px; line-height: 1.4; }
+  .osoba__rola { font-size: 14px; } .osoba__opis { font-size: 15px; line-height: 1.45; }
+  .ti-wiecej { font-size: 15px; }
+  .hist p { font-size: 15px; line-height: 1.45; }
+  .hist b { font-size: 22px; }
+  .os__karta-txt { font-size: 13px; }
+  .head2 p, .kolo__head p { font-size: 17px; line-height: 1.55; }
+  .proc p, .nfz__kroki p { font-size: 16px; line-height: 1.55; }
+}
