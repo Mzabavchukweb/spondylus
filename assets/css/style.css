@@ -1814,3 +1814,37 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
   .proc-jasny .proc p { margin-top: 6px; font-size: 14.5px; line-height: 1.5; }
 }
 @media (max-width: 360px) { .proc-jasny .proc { gap: 8px; } .proc-jasny .proc li, .proc-jasny .proc li + li { padding: 12px 10px 14px; } .proc-jasny .proc p { font-size: 14px; } .proc-jasny .proc .ilu { width: 40px; height: 40px; } }
+
+/* v32: historia ze zdjęciami z placówek */
+.hist3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.hist3 .hist2__lat { padding: 0 0 22px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .18); margin-bottom: 24px; }
+.hist3 h2 { color: #fff; font-size: clamp(28px, 3vw, 42px); }
+.hist3__lead { margin-top: 10px; font-size: 18px; line-height: 1.55; color: #d6e8dc; max-width: 46ch; }
+.hist3__os { list-style: none; margin: 28px 0 0; padding: 0 0 0 4px; position: relative; display: grid; gap: 14px; }
+.hist3__os::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 8px; width: 2px; background: rgba(255, 255, 255, .2); }
+.hist3__os li { position: relative; display: grid; grid-template-columns: 62px minmax(0, 1fr); column-gap: 12px; align-items: baseline; padding-left: 30px; }
+.hist3__os li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--brand-900); border: 3px solid #6fd08b; }
+.hist3__os b { font-size: 20px; color: #fff; letter-spacing: -.02em; }
+.hist3__os p { margin: 0; font-size: 16px; line-height: 1.45; color: #c7ddcd; }
+.hist3__dzis::before { background: #6fd08b !important; }
+.hist3__dzis b { color: #6fd08b; }
+.hist3__foto { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.hist3__foto img { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; aspect-ratio: 1; }
+.hist3__foto .hist3__duze { grid-column: 1 / -1; aspect-ratio: 4 / 3; object-position: 50% 30%; }
+.hist3__znak { position: absolute; left: -22px; top: calc(50% - 40px); display: grid; gap: 2px; padding: 14px 18px; border-radius: 16px; background: #6fd08b; color: var(--brand-900); font-size: 14px; font-weight: 600; box-shadow: 0 18px 36px -18px rgba(0, 0, 0, .5); }
+.hist3__znak b { font-size: 22px; letter-spacing: -.02em; }
+@media (max-width: 960px) { .hist3 { grid-template-columns: 1fr; } .hist3__znak { left: 12px; } }
+@media (max-width: 640px) {
+  .hist3 { gap: 24px; }
+  .hist3__tekst { display: contents; }
+  .hist3 .hist2__lat, .hist3 h2, .hist3__lead { order: 1; }
+  .hist3 .hist2__lat { margin-bottom: 0; }
+  .hist3 h2 { font-size: 26px; margin-top: -8px; }
+  .hist3__lead { font-size: 16px; margin-top: -16px; }
+  .hist3__foto { order: 2; gap: 8px; }
+  .hist3__foto img { border-radius: 14px; }
+  .hist3__znak { top: auto; bottom: calc(50% - 4px); padding: 10px 14px; }
+  .hist3__znak b { font-size: 18px; }
+  .hist3__os { order: 3; margin-top: 0; }
+  .hist3__os p { font-size: 15px; }
+}
