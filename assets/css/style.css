@@ -1802,3 +1802,15 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
 }
 @media (max-width: 640px) { .kolo .kolo__svg { max-width: none; width: calc(100% + 16px); margin: 0 -8px 24px; } }
 @media (min-width: 641px) and (max-width: 960px) { .kolo .kolo__svg { max-width: 460px; } }
+
+/* v31: kroki wizyty na telefonie w dwóch kolumnach */
+@media (max-width: 640px) {
+  .proc-jasny .proc { grid-template-columns: 1fr 1fr; gap: 10px; border-top: 0; margin-top: 24px; }
+  .proc-jasny .proc li, .proc-jasny .proc li + li { padding: 14px 12px 16px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+  .proc-jasny .proc li:first-child { border-top: 1px solid var(--line); }
+  .proc-jasny .proc__nr { font-size: 30px; }
+  .proc-jasny .proc .ilu, .proc-jasny .proc li:last-child .ilu { top: 10px; right: 10px; width: 46px; height: 46px; }
+  .proc-jasny .proc h3, .proc-jasny .proc li:not(:first-child) h3 { margin-top: 12px; padding-right: 0; font-size: 17px; }
+  .proc-jasny .proc p { margin-top: 6px; font-size: 14.5px; line-height: 1.5; }
+}
+@media (max-width: 360px) { .proc-jasny .proc { gap: 8px; } .proc-jasny .proc li, .proc-jasny .proc li + li { padding: 12px 10px 14px; } .proc-jasny .proc p { font-size: 14px; } .proc-jasny .proc .ilu { width: 40px; height: 40px; } }
