@@ -2317,3 +2317,11 @@ h2 { letter-spacing: -.02em; }
 @media (prefers-reduced-motion: reduce) { .tel-btn::after { animation: none; opacity: 0; } }
 html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 @media (max-width: 760px) { .tel-btn .ilu { width: 40px; height: 40px; } .tel-btn { border: 0; } }
+
+/* Liczby zaufania w zajawce O nas (przeniesione spod hero) */
+.onas-zaj__tekst > p { margin-bottom: 0; }
+.onas-zaj__liczby { list-style: none; margin: 24px 0 28px; padding: 0; max-width: 520px; border-top: 1px solid var(--line); }
+.onas-zaj__liczby li { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.onas-zaj__liczby b { font-size: 20px; font-weight: 700; color: var(--brand-600); letter-spacing: -.02em; white-space: nowrap; }
+.onas-zaj__liczby span { font-size: 15.5px; color: var(--text); line-height: 1.4; }
+@media (max-width: 640px) { .onas-zaj__liczby li { grid-template-columns: 104px minmax(0, 1fr); gap: 12px; } .onas-zaj__liczby b { font-size: 18px; } .onas-zaj__liczby span { font-size: 15px; } }
