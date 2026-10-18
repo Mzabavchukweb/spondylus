@@ -79,13 +79,13 @@ def why(nr, tytul, problem, rozwiazanie, efekt):
 
 
 OBSZARY = [
-    ("#", "spine", "Rehabilitacja", "Fizjoterapia ortopedyczna, pooperacyjna i neurologiczna"),
-    ("#", "scan", "Diagnostyka wad postawy", "Badania aparatu ruchu, stóp i diagnostyka sportowa"),
-    ("#", "run", "Medycyna sportowa", "Od amatorów po zawodowców: diagnostyka i powrót do treningu"),
+    ("#", "spine", "Rehabilitacja", "Ortopedyczna, pooperacyjna i neurologiczna"),
+    ("#", "scan", "Diagnostyka wad postawy", "Postawa, stopy i diagnostyka sportowa"),
+    ("#", "run", "Medycyna sportowa", "Kontuzje i powrót do treningu"),
     ("#", "stethoscope", "Konsultacje lekarskie", "Ortopeda, neurolog, neurochirurg"),
-    ("#", "leaf", "Dietetyka", "Dietetyka kliniczna i sportowa jako wsparcie terapii"),
-    ("#", "sparkle", "Medycyna estetyczna", "Zabiegi estetyczne pod opieką zespołu medycznego"),
-    ("#", "crutch", "Zaopatrzenie medyczne", "Wkładki, obuwie, sprzęt rehabilitacyjny, także z NFZ"),
+    ("#", "leaf", "Dietetyka", "Kliniczna i sportowa, wsparcie terapii"),
+    ("#", "sparkle", "Medycyna estetyczna", "Zabiegi pod opieką zespołu medycznego"),
+    ("#", "crutch", "Zaopatrzenie medyczne", "Wkładki, obuwie i sprzęt, także z NFZ"),
 ]
 
 
@@ -139,7 +139,7 @@ def header(nav):
       {mega_items}
       <div class="mega__aside">
         <b>Nie wiesz, do kogo się zapisać?</b>
-        <p>Zadzwoń na infolinię. Rejestracja dobierze specjalistę i najbliższy termin w wybranej placówce.</p>
+        <p>Rejestracja dobierze specjalistę i najbliższy termin.</p>
         <a class="btn btn--primary btn--sm" href="tel:+48665035035">{icon("phone")}665 035 035</a>
       </div>
     </div>
