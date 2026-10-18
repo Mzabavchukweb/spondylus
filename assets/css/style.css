@@ -2114,3 +2114,5 @@ body:has(.onas-intro) .liczby .liczba b { color: var(--brand-600); }
   .onas-karta b { font-size: 18px; }
   .onas-karta span { font-size: 14px; }
 }
+.onas-zaj__fakty b { white-space: nowrap; }
+@media (max-width: 480px) { .onas-zaj__fakty { grid-template-columns: .9fr 1.25fr .9fr; } .onas-zaj__fakty b { font-size: 22px; } }
