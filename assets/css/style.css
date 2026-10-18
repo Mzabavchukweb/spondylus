@@ -2215,3 +2215,10 @@ h2 { letter-spacing: -.02em; }
   .prog .prog__karta .prog__opis { font-size: 16px; line-height: 1.55; }
   .prog .prog__karta .prog__liczba { font-size: 15px; }
 }
+
+/* Portrety: wspólna linia oczu (35% wysokości) i jedna skala twarzy, liczone z punktów oczu (Vision) */
+.osoba__foto img[src*="magdalena-salabon"], .spec__foto img[src*="magdalena-salabon"] { transform: translateY(2.05%) scale(1.102); transform-origin: 48.8% 33.3%; }
+.osoba__foto img[src*="gabriela-majorczyk"], .spec__foto img[src*="gabriela-majorczyk"] { transform: translateY(1.37%) scale(1.045); transform-origin: 50.4% 34.0%; }
+.osoba__foto img[src*="tomasz-zdeb"], .spec__foto img[src*="tomasz-zdeb"] { transform: translateY(1.77%) scale(1.058); transform-origin: 50.9% 33.6%; }
+.osoba__foto img[src*="piotr-salapa"], .spec__foto img[src*="piotr-salapa"] { transform: translateY(-6.16%) scale(1.144); transform-origin: 48.8% 41.5%; }
+.osoba__foto img[src*="olga-veremiienko"], .spec__foto img[src*="olga-veremiienko"] { transform: translateY(-5.56%) scale(1.095); transform-origin: 49.1% 40.9%; }
