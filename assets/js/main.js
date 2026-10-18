@@ -177,6 +177,33 @@
     });
   });
 
+  /* R3: status otwarcia placówek liczony z godzin (czas polski) */
+  const statusy = $$('.otwarte[data-od]');
+  if (statusy.length) {
+    const DNI = ['w niedzielę', 'w poniedziałek', 'we wtorek', 'w środę', 'w czwartek', 'w piątek', 'w sobotę'];
+    const terazPL = () => {
+      const t = new Intl.DateTimeFormat('pl-PL', { timeZone: 'Europe/Warsaw', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+      const wd = ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'].indexOf(t.find(x => x.type === 'weekday').value);
+      return { dzien: wd, min: +t.find(x => x.type === 'hour').value * 60 + +t.find(x => x.type === 'minute').value };
+    };
+    const ustawStatus = () => {
+      const { dzien, min } = terazPL();
+      statusy.forEach(el => {
+        const [d1, d2] = el.dataset.dni.split('-').map(Number), od = +el.dataset.od, doG = +el.dataset.do;
+        const czynny = (d) => d >= d1 && d <= d2;
+        let txt, otw = false;
+        if (czynny(dzien) && min >= od * 60 && min < doG * 60) { otw = true; txt = `Otwarte teraz, do ${doG}:00`; }
+        else if (czynny(dzien) && min < od * 60) txt = `Zamknięte, otwieramy dziś o ${od}:00`;
+        else {
+          let k = 1; while (!czynny((dzien + k) % 7)) k++;
+          txt = `Zamknięte, otwieramy ${k === 1 ? 'jutro' : DNI[(dzien + k) % 7]} o ${od}:00`;
+        }
+        el.textContent = txt; el.classList.toggle('is-otwarte', otw); el.hidden = false;
+      });
+    };
+    ustawStatus(); setInterval(ustawStatus, 60000);
+  }
+
   /* Tryb "Uzasadnienie zmian" dla klienta */
   const wts = $$('[data-why-toggle]');
   const ustawWhy = (o) => { document.body.classList.toggle('why-on', o); wts.forEach(b => b.setAttribute('aria-pressed', String(o))); try { localStorage.setItem('spondylus-why', o ? '1' : '0'); } catch (e) {} };
