@@ -151,9 +151,9 @@
   if (a11yBtn && a11yPanel) {
     const otworzA = (o) => { a11yPanel.classList.toggle('is-open', o); a11yBtn.setAttribute('aria-expanded', String(o)); if (o) setTimeout(() => $('[data-a11y-size]', a11yPanel).focus(), 60); };
     a11yBtn.addEventListener('click', () => otworzA(!a11yPanel.classList.contains('is-open')));
-    $('[data-a11y-close]').addEventListener('click', () => { otworzA(false); (getComputedStyle(a11yBtn).display === 'none' ? $('[data-a11y-proxy]') : a11yBtn)?.focus(); });
+    $('[data-a11y-close]').addEventListener('click', () => { otworzA(false); a11yBtn.focus(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && a11yPanel.classList.contains('is-open')) { otworzA(false); a11yBtn.focus(); } });
-    document.addEventListener('click', (e) => { if (!e.target.closest('#a11y-panel, [data-a11y-open], [data-a11y-proxy]')) otworzA(false); });
+    document.addEventListener('click', (e) => { if (!e.target.closest('#a11y-panel, [data-a11y-open]')) otworzA(false); });
     $$('[data-a11y-size]').forEach(b => b.addEventListener('click', () => { a11y.size = Number(b.dataset.a11ySize); zastosuj(a11y); zapisz(a11y); }));
     $$('[data-a11y]').forEach(b => b.addEventListener('click', () => { a11y[b.dataset.a11y] = !a11y[b.dataset.a11y]; zastosuj(a11y); zapisz(a11y); }));
     $('[data-a11y-reset]').addEventListener('click', () => { a11y = {}; zastosuj(a11y); zapisz(a11y); });
@@ -202,14 +202,6 @@
       });
     };
     ustawStatus(); setInterval(ustawStatus, 60000);
-  }
-
-  /* R9: pasek zapisu na telefonie, z przyciskiem dostępności */
-  const mPasek = $('#m-pasek');
-  if (mPasek) {
-    document.body.classList.add('m-pasek-on');
-    const proxy = $('[data-a11y-proxy]', mPasek);
-    if (proxy) proxy.addEventListener('click', () => { $('[data-a11y-open]')?.click(); proxy.setAttribute('aria-expanded', $('#a11y-panel')?.classList.contains('is-open') ? 'true' : 'false'); });
   }
 
   /* Tryb "Uzasadnienie zmian" dla klienta */

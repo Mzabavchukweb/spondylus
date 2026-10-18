@@ -269,7 +269,6 @@ def footer():
   <button class="btn btn--ghost btn--sm a11y-reset" type="button" data-a11y-reset>Przywróć ustawienia domyślne</button>
 </section>
 <div class="proto-dock" id="proto-dock"><span class="proto-dock__label">Prototyp</span><button class="why-toggle" type="button" aria-pressed="false" data-why-toggle><span>Uzasadnienie zmian</span><span class="why-toggle__sw" aria-hidden="true"></span></button></div>
-<nav class="m-pasek" id="m-pasek" aria-label="Szybki kontakt"><button class="m-pasek__a11y" type="button" aria-label="Ustawienia dostępności" aria-controls="a11y-panel" data-a11y-proxy>{ikona_dostepnosci()}</button><button class="btn btn--primary" type="button" data-book>{icon("calendar")}Umów wizytę</button><a class="btn btn--ghost" href="tel:+48665035035">{icon("phone")}Zadzwoń</a></nav>
 <div class="toast" role="status" aria-live="polite" id="toast"></div>
 <script src="assets/js/main.js?v={WERSJA}" defer></script>
 '''

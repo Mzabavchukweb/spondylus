@@ -2268,30 +2268,6 @@ h2 { letter-spacing: -.02em; }
 .footer__placowki .otwarte { display: flex; margin: 2px 0 4px; font-size: 12.5px; }
 .footer__placowki .otwarte.is-otwarte { color: var(--brand-600); }
 
-/* R9: przyklejony pasek zapisu tylko na telefonie */
-.m-pasek { display: none; }
-@media (max-width: 760px) {
-  .m-pasek { display: grid; grid-template-columns: 1.35fr 1fr; gap: 8px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)); background: rgba(255, 255, 255, .97); border-top: 1px solid var(--line); box-shadow: 0 -10px 30px -18px rgba(12, 36, 20, .35); transform: translateY(110%); transition: transform .3s var(--ease); }
-  .m-pasek .btn { min-height: 50px; padding: 0 12px; font-size: 16px; min-width: 0; gap: 8px; }
-  .m-pasek .btn svg { width: 18px; height: 18px; }
-  body.m-pasek-on .m-pasek { transform: none; }
-  body.m-pasek-on .a11y-btn { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
-  body.m-pasek-on .a11y-panel { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
-  body.m-pasek-on .toast { bottom: calc(90px + env(safe-area-inset-bottom, 0px)); }
-  .a11y-btn { transition: bottom .3s var(--ease); }
-  .footer { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
-  html.a11y-still .m-pasek { transition: none; }
-}
-@media (prefers-reduced-motion: reduce) { .m-pasek, .a11y-btn { transition: none; } }
-@media (max-width: 760px) {
-  .m-pasek { grid-template-columns: 50px 1.35fr 1fr; transform: none; }
-  .m-pasek__a11y { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 10px; border: 1px solid var(--line); background: #fff; padding: 0; cursor: pointer; }
-  .m-pasek__a11y .ilu { width: 34px; height: 34px; }
-  .m-pasek__a11y svg { width: 26px; height: 26px; color: var(--brand-600); }
-  .a11y-btn { display: none; }
-  .a11y-panel { bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important; }
-}
-
 /* R4: podstrona zaopatrzenia z NFZ */
 .zao-oferta { list-style: none; margin: clamp(28px, 4vw, 44px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .zao-oferta li { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 16px; align-items: start; padding: 22px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
