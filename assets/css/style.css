@@ -2222,3 +2222,39 @@ h2 { letter-spacing: -.02em; }
 .osoba__foto img[src*="tomasz-zdeb"], .spec__foto img[src*="tomasz-zdeb"] { transform: translateY(1.77%) scale(1.058); transform-origin: 50.9% 33.6%; }
 .osoba__foto img[src*="piotr-salapa"], .spec__foto img[src*="piotr-salapa"] { transform: translateY(-6.16%) scale(1.144); transform-origin: 48.8% 41.5%; }
 .osoba__foto img[src*="olga-veremiienko"], .spec__foto img[src*="olga-veremiienko"] { transform: translateY(-5.56%) scale(1.095); transform-origin: 49.1% 40.9%; }
+
+/* R5: FAQ, lista z cienkimi liniami i okrągłym plusem */
+.faq { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+@media (min-width: 961px) { .faq__intro { position: sticky; top: 120px; } }
+.faq__intro h2 { font-size: clamp(28px, 3vw, 44px); line-height: 1.12; max-width: 14ch; }
+.faq__intro > p { margin-top: 14px; font-size: 18px; color: var(--text); max-width: 34ch; }
+.faq__kontakt { margin-top: 28px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); display: grid; gap: 4px; max-width: 340px; }
+.faq__kontakt span { font-size: 15px; color: var(--text); }
+.faq__tel { display: inline-flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -.02em; padding-block: 6px; }
+.faq__tel svg { width: 22px; height: 22px; color: var(--brand-600); }
+.faq__kontakt small { font-size: 13px; color: var(--muted); }
+.faq__lista { border-top: 1px solid var(--line); }
+.faq .faq__item { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: none; overflow: visible; }
+.faq .faq__item + .faq__item { margin-top: 0; }
+.faq .faq__item summary { padding: 22px 0; gap: 20px; font-weight: 600; align-items: center; }
+.faq__q { flex: 1; font-size: 18px; line-height: 1.4; color: var(--ink); transition: color .25s; }
+.faq .faq__item[open] .faq__q { color: var(--brand-600); }
+.faq__ikona { position: relative; flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: #fff; transition: background-color .3s, border-color .3s, transform .35s var(--ease); }
+.faq__ikona::before, .faq__ikona::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; margin: -1px 0 0 -7px; border-radius: 2px; background: var(--ink); transition: transform .35s var(--ease), background-color .3s; }
+.faq__ikona::after { transform: rotate(90deg); }
+.faq .faq__item[open] .faq__ikona { background: var(--brand-600); border-color: var(--brand-600); transform: rotate(180deg); }
+.faq .faq__item[open] .faq__ikona::before, .faq .faq__item[open] .faq__ikona::after { background: #fff; }
+.faq .faq__item[open] .faq__ikona::after { transform: rotate(0deg); }
+.faq .acc__body { overflow: hidden; }
+.faq .acc__body p { margin: 0; padding: 0 56px 24px 0; font-size: 17px; line-height: 1.65; color: var(--text); max-width: 62ch; }
+.faq summary:focus-visible { outline: 3px solid var(--brand-600); outline-offset: 4px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { .faq__ikona, .faq__ikona::before, .faq__ikona::after, .faq__q { transition: none; } }
+@media (max-width: 960px) { .faq { grid-template-columns: 1fr; } .faq__intro h2 { max-width: none; } }
+@media (max-width: 640px) {
+  .faq .faq__item summary { padding: 18px 0; gap: 14px; }
+  .faq__q { font-size: 17px; }
+  .faq__ikona { width: 32px; height: 32px; }
+  .faq .acc__body p { padding-right: 0; font-size: 16px; }
+  .faq__kontakt { max-width: none; }
+}
+.faq .faq__item .acc__body { padding: 0; }
