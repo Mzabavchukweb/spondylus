@@ -1998,3 +1998,16 @@ a[aria-disabled="true"] { cursor: default; }
 .a11y-grid .a11y-opt { gap: 10px; padding: 14px; }
 .a11y-grid .a11y-opt svg { box-sizing: content-box; width: 24px; height: 24px; padding: 9px; border-radius: 12px; background: #e9f3ec; color: var(--brand-600); stroke-width: 1.8; flex: none; transition: background-color .2s, color .2s; }
 .a11y-grid .a11y-opt[aria-pressed="true"] svg { background: rgba(255, 255, 255, .12); color: #8fe0a5; }
+
+/* Menu Oferta na desktopie: równa siatka 4 x 2, infolinia w ósmej komórce */
+.mega .wrap { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 16px; padding-block: 24px 28px; align-items: stretch; }
+.mega__item { align-items: flex-start; gap: 14px; padding: 14px 16px; }
+.mega__ilu { width: 52px; height: 52px; border-radius: 14px; }
+.mega__item div { min-width: 0; padding-top: 2px; }
+.mega__item b { font-size: 16px; line-height: 1.3; }
+.mega__item span { font-size: 14px; line-height: 1.45; margin-top: 4px; }
+.mega__aside { grid-column: auto; grid-row: auto; justify-content: center; gap: 8px; padding: 16px 18px; border-radius: var(--r-md); }
+.mega__aside b { font-size: 16px; line-height: 1.3; }
+.mega__aside p { font-size: 14px; line-height: 1.45; color: var(--text); }
+.mega__aside .btn { align-self: flex-start; margin-top: 4px; }
+@media (max-width: 1320px) { .mega__item { gap: 12px; padding: 12px; } .mega__ilu { width: 44px; height: 44px; } }
