@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spondylus: obecna strona i propozycja</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --zielen: #1e7d37; --zielen-jasna: #2ebc55; --ciemna: #12341b;
+  --ink: #111a14; --tekst: #3a4540; --pomoc: #5f6b64; --linia: #dce4de; --tlo: #f4f7f5;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Onest", system-ui, sans-serif; color: var(--tekst); background: #fff; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+h1, h2 { color: var(--ink); letter-spacing: -.02em; line-height: 1.1; margin: 0; }
+a { color: var(--zielen); }
+a:focus-visible, input:focus-visible, button:focus-visible { outline: 3px solid var(--zielen); outline-offset: 3px; }
+
+.top { border-bottom: 1px solid var(--linia); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
+.top img { width: 170px; height: auto; display: block; }
+.top a.btn { flex: none; }
+.btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 10px; background: var(--zielen); color: #fff; font-weight: 600; text-decoration: none; }
+
+.intro { padding: clamp(40px, 6vw, 72px) 0 clamp(24px, 3vw, 40px); }
+.kicker { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: var(--zielen); margin-bottom: 14px; }
+.kicker::before { content: ""; width: 24px; height: 2px; background: var(--zielen); }
+.intro h1 { font-size: clamp(32px, 4vw, 52px); max-width: 20ch; }
+.intro p { margin: 18px 0 0; font-size: 19px; max-width: 60ch; }
+
+.blok { padding: clamp(28px, 4vw, 48px) 0; }
+.blok + .blok { border-top: 1px solid var(--linia); }
+.blok__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 20px; }
+.blok__head h2 { font-size: clamp(24px, 2.4vw, 32px); }
+.blok__head p { margin: 0; color: var(--pomoc); font-size: 15px; }
+
+/* Suwak „przed i po” */
+.suwak { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--linia); background: var(--tlo); user-select: none; touch-action: pan-y; }
+.suwak img { display: block; width: 100%; height: auto; }
+.suwak__po { position: absolute; inset: 0; clip-path: inset(0 0 0 var(--x, 50%)); }
+.suwak__po img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.suwak__linia { position: absolute; top: 0; bottom: 0; left: var(--x, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 0 1px rgba(17, 26, 20, .15); pointer-events: none; }
+.suwak__uchwyt { position: absolute; top: 50%; left: 50%; width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 50%; background: var(--zielen); border: 3px solid #fff; box-shadow: 0 6px 18px -6px rgba(17, 26, 20, .5); display: grid; place-items: center; color: #fff; }
+.suwak__uchwyt svg { width: 22px; height: 22px; }
+.suwak__etykieta { position: absolute; top: 14px; padding: 6px 12px; border-radius: 6px; font-size: 14px; font-weight: 600; pointer-events: none; }
+.suwak__etykieta--przed { left: 14px; background: rgba(255, 255, 255, .94); color: var(--ink); box-shadow: 0 0 0 1px var(--linia); }
+.suwak__etykieta--po { right: 14px; background: var(--zielen); color: #fff; }
+.suwak input[type="range"] { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+.suwak--telefon { max-width: 390px; margin: 0 auto; border-radius: 28px; border: 10px solid #111a14; }
+
+/* Cała strona obok siebie */
+.obok { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.obok figure { margin: 0; }
+.obok figcaption { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.obok figcaption span { font-size: 13px; font-weight: 500; color: var(--pomoc); }
+.obok img { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid var(--linia); }
+
+/* Co się zmienia */
+.zmiany { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.zmiany li { padding: 22px; border: 1px solid var(--linia); border-radius: 12px; background: #fff; }
+.zmiany b { display: block; color: var(--ink); font-size: 18px; margin-bottom: 6px; }
+.zmiany p { margin: 0; font-size: 16px; }
+.zmiany .przed { display: block; margin-top: 12px; font-size: 14px; color: var(--pomoc); }
+
+.stopka { background: var(--ciemna); color: #d6e8dc; padding: clamp(36px, 5vw, 56px) 0; margin-top: clamp(28px, 4vw, 48px); }
+.stopka .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.stopka h2 { color: #fff; font-size: clamp(24px, 2.6vw, 34px); max-width: 22ch; }
+.stopka .btn { background: #fff; color: var(--ciemna); }
+
+@media (max-width: 860px) {
+  .zmiany { grid-template-columns: 1fr; }
+  .obok { gap: 10px; }
+  .top img { width: 140px; }
+  .top .btn { padding: 0 14px; font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img src="assets/img/logo.png" alt="Spondylus" width="312" height="97">
+    <a class="btn" href="index.html">Otwórz prototyp</a>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="wrap">
+      <div class="kicker">Porównanie</div>
+      <h1>Obecna strona i propozycja nowej strony Spondylus</h1>
+      <p>Przesuń suwak, żeby zobaczyć tę samą stronę główną przed zmianą i po niej. Zrzuty z 18.10.2026, obecna strona bez żadnych poprawek, bez okienka cookies.</p>
+    </div>
+  </section>
+
+  <section class="blok">
+    <div class="wrap">
+      <div class="blok__head"><h2>Pierwszy ekran na komputerze</h2><p>Szerokość 1440 px, tak jak na typowym laptopie</p></div>
+      <div class="suwak" data-suwak>
+        <img src="assets/img/porownanie/przed-desktop.webp" alt="Obecna strona Spondylus, pierwszy ekran na komputerze" width="1920" height="1200">
+        <div class="suwak__po"><img src="assets/img/porownanie/po-desktop.webp" alt="Propozycja nowej strony Spondylus, pierwszy ekran na komputerze" width="1920" height="1200"></div>
+        <span class="suwak__linia" aria-hidden="true"></span>
+        <span class="suwak__uchwyt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        <span class="suwak__etykieta suwak__etykieta--przed">Obecna strona</span>
+        <span class="suwak__etykieta suwak__etykieta--po">Propozycja</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Porównanie na komputerze: przesuń, aby odsłonić obecną stronę lub propozycję">
+      </div>
+    </div>
+  </section>
+
+  <section class="blok">
+    <div class="wrap">
+      <div class="blok__head"><h2>Pierwszy ekran na telefonie</h2><p>Szerokość 390 px, tak jak na typowym smartfonie</p></div>
+      <div class="suwak suwak--telefon" data-suwak>
+        <img src="assets/img/porownanie/przed-telefon.webp" alt="Obecna strona Spondylus na telefonie" width="780" height="1688">
+        <div class="suwak__po"><img src="assets/img/porownanie/po-telefon.webp" alt="Propozycja nowej strony Spondylus na telefonie" width="780" height="1688"></div>
+        <span class="suwak__linia" aria-hidden="true"></span>
+        <span class="suwak__uchwyt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        <span class="suwak__etykieta suwak__etykieta--przed">Obecna</span>
+        <span class="suwak__etykieta suwak__etykieta--po">Propozycja</span>
+        <input type="range" min="0" max="100" value="50" aria-label="Porównanie na telefonie: przesuń, aby odsłonić obecną stronę lub propozycję">
+      </div>
+    </div>
+  </section>
+
+  <section class="blok">
+    <div class="wrap">
+      <div class="blok__head"><h2>Co się zmienia dla pacjenta</h2><p>Najważniejsze różnice na stronie głównej</p></div>
+      <ul class="zmiany">
+        <li><b>W 3 sekundy wiadomo, gdzie jestem</b><p>Nagłówek, jedno zdanie o korzyści, przycisk zapisu, telefon i ocena z Google na pierwszym ekranie.</p><span class="przed">Obecnie: sześć kafli i slider bez nagłówka, zapis w pionowej zakładce przy krawędzi.</span></li>
+        <li><b>Zapis online do konkretnej placówki</b><p>Jeden przycisk „Umów wizytę” prowadzi do prawdziwego kalendarza każdej z trzech placówek.</p><span class="przed">Obecnie: zapis schowany, bez wyboru placówki na stronie głównej.</span></li>
+        <li><b>Objawy opisane słowami pacjenta</b><p>„Bolą mnie plecy po dniu przy biurku” zamiast nazw działów. Pacjent rozpoznaje siebie, zanim pozna nazwy usług.</p><span class="przed">Obecnie: lista usług, którą trzeba znać.</span></li>
+        <li><b>Refundacja NFZ krok po kroku</b><p>Pas pod pierwszym ekranem i trzy proste kroki od zlecenia do odbioru wózka, wkładek lub obuwia.</p><span class="przed">Obecnie: informacja ukryta w długim tekście o zaopatrzeniu.</span></li>
+        <li><b>Twarze i opinie</b><p>Specjaliści ze zdjęciami na stronie głównej i opinie pacjentów ze średnią 4,6 w Google.</p><span class="przed">Obecnie: brak twarzy i brak opinii na stronie głównej.</span></li>
+        <li><b>Dostępność dla starszych pacjentów</b><p>Powiększanie tekstu, wysoki kontrast, zatrzymanie animacji i większy kursor w jednym panelu.</p><span class="przed">Obecnie: brak ustawień dostępności.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blok">
+    <div class="wrap">
+      <div class="blok__head"><h2>Cała strona główna</h2><p>Obie strony w tej samej skali</p></div>
+      <div class="obok">
+        <figure><figcaption>Obecna strona <span>spondylus.pl</span></figcaption><img src="assets/img/porownanie/przed-cala.webp" alt="Obecna strona główna Spondylus w całości" width="720" height="2572" loading="lazy"></figure>
+        <figure><figcaption>Propozycja <span>prototyp</span></figcaption><img src="assets/img/porownanie/po-cala.webp" alt="Propozycja nowej strony głównej Spondylus w całości" width="720" height="3571" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="stopka">
+  <div class="wrap">
+    <h2>Zobacz prototyp na żywo, na komputerze i telefonie</h2>
+    <a class="btn" href="index.html">Otwórz prototyp</a>
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('[data-suwak]').forEach(function (s) {
+  var r = s.querySelector('input[type="range"]');
+  var ustaw = function () { s.style.setProperty('--x', r.value + '%'); s.querySelector('.suwak__uchwyt').style.left = r.value + '%'; };
+  r.addEventListener('input', ustaw); ustaw();
+});
+</script>
+</body>
+</html>
