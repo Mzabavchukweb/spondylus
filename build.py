@@ -47,12 +47,12 @@ ICONS = {
     "map": '<path d="m3.5 6.5 5.5-2 6 2 5.5-2v13l-5.5 2-6-2-5.5 2z"/><path d="M9 4.5v13M15 6.5v13"/>',
     "a11y": '<circle cx="12" cy="4.5" r="1.8"/><path d="M4.5 8.5 12 10l7.5-1.5M12 10v4.5M12 14.5 9 21M12 14.5l3 6.5"/>',
     "text": '<path d="M4 7V5h11v2M9.5 5v14M7 19h5"/><path d="M14 12v-1.5h6V12M17 10.5V19M15.5 19h3"/>',
-    "contrast": '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17z" fill="currentColor"/>',
-    "link": '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+    "contrast": '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none"/>',
+    "link": '<path d="M9.5 6.5H7a3.5 3.5 0 0 0 0 7h2.5M14.5 6.5H17a3.5 3.5 0 0 1 0 7h-2.5M8.5 10h7M4 19h16"/>',
     "pause": '<circle cx="12" cy="12" r="8.5"/><path d="M10 9v6M14 9v6"/>',
-    "spacing": '<path d="M4 6h16M4 12h16M4 18h16"/><path d="M2 9l2-3 2 3M2 15l2 3 2-3"/>',
-    "font": '<path d="M5 19 10.5 5h1L17 19M7.3 14h7.4"/>',
-    "cursor": '<path d="M5 3l13 8-6 1.5L15 20l-2.5 1.2-3.2-7.2L5 17z"/>',
+    "spacing": '<path d="M11 6h9M11 12h9M11 18h9M5.5 4v16M3.5 6.5l2-2.5 2 2.5M3.5 17.5l2 2.5 2-2.5"/>',
+    "font": '<path d="M2.5 19 7.5 5l5 14M4.3 14h6.4M20.5 11.5V19"/><circle cx="17.3" cy="15.8" r="3.2"/>',
+    "cursor": '<path d="M5.5 3.5 19 11.2l-6.1 1.7 3.2 6.6-2.8 1.3-3.2-6.6-4.6 4z" fill="currentColor" fill-opacity=".18"/>',
     "fb": '<path d="M14 21v-7.5h2.6l.4-3H14V8.7c0-.9.3-1.5 1.6-1.5H17V4.5a19 19 0 0 0-2.3-.1c-2.3 0-3.7 1.4-3.7 3.9v2.2H8.5v3H11V21"/>',
 }
 

@@ -1993,3 +1993,8 @@ a[aria-disabled="true"] { cursor: default; }
 .osoba__foto img[src*="tomasz-zdeb"] { transform: scale(1.1); transform-origin: 50% 6%; }
 .osoba__foto img[src*="piotr-salapa"] { transform: scale(1.32); transform-origin: 50% 12%; }
 @media (max-width: 760px) { .wzrost__slupek { align-items: flex-start; text-align: left; } }
+
+/* Panel dostępności: ikony w jednej siatce na zielonych kafelkach */
+.a11y-grid .a11y-opt { gap: 10px; padding: 14px; }
+.a11y-grid .a11y-opt svg { box-sizing: content-box; width: 24px; height: 24px; padding: 9px; border-radius: 12px; background: #e9f3ec; color: var(--brand-600); stroke-width: 1.8; flex: none; transition: background-color .2s, color .2s; }
+.a11y-grid .a11y-opt[aria-pressed="true"] svg { background: rgba(255, 255, 255, .12); color: #8fe0a5; }
