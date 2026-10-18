@@ -2181,3 +2181,37 @@ h2 { letter-spacing: -.02em; }
 }
 .zaufanie__lista li:not(:last-child) { padding-right: clamp(20px, 3vw, 48px); }
 @media (max-width: 860px) { .zaufanie__lista li:not(:last-child) { padding-right: 0; } }
+
+/* Co Ci dolega: podpis zawsze przy dolnej krawędzi karty, zdjęcia ze sklepu w tonacji serii */
+.objaw:has(.objaw__img) .objaw__txt { display: flex; flex-direction: column; flex: 1; }
+.objaw .objaw__txt > span { margin-top: auto; padding-top: 10px; }
+.objaw__img img[src*="/stopy"], .objaw__img img[src*="/sprzet"] { filter: saturate(.62) contrast(.94) brightness(1.04) sepia(.08); }
+.objaw__img img[src*="/stopy"] { object-position: 30% 50%; }
+@media (max-width: 960px) { .objaw:has(.objaw__img) .objaw__txt { justify-content: flex-start; } }
+
+/* Kroki wizyty na telefonie: jedna kolumna, ikona i numer po lewej */
+@media (max-width: 640px) {
+  .proc-jasny .proc { grid-template-columns: 1fr; gap: 10px; }
+  .proc-jasny .proc li, .proc-jasny .proc li + li { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 14px; padding: 16px; }
+  .proc-jasny .proc .ilu, .proc-jasny .proc li:last-child .ilu { position: static; grid-column: 1; grid-row: 2 / span 2; width: 56px; height: 56px; align-self: start; }
+  .proc-jasny .proc__nr { grid-column: 1; grid-row: 1; font-size: 22px; line-height: 1; margin-bottom: 8px; }
+  .proc-jasny .proc h3, .proc-jasny .proc li:not(:first-child) h3 { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; font-size: 18px; align-self: start; }
+  .proc-jasny .proc p { grid-column: 2; grid-row: 2 / span 2; margin-top: 30px; font-size: 15.5px; }
+}
+/* Programy: czytelniejsza treść kart na komputerze */
+@media (min-width: 961px) {
+  .prog__nazwa { font-size: 21px; }
+  .prog__opis { font-size: 16px; line-height: 1.55; }
+  .prog__liczba { font-size: 15px; }
+}
+@media (max-width: 640px) {
+  .proc-jasny .proc h3, .proc-jasny .proc li:not(:first-child) h3 { grid-row: 1; align-self: center; margin-bottom: 8px; }
+  .proc-jasny .proc__nr { margin-bottom: 8px; align-self: center; }
+  .proc-jasny .proc .ilu, .proc-jasny .proc li:last-child .ilu { grid-row: 2; }
+  .proc-jasny .proc p { grid-row: 2; margin-top: 0; }
+}
+@media (min-width: 961px) {
+  .prog .prog__karta .prog__nazwa { font-size: 21px; }
+  .prog .prog__karta .prog__opis { font-size: 16px; line-height: 1.55; }
+  .prog .prog__karta .prog__liczba { font-size: 15px; }
+}
