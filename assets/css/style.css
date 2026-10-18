@@ -2316,3 +2316,4 @@ h2 { letter-spacing: -.02em; }
 @keyframes tel-puls { 0% { transform: scale(1); opacity: .9; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .tel-btn::after { animation: none; opacity: 0; } }
 html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
+@media (max-width: 760px) { .tel-btn .ilu { width: 40px; height: 40px; } .tel-btn { border: 0; } }
