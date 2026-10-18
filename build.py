@@ -269,6 +269,7 @@ def footer():
   <button class="btn btn--ghost btn--sm a11y-reset" type="button" data-a11y-reset>Przywróć ustawienia domyślne</button>
 </section>
 <div class="proto-dock" id="proto-dock"><span class="proto-dock__label">Prototyp</span><button class="why-toggle" type="button" aria-pressed="false" data-why-toggle><span>Uzasadnienie zmian</span><span class="why-toggle__sw" aria-hidden="true"></span></button></div>
+<a class="tel-btn" href="tel:+48665035035" aria-label="Zadzwoń na infolinię 665 035 035">{ikona_telefonu()}</a>
 <div class="toast" role="status" aria-live="polite" id="toast"></div>
 <script src="assets/js/main.js?v={WERSJA}" defer></script>
 '''
@@ -405,6 +406,12 @@ def portret(m):
     src = f"assets/img/portrety/{slug}.webp" if nowy.exists() else f"assets/img/kadra-{slug}.webp"
     klasa = "is-szablon" if nowy.exists() else "is-stare"
     return f'<img class="{klasa}" src="{src}" alt="" loading="lazy" width="600" height="750">'
+
+
+def ikona_telefonu():
+    if (ROOT / "assets/img/ilu/telefon.webp").exists():
+        return '<img class="ilu" src="assets/img/ilu/telefon.webp" alt="" width="256" height="256">'
+    return icon("phone")
 
 
 def ikona_dostepnosci():

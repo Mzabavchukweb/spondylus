@@ -2304,3 +2304,15 @@ h2 { letter-spacing: -.02em; }
 .onas-zaj__tekst > p { margin-bottom: 28px; }
 /* Sekcja NFZ na telefonie: logo nad nagłówkiem */
 @media (max-width: 640px) { .nfz2__head { flex-direction: column; align-items: flex-start; gap: 14px; } .nfz2__logo img { width: 72px; } }
+
+/* Telefon na telefonie: okrągły przycisk po prawej, lustrzany do przycisku dostępności, delikatny puls */
+.tel-btn { display: none; }
+@media (max-width: 760px) {
+  .tel-btn { display: grid; place-items: center; position: fixed; right: 12px; bottom: 16px; z-index: 91; width: 52px; height: 52px; border-radius: 50%; background: #fff; border: 1px solid var(--line); box-shadow: 0 14px 30px -12px rgba(18, 52, 27, .45); color: var(--brand-600); text-decoration: none; }
+  .tel-btn .ilu { width: 38px; height: 38px; }
+  .tel-btn svg { width: 24px; height: 24px; }
+  .tel-btn::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; border: 2px solid rgba(46, 188, 85, .55); animation: tel-puls 2.8s cubic-bezier(.22, .8, .24, 1) infinite; pointer-events: none; }
+}
+@keyframes tel-puls { 0% { transform: scale(1); opacity: .9; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tel-btn::after { animation: none; opacity: 0; } }
+html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
