@@ -341,7 +341,7 @@ def przygotuj_ilustracje():
         bbox = im.getchannel("A").point(lambda a: 255 if a > 12 else 0).getbbox()
         if bbox:
             im = im.crop(bbox)
-        if f.stem.lower().startswith("scena-"):
+        if f.stem.lower().startswith(("scena-", "hist3-")):
             # większe ilustracje sceniczne: zachowują proporcje, dłuższy bok 960 px
             m = int(max(im.size) * 0.06)
             plotno = Image.new("RGBA", (im.width + 2 * m, im.height + 2 * m), (0, 0, 0, 0))
@@ -361,7 +361,7 @@ def ilu(m):
     """Ilustracja, jeśli plik już jest; w przeciwnym razie ikona zastępcza (albo nic)."""
     nazwa, ikona = m.group(1), m.group(2)
     plik = ROOT / f"assets/img/ilu/{nazwa}.webp"
-    if plik.exists() and nazwa.startswith("scena-"):
+    if plik.exists() and nazwa.startswith(("scena-", "hist3-")):
         from PIL import Image
         w, h = Image.open(plik).size
         return f'<img class="ilu ilu--scena" src="assets/img/ilu/{nazwa}.webp" alt="" width="{w}" height="{h}" loading="lazy">'
