@@ -2335,6 +2335,16 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .onas-zal__foto { margin: 0; max-width: 480px; }
 .onas-zal__foto img { display: block; width: 100%; height: auto; aspect-ratio: 858 / 564; object-fit: cover; border-radius: 12px; }
 .onas-zal__foto figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); }
-.onas-zal__txt p { margin-top: 16px; max-width: 52ch; }
-.onas-zal__txt .btn { margin-top: 28px; }
 @media (max-width: 860px) { .onas-zal { grid-template-columns: minmax(0, 1fr); } }
+
+/* O nas: hero z założycielami, bez plakietek na zdjęciach */
+.onas-hero__plakietka, .os__karta { display: none !important; }
+.onas-zal__p { margin-top: 16px; max-width: 52ch; font-size: 17px; line-height: 1.6; }
+.page-hero .onas-zal { align-items: center; }
+.page-hero .onas-zal__foto { justify-self: end; width: 100%; max-width: 460px; }
+@media (max-width: 860px) { .page-hero .onas-zal__foto { justify-self: start; } }
+/* ocena Google w treści hero zamiast plakietki na zdjęciu */
+.os__ocena-m { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; margin-top: 20px; padding: 0; border: 0; background: none; text-decoration: none; color: var(--text); }
+.os__ocena-m .ocena__g { width: 22px; height: 22px; }
+.os__ocena-m b { font-size: 20px; color: var(--ink); letter-spacing: -.02em; }
+.os__ocena-m-txt { font-size: 15px; color: var(--muted); }
