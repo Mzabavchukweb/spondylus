@@ -131,15 +131,6 @@
     });
   }
 
-  /* Koło opieki: podświetlenie pary fragment i podpis */
-  $$('[data-seg]').forEach(el => {
-    const k = el.dataset.seg, para = () => $$(`[data-seg="${k}"]`);
-    el.addEventListener('mouseenter', () => para().forEach(x => x.classList.add('is-on')));
-    el.addEventListener('mouseleave', () => para().forEach(x => x.classList.remove('is-on')));
-    el.addEventListener('focus', () => para().forEach(x => x.classList.add('is-on')));
-    el.addEventListener('blur', () => para().forEach(x => x.classList.remove('is-on')));
-  });
-
   /* Kadra: przewijanie rzędu */
   $$('[data-row]').forEach(nav => {
     const row = $(nav.dataset.row);
