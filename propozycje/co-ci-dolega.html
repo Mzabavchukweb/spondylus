@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Co Ci dolega? | Spondylus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .cd-objawy {
+      --cd-zielen: #1E7D37;
+      --cd-zielen-jasna: #2EBC55;
+      --cd-zielen-ciemna: #21592A;
+      --cd-zielen-najciemniejsza: #12341B;
+      --cd-naglowki: #111A14;
+      --cd-tekst: #3A4540;
+      --cd-tekst-pomocniczy: #5F6B64;
+      --cd-linia: #DCE4DE;
+      --cd-tlo: #F4F7F5;
+      --cd-biel: #FFFFFF;
+      --cd-mieta: #E3F1E7;
+      --cd-font: "Onest", sans-serif;
+      --cd-szerokosc: 1240px;
+      --cd-margines: 32px;
+      --cd-odstep-sekcji: clamp(40px, 5vw, 72px);
+      --cd-odstep-naglowka: 32px;
+      --cd-odstep-stopki: 24px;
+      --cd-odstep-wiersza: 20px;
+      --cd-padding-wiersza: 20px;
+      --cd-odstep-opisu: 8px;
+      --cd-szerokosc-zdjecia: 144px;
+      --cd-promien-panelu: 16px;
+      --cd-promien-zdjecia: 10px;
+      --cd-fokus: 3px solid var(--cd-zielen);
+      --cd-fokus-odstep: 4px;
+    }
+
+    /* Tylko podgląd całego dokumentu. Sekcja nie zmienia stylów reszty strony. */
+    .cd-preview { margin: 0; }
+    .cd-objawy,
+    .cd-objawy * { box-sizing: border-box; }
+    .cd-objawy {
+      padding-block: var(--cd-odstep-sekcji);
+      background: var(--cd-tlo);
+      color: var(--cd-tekst);
+      font-family: var(--cd-font);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    .cd-container {
+      width: calc(100% - var(--cd-margines) * 2);
+      max-width: var(--cd-szerokosc);
+      margin-inline: auto;
+    }
+    .cd-header {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: start;
+      gap: var(--cd-odstep-naglowka);
+      margin-bottom: var(--cd-odstep-naglowka);
+    }
+    .cd-heading {
+      margin: 0;
+      color: var(--cd-naglowki);
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .cd-intro { max-width: 62ch; margin: 0; }
+    .cd-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border: 1px solid var(--cd-linia);
+      border-radius: var(--cd-promien-panelu);
+      background: var(--cd-biel);
+    }
+    .cd-item { min-width: 0; border-bottom: 1px solid var(--cd-linia); }
+    .cd-item:nth-child(odd) { border-right: 1px solid var(--cd-linia); }
+    .cd-item:nth-last-child(-n+2) { border-bottom: 0; }
+    .cd-link {
+      display: grid;
+      grid-template-columns: var(--cd-szerokosc-zdjecia) minmax(0, 1fr) 10px;
+      align-items: center;
+      gap: var(--cd-odstep-wiersza);
+      min-height: 152px;
+      height: 100%;
+      padding: var(--cd-padding-wiersza);
+      color: var(--cd-naglowki);
+      text-decoration: none;
+      border-radius: var(--cd-promien-zdjecia);
+    }
+    .cd-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      border-radius: var(--cd-promien-zdjecia);
+    }
+    .cd-copy { min-width: 0; }
+    .cd-title {
+      margin: 0;
+      color: var(--cd-naglowki);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .cd-care {
+      margin: var(--cd-odstep-opisu) 0 0;
+      color: var(--cd-zielen-ciemna);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    .cd-chevron {
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid var(--cd-zielen);
+      border-right: 2px solid var(--cd-zielen);
+      transform: rotate(45deg);
+    }
+    .cd-footer {
+      margin: var(--cd-odstep-stopki) 0 0;
+      padding: var(--cd-padding-wiersza) var(--cd-odstep-stopki);
+      border: 1px solid var(--cd-linia);
+      border-radius: var(--cd-promien-zdjecia);
+      background: var(--cd-mieta);
+      color: var(--cd-tekst);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+    .cd-footer-question { color: var(--cd-zielen-najciemniejsza); font-weight: 600; }
+    .cd-phone {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--cd-zielen-ciemna);
+      font-size: 20px;
+      font-weight: 700;
+      white-space: nowrap;
+      text-decoration: underline;
+      text-decoration-color: var(--cd-zielen);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+    .cd-link:focus-visible,
+    .cd-phone:focus-visible {
+      outline: var(--cd-fokus);
+      outline-offset: var(--cd-fokus-odstep);
+    }
+
+    @media (max-width: 1100px) {
+      .cd-objawy {
+        --cd-margines: 24px;
+        --cd-szerokosc-zdjecia: 116px;
+        --cd-odstep-wiersza: 16px;
+      }
+      .cd-title { font-size: 20px; }
+    }
+    @media (max-width: 800px) {
+      .cd-header { grid-template-columns: 1fr; gap: 16px; }
+      .cd-list { grid-template-columns: 1fr; }
+      .cd-item:nth-child(odd) { border-right: 0; }
+      .cd-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--cd-linia); }
+      .cd-item:last-child { border-bottom: 0; }
+    }
+    @media (max-width: 480px) {
+      .cd-objawy {
+        --cd-margines: 16px;
+        --cd-szerokosc-zdjecia: 96px;
+        --cd-odstep-wiersza: 12px;
+        --cd-padding-wiersza: 16px;
+        --cd-odstep-naglowka: 24px;
+        --cd-odstep-stopki: 20px;
+      }
+      .cd-link { align-items: start; }
+      .cd-chevron { align-self: center; }
+      .cd-title { font-size: 20px; }
+      .cd-footer { font-size: 17px; }
+    }
+  </style>
+</head>
+<body class="cd-preview">
+  <!-- Zdjęcia są względne wobec folderu propozycje. Przy wklejaniu sekcji do pliku w katalogu głównym usuń ../ ze ścieżek src. -->
+  <section class="cd-objawy" aria-labelledby="cd-objawy-heading">
+    <div class="cd-container">
+      <div class="cd-header">
+        <h2 class="cd-heading" id="cd-objawy-heading">Co Ci dolega?</h2>
+        <p class="cd-intro">Nie musisz wiedzieć, jak nazywa się Twój problem. Wybierz to, co czujesz, a pokażemy, kto u nas się tym zajmuje.</p>
+      </div>
+
+      <ul class="cd-list" role="list">
+        <!-- Pozycja 1 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/plecy.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Bolą mnie plecy po dniu przy biurku</h3>
+              <p class="cd-care">Fizjoterapia i diagnostyka postawy</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <!-- Pozycja 2 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/promieniowanie.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Ból promieniuje do nogi albo drętwieje ręka</h3>
+              <p class="cd-care">Fizjoterapeuta, neurolog, neurochirurg</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <!-- Pozycja 3 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/kolano.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Kolano boli przy chodzeniu po schodach</h3>
+              <p class="cd-care">Ortopeda i fizjoterapia</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <!-- Pozycja 4 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/bark.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Bark boli, gdy unoszę rękę</h3>
+              <p class="cd-care">Fizjoterapia, terapia manualna</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <!-- Pozycja 5 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/stopy.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Bolą mnie stopy przy chodzeniu</h3>
+              <p class="cd-care">Badanie stóp, wkładki i obuwie ortopedyczne</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <!-- Pozycja 6 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/sprzet.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Potrzebuję wózka, kul albo ortezy</h3>
+              <p class="cd-care">Zaopatrzenie medyczne, także z NFZ</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <!-- Pozycja 7 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/dziecko.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Dziecko się garbi albo krzywo stawia stopy</h3>
+              <p class="cd-care">Diagnostyka wad postawy dzieci</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+
+        <!-- Pozycja 8 -->
+        <li class="cd-item">
+          <a class="cd-link" href="#">
+            <img class="cd-image" src="../assets/img/objawy/uraz.webp" alt="" width="768" height="512" loading="lazy" decoding="async">
+            <div class="cd-copy">
+              <h3 class="cd-title">Jestem po urazie, operacji lub kontuzji</h3>
+              <p class="cd-care">Rehabilitacja i medycyna sportowa</p>
+            </div>
+            <span class="cd-chevron" aria-hidden="true"></span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="cd-footer"><strong class="cd-footer-question">Nie ma tu Twojego problemu?</strong> Zadzwoń: <a class="cd-phone" href="tel:+48665035035">665 035 035</a>. Rejestracja dobierze specjalistę i najbliższy termin.</p>
+    </div>
+  </section>
+</body>
+</html>
