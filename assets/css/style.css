@@ -2487,3 +2487,12 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .onas4-hero .crumbs { margin-bottom: 14px; font-size: 13px; }
 .onas4-hero h1 { font-size: clamp(30px, 3.4vw, 50px); font-weight: 600; letter-spacing: -.025em; }
 @media (max-width: 640px) { .onas4-hero { min-height: 220px; padding-block: 36px; } .onas4-hero h1 { font-size: 30px; } }
+
+/* okruszki: ukośnik zamiast ikony, spokojna typografia */
+.crumbs { gap: 10px; font-size: 14px; }
+.crumbs__sep { color: var(--muted); opacity: .45; font-weight: 400; }
+.crumbs [aria-current="page"] { font-weight: 500; }
+.onas4-hero .crumbs { gap: 10px; margin-bottom: 16px; font-size: 14px; letter-spacing: 0; text-shadow: 0 1px 8px rgba(12, 36, 20, .35); }
+.onas4-hero .crumbs a { color: rgba(255, 255, 255, .78); }
+.onas4-hero .crumbs__sep { color: #fff; opacity: .5; }
+.onas4-hero .crumbs [aria-current="page"] { color: #fff; font-weight: 500; }
