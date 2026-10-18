@@ -1,6 +1,6 @@
 # Spondylus: prototyp nowej strony
 
-Statyczny prototyp strony spondylus.pl: strona główna i przykładowe podstrony (podologia, kadra, profil specjalisty, kontakt).
+Statyczny prototyp strony spondylus.pl: strona główna i podstrony: O nas, kadra, profil specjalisty, kontakt, zaopatrzenie z NFZ oraz porównanie z obecną stroną (porownanie.html).
 
 ## Uruchomienie
 

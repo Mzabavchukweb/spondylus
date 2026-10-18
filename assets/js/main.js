@@ -73,33 +73,6 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && booking.classList.contains('is-open')) zamknij(); });
   }
 
-  /* Wyszukiwarka "Z czym przychodzisz?" */
-  const FINDER = {
-    plecy: { obszar: 'Rehabilitacja i konsultacje', tytul: 'Ból pleców lub kręgosłupa', opis: 'Zaczynamy od oceny przyczyny bólu. Fizjoterapeuta dobiera terapię, a w razie potrzeby konsultuje Cię z neurologiem lub neurochirurgiem.', osoby: ['tomasz-gnus', 'gabriela-majorczyk', 'tomasz-zdeb', 'piotr-salapa'], opisOsob: 'Fizjoterapeuci i neurochirurg', link: '#', demo: true },
-    uraz: { obszar: 'Rehabilitacja ortopedyczna', tytul: 'Po urazie lub operacji', opis: 'Rehabilitacja po endoprotezoplastyce, rekonstrukcji więzadeł, złamaniach i skręceniach. Bezpieczny powrót do codziennej aktywności.', osoby: ['tomasz-gnus', 'tomasz-zdeb', 'adam-kaminski'], opisOsob: 'Fizjoterapeuci i ortopeda', link: '#', demo: true },
-    stopa: { obszar: 'Podologia', tytul: 'Stopy i paznokcie', opis: 'Wrastające paznokcie, odciski, pękające pięty, stopa cukrzycowa. Najpierw ustalamy przyczynę problemu, potem dobieramy leczenie.', osoby: ['marika-wachowiak'], opisOsob: 'Podolog', link: 'podologia.html' },
-    dziecko: { obszar: 'Diagnostyka wad postawy', tytul: 'Wada postawy u dziecka', opis: 'Badanie postawy i stóp oraz terapia dzieci i młodzieży. Od lat prowadzimy też program profilaktyczny „Zdrowa Nóżka i Kręgosłup”.', osoby: ['magdalena-salabon'], opisOsob: 'Fizjoterapeutka dzieci i młodzieży', link: '#', demo: true },
-    sport: { obszar: 'Medycyna sportowa', tytul: 'Sport i kontuzje', opis: 'Diagnostyka sportowa, leczenie przeciążeń i kontuzji, bezpieczny powrót do treningu. Dla amatorów i zawodowców.', osoby: ['tomasz-gnus', 'tomasz-zdeb'], opisOsob: 'Fizjoterapeuci', link: '#', demo: true },
-    nfz: { obszar: 'Zaopatrzenie medyczne', tytul: 'Wkładki, obuwie, sprzęt z NFZ', opis: 'Indywidualne wkładki, obuwie profilaktyczne i sprzęt rehabilitacyjny. Pomagamy z refundacją NFZ i dofinansowaniem z MOPR i PCPR.', osoby: [], opisOsob: '', link: '#', demo: true },
-  };
-  const result = $('#finder-result');
-  $$('[data-finder]').forEach(chip => chip.addEventListener('click', () => {
-    const k = chip.dataset.finder, d = FINDER[k];
-    const wl = chip.getAttribute('aria-pressed') === 'true';
-    $$('[data-finder]').forEach(c => c.setAttribute('aria-pressed', 'false'));
-    if (wl) { result.classList.remove('is-open'); return; }
-    chip.setAttribute('aria-pressed', 'true');
-    const av = d.osoby.map(o => `<img src="assets/img/kadra-${o}.webp" alt="" width="34" height="34">`).join('');
-    result.innerHTML = `<div><div class="result">
-      <div><div class="result__area">${d.obszar}</div><h3>${d.tytul}</h3><p>${d.opis}</p></div>
-      <div class="result__actions"><button class="btn btn--primary btn--sm" type="button" data-book>Umów wizytę</button>
-      <a class="btn btn--ghost btn--sm" href="${d.link}" ${d.demo ? 'data-demo="1"' : ''}>Zobacz szczegóły</a></div>
-      ${d.osoby.length ? `<div class="result__people"><span class="avatars">${av}</span>${d.opisOsob}</div>` : `<div class="result__people">Doradztwo w każdej placówce, także w sklepie internetowym</div>`}
-    </div></div>`;
-    requestAnimationFrame(() => result.classList.add('is-open'));
-  }));
-
-
   /* Kręgi w hero: po wejściu na stronę przesunięte warstwy układają się w jedną oś */
   const kregi = $('#kregi');
   if (kregi) {
