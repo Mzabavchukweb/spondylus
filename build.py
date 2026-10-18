@@ -448,6 +448,7 @@ def build():
             lambda m: why(*m.groups()), body, flags=re.S)
         html = head(meta["title"], meta["desc"], meta.get("body", "")) + header(meta.get("nav", "")) + '<main id="tresc">' + body + "</main>" + footer() + "\n</body>\n</html>\n"
         html = twarde_spacje(html)
+        html = re.sub(r'href="#" data-demo="1"(?! aria-disabled)', 'href="#" data-demo="1" aria-disabled="true" title="Podstrona w przygotowaniu"', html)
         (ROOT / src.name).write_text(html, encoding="utf-8")
         print("zbudowano", src.name)
 
