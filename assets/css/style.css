@@ -2479,3 +2479,11 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
   .onas4-karta__cta { width: 100%; flex-direction: column; }
   .onas4-karta__cta .btn { justify-content: center; }
 }
+
+/* O nas: subtelniejszy baner */
+.onas4-hero { min-height: clamp(240px, 22vw, 340px); padding-block: 44px; }
+.onas4-hero__tlo { object-position: 62% 26%; filter: saturate(.85); }
+.onas4-hero::after { background: radial-gradient(ellipse 60% 75% at 50% 52%, rgba(12, 36, 20, .62) 0%, rgba(12, 36, 20, .42) 60%, rgba(12, 36, 20, .3) 100%); }
+.onas4-hero .crumbs { margin-bottom: 14px; font-size: 13px; }
+.onas4-hero h1 { font-size: clamp(30px, 3.4vw, 50px); font-weight: 600; letter-spacing: -.025em; }
+@media (max-width: 640px) { .onas4-hero { min-height: 220px; padding-block: 36px; } .onas4-hero h1 { font-size: 30px; } }
