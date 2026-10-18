@@ -2344,3 +2344,12 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
   .os__ocena-m { display: none; }
   .os__karta { display: inline-flex; z-index: 3; left: 16px; right: auto; top: 16px; bottom: auto; padding: 8px 12px 8px 10px; background: rgba(255, 255, 255, .94); }
 }
+
+/* O nas: założyciele */
+.onas-zal { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
+.onas-zal__foto { margin: 0; max-width: 480px; }
+.onas-zal__foto img { display: block; width: 100%; height: auto; aspect-ratio: 858 / 564; object-fit: cover; border-radius: 12px; }
+.onas-zal__foto figcaption { margin-top: 12px; font-size: 14px; color: var(--muted); }
+.onas-zal__txt p { margin-top: 16px; max-width: 52ch; }
+.onas-zal__txt .btn { margin-top: 28px; }
+@media (max-width: 860px) { .onas-zal { grid-template-columns: minmax(0, 1fr); } }
