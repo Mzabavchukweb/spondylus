@@ -3,123 +3,39 @@
 <!-- nav: onas -->
 
 <section class="page-hero" data-why>
-  {{why:1|Strona „O nas” zaczyna się od ludzi, którzy stoją za firmą|Obecna strona to jeden długi akapit, a jedyne zdjęcie właścicieli to mały kafelek w kolażu.|Pierwszy ekran to założyciel i jego syn: zdjęcie i dwa zdania historii. Dalej liczby, obszary opieki, oś czasu i zasady pracy. Do wdrożenia potrzebujemy tego zdjęcia w pełnej rozdzielczości albo nowej sesji.|Pacjent, który porównuje placówki, w minutę widzi, że to rodzinna firma działająca od 1989 roku, a nie anonimowa sieć.}}
+  {{why:1|Strona „O nas” zaczyna się od ludzi, którzy stoją za firmą|Obecna strona to długi akapit o usługach, a historia firmy jest dopiero na końcu.|Pierwszy ekran mówi, kto prowadzi firmę i od kiedy. Dalej tylko historia, zespół i zaproszenie na wizytę.|Pacjent, który porównuje placówki, w kilka sekund widzi, że to rodzinna firma z twarzą, a nie anonimowa sieć.}}
   <div class="wrap">
     <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Strona główna</a><span class="crumbs__sep" aria-hidden="true">{{icon:chev-right}}</span><span aria-current="page">O nas</span></nav>
-    <div class="page-hero__grid onas-hero onas-zal">
+    <div class="page-hero__grid onas-hero">
       <div>
         <h1 class="reveal">Rodzinna firma od dwóch pokoleń</h1>
-        <p class="page-hero__lead reveal">Spondylus założył w 1989 roku dr Ryszard Wetoszka. Zaczynał od Zakładu Usług Medycznych w Szczecinie i do dziś jest twarzą firmy.</p>
-        <p class="onas-zal__p reveal">W 1997 roku zakład stał się spółką, a do ojca dołączył syn, Wojciech Wetoszka. Od tego czasu Spondylus urósł do trzech placówek w Szczecinie i Koszalinie, z zespołem fizjoterapeutów i lekarzy specjalistów.</p>
-        <div class="onas-hero__cta reveal"><button class="btn btn--primary" type="button" data-book>{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="#ludzie">Poznaj nasz zespół</a></div>
+        <p class="page-hero__lead reveal">Spondylus założył w 1989 roku dr Ryszard Wetoszka. W 1997 roku dołączył do niego syn, Wojciech Wetoszka. Dziś to trzy placówki w Szczecinie i Koszalinie, połączone jedną infolinią.</p>
+        <div class="onas-podpis reveal"><img src="assets/img/zalozyciele-kolo.webp" alt="Dr Ryszard Wetoszka i Wojciech Wetoszka" width="346" height="346"><div><b>Dr Ryszard Wetoszka i Wojciech Wetoszka</b><span>Założyciel i jego syn</span></div></div>
+        <div class="onas-hero__cta reveal"><button class="btn btn--primary" type="button" data-book>{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="#historia">Nasza historia</a></div>
       </div>
-      <figure class="onas-zal__foto reveal">
-        <img src="assets/img/zalozyciele.webp" alt="Dr Ryszard Wetoszka i Wojciech Wetoszka w recepcji Spondylus" width="858" height="564" fetchpriority="high">
-        <figcaption>Dr Ryszard Wetoszka i jego syn Wojciech Wetoszka</figcaption>
-      </figure>
+      <div class="page-hero__media reveal"><img src="assets/img/hist-konsultacja.webp" alt="Specjalistka Spondylus podczas rozmowy z pacjentką w gabinecie" width="960" height="720" fetchpriority="high"></div>
     </div>
   </div>
 </section>
 
-<section class="liczby onas-liczby" aria-label="Spondylus w liczbach">
+<section class="section section--soft" id="historia" data-why>
+  {{why:2|Historia jako oś czasu z obrazem przy każdym roku|Na obecnej stronie lata i opisy są rozsunięte, więc trudno je połączyć.|Siedem lat, każdy z jednym zdaniem i obrazem. Przy 1997 roku zdjęcie właścicieli, przy 2005 mapa placówek.|Jeden obraz pokazuje, że rodzinna firma stale się rozwija.}}
   <div class="wrap">
-    <div class="liczba">{{ilu:hist-1997|}}<b>37 lat</b><span>opieki nad pacjentami, od 1989 roku</span></div>
-    <div class="liczba">{{ilu:program-dzieci|}}<b>25 000+</b><span>dzieci przebadanych w programie „Zdrowa Nóżka i Kręgosłup”</span></div>
-    <div class="liczba">{{ilu:hist-dzis|}}<b>3 placówki</b><span>w Szczecinie i Koszalinie, jedna infolinia 665&nbsp;035&nbsp;035</span></div>
-  </div>
-</section>
-
-<section class="section" data-why>
-  {{why:2|Czym się zajmujemy, bez długiego akapitu|Zakres usług jest wymieniony w jednym zdaniu w środku długiego tekstu.|Krótkie wprowadzenie i siedem obszarów opieki jako lista z ikonami, każdy z jednym zdaniem.|Pacjent od razu widzi, że wszystko załatwi w jednym miejscu: od diagnozy, przez terapię, po sprzęt z NFZ.}}
-  <div class="wrap onas-intro">
-    <div>
-      <h2>Wszystko, czego potrzebujesz, pod jednym dachem</h2>
-      <p>Łączymy zaopatrzenie medyczne z refundacją NFZ, diagnostykę wad postawy, rehabilitację i fizjoterapię, medycynę sportową oraz terapię estetyczną. Uzupełniają je konsultacje lekarzy specjalistów.</p>
-      <p>Nasi specjaliści stale się szkolą, a w pracy z pacjentem stawiają na indywidualne podejście do każdego problemu. Pracujemy na nowoczesnym sprzęcie medycznym.</p>
-    </div>
-    <ul class="onas-obszary">
-      <li>{{ilu:kolo-rehabilitacja|}}<div><b>Rehabilitacja i fizjoterapia</b><span>Ortopedyczna, pooperacyjna i neurologiczna</span></div></li>
-      <li>{{ilu:kolo-diagnostyka|}}<div><b>Diagnostyka wad postawy</b><span>Postawa, stopy i diagnostyka sportowa</span></div></li>
-      <li>{{ilu:kolo-sport|}}<div><b>Medycyna sportowa</b><span>Kontuzje i powrót do treningu</span></div></li>
-      <li>{{ilu:kolo-lekarze|}}<div><b>Konsultacje lekarskie</b><span>Ortopeda, neurolog, neurochirurg</span></div></li>
-      <li>{{ilu:kolo-dietetyka|}}<div><b>Dietetyka</b><span>Kliniczna i sportowa, wsparcie terapii</span></div></li>
-      <li>{{ilu:kolo-estetyka|}}<div><b>Medycyna estetyczna</b><span>Zabiegi pod opieką zespołu medycznego</span></div></li>
-      <li>{{ilu:kolo-zaopatrzenie|}}<div><b>Zaopatrzenie medyczne</b><span>Wkładki, obuwie i sprzęt, także z NFZ</span></div></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section onas-galeria-sekcja" data-why>
-  {{why:3|Prawdziwe zdjęcia z placówek|Na obecnej stronie „O nas” nie ma ani jednego zdjęcia z gabinetów.|Mozaika pięciu zdjęć z placówek Spondylus z krótkimi podpisami, co na nich widać.|Pacjent widzi prawdziwe gabinety i ludzi, a nie zdjęcia z banku. To buduje zaufanie przed pierwszą wizytą.}}
-  <div class="wrap">
-    <div class="head2">
-      <h2>Z życia naszych placówek</h2>
-      <p>Gabinety fizjoterapii, medycyna sportowa i zaopatrzenie medyczne. Tak wygląda u nas zwykły dzień.</p>
-    </div>
-    <div class="onas-galeria">
-      <figure class="onas-galeria__duze"><img src="assets/img/obszar-sport.webp" alt="Fizjoterapeuta Spondylus podczas terapii młodego sportowca" width="900" height="700" loading="lazy"><figcaption>Medycyna sportowa</figcaption></figure>
-      <figure><img src="assets/img/hist-terapia.webp" alt="Fizjoterapeuta Spondylus podczas terapii manualnej" width="600" height="600" loading="lazy"><figcaption>Fizjoterapia</figcaption></figure>
-      <figure><img src="assets/img/obszar-estetyka.webp" alt="Specjalistka Spondylus podczas zabiegu z użyciem aparatury" width="900" height="700" loading="lazy"><figcaption>Rehabilitacja i zabiegi</figcaption></figure>
-      <figure><img src="assets/img/hist-zaopatrzenie.webp" alt="Doradca Spondylus wśród wózków inwalidzkich w punkcie zaopatrzenia" width="600" height="600" loading="lazy"><figcaption>Zaopatrzenie medyczne</figcaption></figure>
-      <figure><img src="assets/img/obszar-obuwie.webp" alt="Obuwie ortopedyczne dla dzieci w Spondylus" width="900" height="700" loading="lazy"><figcaption>Obuwie ortopedyczne</figcaption></figure>
-    </div>
-  </div>
-</section>
-
-<section class="section hist2-sekcja" id="historia" data-why>
-  {{why:4|Historia jako wykres wzrostu|Na obecnej stronie lata i opisy są rozsunięte, więc rok 2005 stoi przy opisie z 1997 roku i trudno je połączyć.|Siedem kamieni milowych jako rosnące podesty z ikoną, rokiem i opisem w jednym miejscu, od 1989 roku do dziś.|Jeden obraz pokazuje, że rodzinna firma stale się rozwija, a każdy fakt jest jednoznaczny.}}
-  <div class="wrap">
-    <div class="hist2__head hist2__head--bez-lat">
-      <div>
-        <h2>Jak rośliśmy</h2>
-        <p>Od jednego gabinetu dr. Ryszarda Wetoszki do trzech placówek w Szczecinie i Koszalinie.</p>
-      </div>
-    </div>
-    <div class="wzrost">
-      <svg class="wzrost__linia" viewBox="0 0 700 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="50.0,66.6 150.0,56.6 250.0,46.7 350.0,36.8 450.0,26.8 550.0,16.9 650.0,6.9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"/></svg>
-      <ol class="wzrost__lista">
-      <li style="--h:34;--k:0"><span class="wzrost__ikona">{{ilu:hist-1989|}}</span><span class="wzrost__slupek"><b>1989</b><span class="wzrost__opis">Dr Ryszard Wetoszka zakłada Zakład Usług Medycznych</span></span></li>
-      <li style="--h:45;--k:1"><span class="wzrost__ikona">{{ilu:hist-1997|}}</span><span class="wzrost__slupek"><b>1997</b><span class="wzrost__opis">Dołącza syn założyciela, Wojciech Wetoszka</span></span></li>
-      <li style="--h:56;--k:2"><span class="wzrost__ikona">{{ilu:hist-2005|}}</span><span class="wzrost__slupek"><b>2005</b><span class="wzrost__opis">Otwieramy oddział w Koszalinie</span></span></li>
-      <li style="--h:67;--k:3"><span class="wzrost__ikona">{{ilu:program-dzieci|}}</span><span class="wzrost__slupek"><b>2011</b><span class="wzrost__opis">Startuje program „Zdrowa Nóżka i Kręgosłup”</span></span></li>
-      <li style="--h:78;--k:4"><span class="wzrost__ikona">{{ilu:kolo-sport|}}</span><span class="wzrost__slupek"><b>2018</b><span class="wzrost__opis">Dołączamy medycynę sportową</span></span></li>
-      <li style="--h:89;--k:5"><span class="wzrost__ikona">{{ilu:kolo-estetyka|}}</span><span class="wzrost__slupek"><b>2020</b><span class="wzrost__opis">Powstaje dział terapii estetycznej</span></span></li>
-      <li style="--h:100;--k:6" class="wzrost__dzis"><span class="wzrost__ikona">{{ilu:hist-dzis|}}</span><span class="wzrost__slupek"><b>Dziś</b><span class="wzrost__opis">Trzy placówki i jedna infolinia</span></span></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<section class="section onas-nazwa-sekcja">
-  <div class="wrap">
-    <div class="onas-nazwa2">
-      <div class="onas-nazwa2__ilu" aria-hidden="true">{{ilu:scena-nazwa|ilu-kolo-diagnostyka}}</div>
-      <div>
-        <h2>Spondylus to z greki pojedynczy kręg kręgosłupa</h2>
-        <p>Albo egzotyczna muszla. Skojarzenie starożytnych jest trafne: kostny kręg ma liczne wyrostki, które upodabniają go do muszli. Od tego słowa zaczęła się nasza historia.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section section--soft" data-why>
-  {{why:5|Zasady pracy w czterech punktach|Zasady są ukryte w długim akapicie o firmie.|Cztery krótkie karty z ikonami: kompleksowo, indywidualnie, stałe szkolenia, nowoczesny sprzęt.|Pacjent widzi, czego może się spodziewać, zanim przyjdzie na pierwszą wizytę.}}
-  <div class="wrap">
-    <div class="head2">
-      <h2>Jak pracujemy</h2>
-      <p>Te zasady łączą wszystkie nasze placówki, od Szczecina po Koszalin.</p>
-    </div>
-    <ul class="onas-zasady">
-      <li>{{ilu:plan|}}<b>Kompleksowo</b><p>Szukamy rozwiązania całego problemu. Fizjoterapeuta i lekarz mogą wspólnie zająć się jednym pacjentem.</p></li>
-      <li>{{ilu:diagnoza|}}<b>Indywidualnie</b><p>Każdy problem traktujemy osobno, a plan terapii układamy pod konkretną osobę.</p></li>
-      <li>{{ilu:szkolenia|ilu-dokumenty}}<b>Stałe szkolenia</b><p>Nasi specjaliści stale poszerzają wiedzę na szkoleniach specjalistycznych.</p></li>
-      <li>{{ilu:kontrola|}}<b>Nowoczesny sprzęt</b><p>Pracujemy na nowoczesnej aparaturze medycznej, także w diagnostyce wad postawy.</p></li>
-    </ul>
+    <div class="head2"><h2>Nasza historia</h2><p>Od jednego zakładu w Szczecinie do trzech placówek w województwie zachodniopomorskim.</p></div>
+    <ol class="czas">
+      <li><b class="czas__rok">1989</b><p>Dr Ryszard Wetoszka zakłada Zakład Usług Medycznych w Szczecinie.</p><span class="czas__obraz">{{ilu:hist-1989|}}</span></li>
+      <li><b class="czas__rok">1997</b><p>Zakład staje się spółką cywilną. Do firmy dołącza syn założyciela, Wojciech Wetoszka.</p><span class="czas__obraz czas__obraz--foto"><img src="assets/img/zalozyciele-kolo.webp" alt="Dr Ryszard Wetoszka i Wojciech Wetoszka" width="346" height="346" loading="lazy"></span></li>
+      <li class="czas__mapa"><b class="czas__rok">2005</b><p>Otwieramy oddział w Koszalinie: sprzęt rehabilitacyjny i doradztwo medyczne, także z dojazdem do pacjenta, oraz gabinety fizjoterapii.</p><span class="czas__obraz"><img src="assets/img/mapa-placowek.webp" alt="Mapa województwa zachodniopomorskiego z placówkami Spondylus: dwie w Szczecinie i jedna w Koszalinie" width="1027" height="996" loading="lazy"></span></li>
+      <li><b class="czas__rok">2011</b><p>Z Urzędem Miasta Szczecin startuje program „Zdrowa Nóżka i Kręgosłup”. Przebadaliśmy już ponad 25&nbsp;000 dzieci.</p><span class="czas__obraz">{{ilu:program-dzieci|}}</span></li>
+      <li><b class="czas__rok">2018</b><p>Dołączamy medycynę sportową i nowoczesne narzędzia diagnostyczne.</p><span class="czas__obraz">{{ilu:kolo-sport|}}</span></li>
+      <li><b class="czas__rok">2020</b><p>Powstaje dział terapii estetycznej.</p><span class="czas__obraz">{{ilu:kolo-estetyka|}}</span></li>
+      <li><b class="czas__rok">Dziś</b><p>Trzy placówki w Szczecinie i Koszalinie i jedna infolinia 665&nbsp;035&nbsp;035.</p><span class="czas__obraz">{{ilu:hist-dzis|}}</span></li>
+    </ol>
   </div>
 </section>
 
 <section class="section onas-ludzie-sekcja" id="ludzie" data-why>
-  {{why:6|Twarze zamiast listy linków|Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.|Rząd portretów specjalistów z imieniem i specjalizacją, a pod nim dwa wyraźne przejścia: do całego zespołu i do placówek.|Najczęstsze pytanie przed wizytą to „do kogo idę?”. Konkretne twarze zmniejszają obawę przed pierwszą wizytą.}}
+  {{why:3|Twarze zamiast listy linków|Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.|Rząd portretów specjalistów z imieniem i specjalizacją, a pod nim dwa wyraźne przejścia: do całego zespołu i do placówek.|Najczęstsze pytanie przed wizytą to „do kogo idę?”. Konkretne twarze zmniejszają obawę przed pierwszą wizytą.}}
   <div class="wrap">
     <div class="head2">
       <h2>Ludzie Spondylus</h2>
