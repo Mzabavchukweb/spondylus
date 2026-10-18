@@ -125,6 +125,7 @@ def header(nav):
       <a href="index.html#pierwsza-wizyta">Pierwsza wizyta</a>
       <a href="kadra.html"{cur("kadra")}>Nasza kadra</a>
       <a href="index.html#refundacja">Refundacja NFZ</a>
+      <a href="o-nas.html"{cur("onas")}>O nas</a>
       <a href="kontakt.html"{cur("kontakt")}>Kontakt</a>
     </nav>
     <div class="header__actions">
@@ -156,6 +157,7 @@ def header(nav):
         <a class="d-link" href="kadra.html">Nasza kadra {icon("chev-right")}</a>
         <a class="d-link" href="index.html#refundacja">Refundacja NFZ {icon("chev-right")}</a>
         <a class="d-link" href="index.html#opinie">Opinie pacjentów {icon("chev-right")}</a>
+        <a class="d-link" href="o-nas.html">O nas {icon("chev-right")}</a>
         <a class="d-link" href="kontakt.html">Kontakt i placówki {icon("chev-right")}</a>
       </nav>
       <button class="why-toggle why-toggle--menu" type="button" aria-pressed="false" data-why-toggle><span>Uzasadnienie zmian (prototyp)</span><span class="why-toggle__sw" aria-hidden="true"></span></button>
@@ -196,6 +198,7 @@ def footer():
           <li><a href="kadra.html">Nasza kadra</a></li>
           <li><a href="index.html#refundacja">Refundacja NFZ</a></li>
           <li><a href="index.html#opinie">Opinie pacjentów</a></li>
+          <li><a href="o-nas.html">O nas</a></li>
           <li><a href="#" data-demo="1">Poradniki</a></li>
           <li><a href="#" data-demo="1">Regulamin rezerwacji</a></li>
         </ul>
