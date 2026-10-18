@@ -2439,3 +2439,5 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .czas3__obraz--foto img { width: 156px; height: 156px; }
 @media (max-width: 960px) { .czas3 li { grid-template-columns: 96px minmax(0, 1fr); } }
 @media (max-width: 640px) { .czas3 li { grid-template-columns: minmax(0, 1fr); } .czas3__obraz { width: min(220px, 70%); } .czas3__obraz--foto { width: auto; } .czas3__obraz--foto img { width: 120px; height: 120px; } }
+.czas3__obraz .ilu--scena { width: auto; max-width: 100%; max-height: 176px; }
+@media (max-width: 640px) { .czas3__obraz .ilu--scena { max-height: 150px; } }
