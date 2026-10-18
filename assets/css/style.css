@@ -1908,9 +1908,9 @@ a[aria-disabled="true"] { cursor: default; }
   .wzrost__opis { font-size: 15px; }
 }
 
-/* D1: dwa programy obok siebie, niższe pole ikony */
-.prog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.prog__obraz { aspect-ratio: 16 / 6; }
+/* D1: trzy programy obok siebie, niższe pole ikony */
+.prog { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.prog__obraz { aspect-ratio: 16 / 8; }
 @media (max-width: 960px) { .prog { grid-template-columns: 1fr; } .prog__obraz { aspect-ratio: 21 / 7; } }
 
 /* D2: ikony refundacji jak w krokach wizyty, logo NFZ w linii z nagłówkiem */
