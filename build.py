@@ -85,7 +85,7 @@ OBSZARY = [
     ("#", "stethoscope", "Konsultacje lekarskie", "Ortopeda, neurolog, neurochirurg"),
     ("#", "leaf", "Dietetyka", "Kliniczna i sportowa, wsparcie terapii"),
     ("#", "sparkle", "Medycyna estetyczna", "Zabiegi pod opieką zespołu medycznego"),
-    ("#", "crutch", "Zaopatrzenie medyczne", "Wkładki, obuwie i sprzęt, także z NFZ"),
+    ("zaopatrzenie.html", "crutch", "Zaopatrzenie medyczne", "Wkładki, obuwie i sprzęt, także z NFZ"),
 ]
 
 
@@ -124,7 +124,7 @@ def header(nav):
       <button type="button" aria-expanded="false" aria-controls="mega" data-mega{' class="is-current"' if nav == "oferta" else ""}>Oferta {icon("chev")}</button>
       <a href="index.html#pierwsza-wizyta">Pierwsza wizyta</a>
       <a href="kadra.html"{cur("kadra")}>Nasza kadra</a>
-      <a href="index.html#refundacja">Refundacja NFZ</a>
+      <a href="zaopatrzenie.html"{cur("nfz")}>Refundacja NFZ</a>
       <a href="o-nas.html"{cur("onas")}>O nas</a>
       <a href="kontakt.html"{cur("kontakt")}>Kontakt</a>
     </nav>
@@ -155,7 +155,7 @@ def header(nav):
       <nav class="drawer__nav" aria-label="Menu na telefonie">
         <a class="d-link" href="index.html#pierwsza-wizyta">Pierwsza wizyta {icon("chev-right")}</a>
         <a class="d-link" href="kadra.html">Nasza kadra {icon("chev-right")}</a>
-        <a class="d-link" href="index.html#refundacja">Refundacja NFZ {icon("chev-right")}</a>
+        <a class="d-link" href="zaopatrzenie.html">Refundacja NFZ {icon("chev-right")}</a>
         <a class="d-link" href="index.html#opinie">Opinie pacjentów {icon("chev-right")}</a>
         <a class="d-link" href="o-nas.html">O nas {icon("chev-right")}</a>
         <a class="d-link" href="kontakt.html">Kontakt i placówki {icon("chev-right")}</a>
@@ -196,7 +196,7 @@ def footer():
         <ul>
           <li><a href="index.html#pierwsza-wizyta">Pierwsza wizyta</a></li>
           <li><a href="kadra.html">Nasza kadra</a></li>
-          <li><a href="index.html#refundacja">Refundacja NFZ</a></li>
+          <li><a href="zaopatrzenie.html">Refundacja NFZ</a></li>
           <li><a href="index.html#opinie">Opinie pacjentów</a></li>
           <li><a href="o-nas.html">O nas</a></li>
           <li><a href="#" data-demo="1">Poradniki</a></li>
