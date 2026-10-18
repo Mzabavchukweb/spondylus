@@ -206,9 +206,9 @@ def footer():
       <div>
         <h2 class="f-title">Placówki</h2>
         <ul class="footer__placowki">
-          <li><b>Szczecin, centrum</b><span>al. Jana Pawła II 36</span><span>pon.-pt. 9:00-18:00, wew. 1</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b>Szczecin, Pogodno</b><span>ul. Unii Lubelskiej 2B</span><span>pon.-pt. 8:00-19:00, wew. 2</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b>Koszalin</b><span>ul. Jana Pawła II 21</span><span>pon.-pt. 9:00-18:00, wew. 4</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b>Szczecin, centrum</b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>al. Jana Pawła II 36</span><span>pon.-pt. 9:00-18:00, wew. 1</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b>Szczecin, Pogodno</b><span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span><span>ul. Unii Lubelskiej 2B</span><span>pon.-pt. 8:00-19:00, wew. 2</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b>Koszalin</b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>ul. Jana Pawła II 21</span><span>pon.-pt. 9:00-18:00, wew. 4</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">Dojazd</a></li>
         </ul>
       </div>
     </div>
