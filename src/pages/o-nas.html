@@ -45,31 +45,61 @@
   </div>
 </section>
 
-<section class="section section--soft" id="historia" data-why>
-  {{why:3|Historia z rokiem przy każdym opisie|Na obecnej stronie lata i opisy są rozsunięte, więc rok 2005 stoi przy opisie z 1997 roku i trudno je połączyć.|Jedna oś czasu: rok, krótki nagłówek i opis w jednym wierszu, od 1989 roku do dziś.|Historia czyta się jak opowieść o rozwoju rodzinnej firmy, a każdy fakt jest jednoznaczny.}}
-  <div class="wrap onas-hist">
-    <div class="onas-hist__intro">
-      <h2>Jak rośliśmy</h2>
-      <p>Od jednego gabinetu dr. Ryszarda Wetoszki do trzech placówek w Szczecinie i Koszalinie.</p>
-      <div class="onas-nazwa">
-        <b>Skąd nazwa?</b>
-        <p>Spondylus to z greki pojedynczy kręg kręgosłupa lub egzotyczna muszla. Skojarzenie jest trafne: kostny kręg ma wyrostki, które upodabniają go do muszli.</p>
+<section class="section hist2-sekcja" id="historia" data-why>
+  {{why:3|Historia jako wykres wzrostu|Na obecnej stronie lata i opisy są rozsunięte, więc rok 2005 stoi przy opisie z 1997 roku i trudno je połączyć.|Siedem kamieni milowych jako rosnące podesty z ikoną, rokiem i opisem w jednym miejscu, od 1989 roku do dziś.|Jeden obraz pokazuje, że rodzinna firma stale się rozwija, a każdy fakt jest jednoznaczny.}}
+  <div class="wrap">
+    <div class="hist2__head hist2__head--bez-lat">
+      <div>
+        <h2>Jak rośliśmy</h2>
+        <p>Od jednego gabinetu dr. Ryszarda Wetoszki do trzech placówek w Szczecinie i Koszalinie.</p>
       </div>
     </div>
-    <ol class="onas-os">
-      <li><span class="onas-os__rok">1989</span><div><b>Początek</b><p>Dr Ryszard Wetoszka zakłada Zakład Usług Medycznych. Do dziś jest twarzą firmy.</p></div></li>
-      <li><span class="onas-os__rok">1997</span><div><b>Firma rodzinna</b><p>Zakład staje się spółką cywilną, dołącza syn założyciela, Wojciech Wetoszka.</p></div></li>
-      <li><span class="onas-os__rok">2005</span><div><b>Koszalin</b><p>Otwieramy oddział w Koszalinie: sprzęt rehabilitacyjny, doradztwo medyczne, także z dojazdem do pacjenta, i gabinety fizjoterapii.</p></div></li>
-      <li><span class="onas-os__rok">2011</span><div><b>Zdrowa Nóżka i Kręgosłup</b><p>Z Urzędem Miasta Szczecin zaczynamy profilaktykę wad postawy u dzieci w przedszkolach i szkołach. Przebadaliśmy już ponad 25 000 dzieci.</p></div></li>
-      <li><span class="onas-os__rok">2018</span><div><b>Medycyna sportowa</b><p>Dołączamy medycynę sportową i nowoczesne narzędzia diagnostyczne.</p></div></li>
-      <li><span class="onas-os__rok">2020</span><div><b>Terapia estetyczna</b><p>Powstaje dział terapii estetycznej, poprzedzony testami procedur zdrowotnych i estetycznych.</p></div></li>
-      <li class="onas-os__dzis"><span class="onas-os__rok">Dziś</span><div><b>Trzy placówki, jedna infolinia</b><p>Wszystkie placówki łączy numer 665&nbsp;035&nbsp;035, a wizytę można zarezerwować online.</p></div></li>
-    </ol>
+    <div class="wzrost">
+      <svg class="wzrost__linia" viewBox="0 0 700 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="50.0,66.6 150.0,56.6 250.0,46.7 350.0,36.8 450.0,26.8 550.0,16.9 650.0,6.9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"/></svg>
+      <ol class="wzrost__lista">
+      <li style="--h:34;--k:0"><span class="wzrost__ikona">{{ilu:hist-1989|}}</span><span class="wzrost__slupek"><b>1989</b><span class="wzrost__opis">Dr Ryszard Wetoszka zakłada Zakład Usług Medycznych</span></span></li>
+      <li style="--h:45;--k:1"><span class="wzrost__ikona">{{ilu:hist-1997|}}</span><span class="wzrost__slupek"><b>1997</b><span class="wzrost__opis">Dołącza syn założyciela, Wojciech Wetoszka</span></span></li>
+      <li style="--h:56;--k:2"><span class="wzrost__ikona">{{ilu:hist-2005|}}</span><span class="wzrost__slupek"><b>2005</b><span class="wzrost__opis">Otwieramy oddział w Koszalinie</span></span></li>
+      <li style="--h:67;--k:3"><span class="wzrost__ikona">{{ilu:program-dzieci|}}</span><span class="wzrost__slupek"><b>2011</b><span class="wzrost__opis">Startuje program „Zdrowa Nóżka i Kręgosłup”</span></span></li>
+      <li style="--h:78;--k:4"><span class="wzrost__ikona">{{ilu:kolo-sport|}}</span><span class="wzrost__slupek"><b>2018</b><span class="wzrost__opis">Dołączamy medycynę sportową</span></span></li>
+      <li style="--h:89;--k:5"><span class="wzrost__ikona">{{ilu:kolo-estetyka|}}</span><span class="wzrost__slupek"><b>2020</b><span class="wzrost__opis">Powstaje dział terapii estetycznej</span></span></li>
+      <li style="--h:100;--k:6" class="wzrost__dzis"><span class="wzrost__ikona">{{ilu:hist-dzis|}}</span><span class="wzrost__slupek"><b>Dziś</b><span class="wzrost__opis">Trzy placówki i jedna infolinia</span></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section onas-nazwa-sekcja">
+  <div class="wrap">
+    <div class="onas-nazwa2">
+      <div class="onas-nazwa2__ilu" aria-hidden="true">{{ilu:scena-nazwa|ilu-kolo-diagnostyka}}</div>
+      <div>
+        <div class="kicker"><span class="vert"><i></i><i></i><i></i></span>Skąd nazwa?</div>
+        <h2>Spondylus to z greki pojedynczy kręg kręgosłupa</h2>
+        <p>Albo egzotyczna muszla. Skojarzenie starożytnych jest trafne: kostny kręg ma liczne wyrostki, które upodabniają go do muszli. Od tego słowa zaczęła się nasza historia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" data-why>
+  {{why:4|Zasady pracy w czterech punktach|Zasady są ukryte w długim akapicie o firmie.|Cztery krótkie karty z ikonami: kompleksowo, indywidualnie, stałe szkolenia, nowoczesny sprzęt.|Pacjent widzi, czego może się spodziewać, zanim przyjdzie na pierwszą wizytę.}}
+  <div class="wrap">
+    <div class="head2">
+      <h2>Jak pracujemy</h2>
+      <p>Te zasady łączą wszystkie nasze placówki, od Szczecina po Koszalin.</p>
+    </div>
+    <ul class="onas-zasady">
+      <li>{{ilu:plan|}}<b>Kompleksowo</b><p>Szukamy rozwiązania całego problemu. Fizjoterapeuta i lekarz mogą wspólnie zająć się jednym pacjentem.</p></li>
+      <li>{{ilu:diagnoza|}}<b>Indywidualnie</b><p>Każdy problem traktujemy osobno, a plan terapii układamy pod konkretną osobę.</p></li>
+      <li>{{ilu:szkolenia|ilu-dokumenty}}<b>Stałe szkolenia</b><p>Nasi specjaliści stale poszerzają wiedzę na szkoleniach specjalistycznych.</p></li>
+      <li>{{ilu:kolo-diagnostyka|}}<b>Nowoczesny sprzęt</b><p>Pracujemy na nowoczesnej aparaturze medycznej, także w diagnostyce wad postawy.</p></li>
+    </ul>
   </div>
 </section>
 
 <section class="section" data-why>
-  {{why:4|Dalsze kroki zamiast ślepego zaułka|Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.|Dwie karty: zespół i placówki, a pod nimi pas z zapisem.|Kto przeczytał o firmie, jest gotowy na kolejny krok. Dajemy mu go od razu.}}
+  {{why:5|Dalsze kroki zamiast ślepego zaułka|Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.|Dwie karty: zespół i placówki, a pod nimi pas z zapisem.|Kto przeczytał o firmie, jest gotowy na kolejny krok. Dajemy mu go od razu.}}
   <div class="wrap onas-dalej">
     <a class="onas-karta" href="kadra.html">{{ilu:kolo-lekarze|}}<div><b>Poznaj nasz zespół</b><span>Fizjoterapeuci i lekarze: ortopeda, neurolog, neurochirurg</span></div>{{icon:arrow}}</a>
     <a class="onas-karta" href="kontakt.html">{{ilu:hist-dzis|}}<div><b>Nasze placówki</b><span>Szczecin, centrum i Pogodno, Koszalin. Adresy, godziny i dojazd</span></div>{{icon:arrow}}</a>

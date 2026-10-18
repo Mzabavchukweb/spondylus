@@ -340,6 +340,15 @@ def przygotuj_ilustracje():
         bbox = im.getchannel("A").point(lambda a: 255 if a > 12 else 0).getbbox()
         if bbox:
             im = im.crop(bbox)
+        if f.stem.lower().startswith("scena-"):
+            # większe ilustracje sceniczne: zachowują proporcje, dłuższy bok 960 px
+            m = int(max(im.size) * 0.06)
+            plotno = Image.new("RGBA", (im.width + 2 * m, im.height + 2 * m), (0, 0, 0, 0))
+            plotno.paste(im, (m, m), im)
+            plotno.thumbnail((960, 960), Image.LANCZOS)
+            plotno.save(out, quality=88)
+            print("ilustracja:", out.name)
+            continue
         bok = int(max(im.size) * 1.12)
         plotno = Image.new("RGBA", (bok, bok), (0, 0, 0, 0))
         plotno.paste(im, ((bok - im.width) // 2, (bok - im.height) // 2), im)
@@ -350,7 +359,12 @@ def przygotuj_ilustracje():
 def ilu(m):
     """Ilustracja, jeśli plik już jest; w przeciwnym razie ikona zastępcza (albo nic)."""
     nazwa, ikona = m.group(1), m.group(2)
-    if (ROOT / f"assets/img/ilu/{nazwa}.webp").exists():
+    plik = ROOT / f"assets/img/ilu/{nazwa}.webp"
+    if plik.exists() and nazwa.startswith("scena-"):
+        from PIL import Image
+        w, h = Image.open(plik).size
+        return f'<img class="ilu ilu--scena" src="assets/img/ilu/{nazwa}.webp" alt="" width="{w}" height="{h}" loading="lazy">'
+    if plik.exists():
         return f'<img class="ilu" src="assets/img/ilu/{nazwa}.webp" alt="" width="256" height="256" loading="lazy">'
     if ikona.startswith("ilu-") and (ROOT / f"assets/img/ilu/{ikona[4:]}.webp").exists():
         return f'<img class="ilu" src="assets/img/ilu/{ikona[4:]}.webp" alt="" width="256" height="256" loading="lazy">'

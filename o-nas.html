@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=1792355384">
+<link rel="stylesheet" href="assets/css/style.css?v=1792355622">
 </head>
 <body class="">
 <a class="sr-only" href="#tresc">Przejdź do treści</a>
@@ -127,31 +127,61 @@
   </div>
 </section>
 
-<section class="section section--soft" id="historia" data-why>
-  <aside class="why-note" aria-label="Uzasadnienie sekcji"><b><i>3</i>Historia z&nbsp;rokiem przy każdym opisie</b><dl><div><dt>Obecnie</dt><dd>Na obecnej stronie lata i&nbsp;opisy są rozsunięte, więc rok 2005 stoi przy opisie z&nbsp;1997 roku i&nbsp;trudno je połączyć.</dd></div><div><dt>Propozycja</dt><dd>Jedna oś czasu: rok, krótki nagłówek i&nbsp;opis w&nbsp;jednym wierszu, od 1989 roku do dziś.</dd></div><div><dt>Po co</dt><dd>Historia czyta się jak opowieść o&nbsp;rozwoju rodzinnej firmy, a&nbsp;każdy fakt jest jednoznaczny.</dd></div></dl></aside>
-  <div class="wrap onas-hist">
-    <div class="onas-hist__intro">
-      <h2>Jak rośliśmy</h2>
-      <p>Od jednego gabinetu dr. Ryszarda Wetoszki do trzech placówek w&nbsp;Szczecinie i&nbsp;Koszalinie.</p>
-      <div class="onas-nazwa">
-        <b>Skąd nazwa?</b>
-        <p>Spondylus to z&nbsp;greki pojedynczy kręg kręgosłupa lub egzotyczna muszla. Skojarzenie jest trafne: kostny kręg ma wyrostki, które upodabniają go do muszli.</p>
+<section class="section hist2-sekcja" id="historia" data-why>
+  <aside class="why-note" aria-label="Uzasadnienie sekcji"><b><i>3</i>Historia jako wykres wzrostu</b><dl><div><dt>Obecnie</dt><dd>Na obecnej stronie lata i&nbsp;opisy są rozsunięte, więc rok 2005 stoi przy opisie z&nbsp;1997 roku i&nbsp;trudno je połączyć.</dd></div><div><dt>Propozycja</dt><dd>Siedem kamieni milowych jako rosnące podesty z&nbsp;ikoną, rokiem i&nbsp;opisem w&nbsp;jednym miejscu, od 1989 roku do dziś.</dd></div><div><dt>Po co</dt><dd>Jeden obraz pokazuje, że rodzinna firma stale się rozwija, a&nbsp;każdy fakt jest jednoznaczny.</dd></div></dl></aside>
+  <div class="wrap">
+    <div class="hist2__head hist2__head--bez-lat">
+      <div>
+        <h2>Jak rośliśmy</h2>
+        <p>Od jednego gabinetu dr. Ryszarda Wetoszki do trzech placówek w&nbsp;Szczecinie i&nbsp;Koszalinie.</p>
       </div>
     </div>
-    <ol class="onas-os">
-      <li><span class="onas-os__rok">1989</span><div><b>Początek</b><p>Dr Ryszard Wetoszka zakłada Zakład Usług Medycznych. Do dziś jest twarzą firmy.</p></div></li>
-      <li><span class="onas-os__rok">1997</span><div><b>Firma rodzinna</b><p>Zakład staje się spółką cywilną, dołącza syn założyciela, Wojciech Wetoszka.</p></div></li>
-      <li><span class="onas-os__rok">2005</span><div><b>Koszalin</b><p>Otwieramy oddział w&nbsp;Koszalinie: sprzęt rehabilitacyjny, doradztwo medyczne, także z&nbsp;dojazdem do pacjenta, i&nbsp;gabinety fizjoterapii.</p></div></li>
-      <li><span class="onas-os__rok">2011</span><div><b>Zdrowa Nóżka i&nbsp;Kręgosłup</b><p>Z&nbsp;Urzędem Miasta Szczecin zaczynamy profilaktykę wad postawy u&nbsp;dzieci w&nbsp;przedszkolach i&nbsp;szkołach. Przebadaliśmy już ponad 25 000 dzieci.</p></div></li>
-      <li><span class="onas-os__rok">2018</span><div><b>Medycyna sportowa</b><p>Dołączamy medycynę sportową i&nbsp;nowoczesne narzędzia diagnostyczne.</p></div></li>
-      <li><span class="onas-os__rok">2020</span><div><b>Terapia estetyczna</b><p>Powstaje dział terapii estetycznej, poprzedzony testami procedur zdrowotnych i&nbsp;estetycznych.</p></div></li>
-      <li class="onas-os__dzis"><span class="onas-os__rok">Dziś</span><div><b>Trzy placówki, jedna infolinia</b><p>Wszystkie placówki łączy numer 665&nbsp;035&nbsp;035, a&nbsp;wizytę można zarezerwować online.</p></div></li>
-    </ol>
+    <div class="wzrost">
+      <svg class="wzrost__linia" viewBox="0 0 700 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="50.0,66.6 150.0,56.6 250.0,46.7 350.0,36.8 450.0,26.8 550.0,16.9 650.0,6.9" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"/></svg>
+      <ol class="wzrost__lista">
+      <li style="--h:34;--k:0"><span class="wzrost__ikona"><img class="ilu" src="assets/img/ilu/hist-1989.webp" alt="" width="256" height="256" loading="lazy"></span><span class="wzrost__slupek"><b>1989</b><span class="wzrost__opis">Dr Ryszard Wetoszka zakłada Zakład Usług Medycznych</span></span></li>
+      <li style="--h:45;--k:1"><span class="wzrost__ikona"><img class="ilu" src="assets/img/ilu/hist-1997.webp" alt="" width="256" height="256" loading="lazy"></span><span class="wzrost__slupek"><b>1997</b><span class="wzrost__opis">Dołącza syn założyciela, Wojciech Wetoszka</span></span></li>
+      <li style="--h:56;--k:2"><span class="wzrost__ikona"><img class="ilu" src="assets/img/ilu/hist-2005.webp" alt="" width="256" height="256" loading="lazy"></span><span class="wzrost__slupek"><b>2005</b><span class="wzrost__opis">Otwieramy oddział w&nbsp;Koszalinie</span></span></li>
+      <li style="--h:67;--k:3"><span class="wzrost__ikona"><img class="ilu" src="assets/img/ilu/program-dzieci.webp" alt="" width="256" height="256" loading="lazy"></span><span class="wzrost__slupek"><b>2011</b><span class="wzrost__opis">Startuje program „Zdrowa Nóżka i&nbsp;Kręgosłup”</span></span></li>
+      <li style="--h:78;--k:4"><span class="wzrost__ikona"><img class="ilu" src="assets/img/ilu/kolo-sport.webp" alt="" width="256" height="256" loading="lazy"></span><span class="wzrost__slupek"><b>2018</b><span class="wzrost__opis">Dołączamy medycynę sportową</span></span></li>
+      <li style="--h:89;--k:5"><span class="wzrost__ikona"><img class="ilu" src="assets/img/ilu/kolo-estetyka.webp" alt="" width="256" height="256" loading="lazy"></span><span class="wzrost__slupek"><b>2020</b><span class="wzrost__opis">Powstaje dział terapii estetycznej</span></span></li>
+      <li style="--h:100;--k:6" class="wzrost__dzis"><span class="wzrost__ikona"><img class="ilu" src="assets/img/ilu/hist-dzis.webp" alt="" width="256" height="256" loading="lazy"></span><span class="wzrost__slupek"><b>Dziś</b><span class="wzrost__opis">Trzy placówki i&nbsp;jedna infolinia</span></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section onas-nazwa-sekcja">
+  <div class="wrap">
+    <div class="onas-nazwa2">
+      <div class="onas-nazwa2__ilu" aria-hidden="true"><img class="ilu" src="assets/img/ilu/kolo-diagnostyka.webp" alt="" width="256" height="256" loading="lazy"></div>
+      <div>
+        <div class="kicker"><span class="vert"><i></i><i></i><i></i></span>Skąd nazwa?</div>
+        <h2>Spondylus to z&nbsp;greki pojedynczy kręg kręgosłupa</h2>
+        <p>Albo egzotyczna muszla. Skojarzenie starożytnych jest trafne: kostny kręg ma liczne wyrostki, które upodabniają go do muszli. Od tego słowa zaczęła się nasza historia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" data-why>
+  <aside class="why-note" aria-label="Uzasadnienie sekcji"><b><i>4</i>Zasady pracy w&nbsp;czterech punktach</b><dl><div><dt>Obecnie</dt><dd>Zasady są ukryte w&nbsp;długim akapicie o&nbsp;firmie.</dd></div><div><dt>Propozycja</dt><dd>Cztery krótkie karty z&nbsp;ikonami: kompleksowo, indywidualnie, stałe szkolenia, nowoczesny sprzęt.</dd></div><div><dt>Po co</dt><dd>Pacjent widzi, czego może się spodziewać, zanim przyjdzie na pierwszą wizytę.</dd></div></dl></aside>
+  <div class="wrap">
+    <div class="head2">
+      <h2>Jak pracujemy</h2>
+      <p>Te zasady łączą wszystkie nasze placówki, od Szczecina po Koszalin.</p>
+    </div>
+    <ul class="onas-zasady">
+      <li><img class="ilu" src="assets/img/ilu/plan.webp" alt="" width="256" height="256" loading="lazy"><b>Kompleksowo</b><p>Szukamy rozwiązania całego problemu. Fizjoterapeuta i&nbsp;lekarz mogą wspólnie zająć się jednym pacjentem.</p></li>
+      <li><img class="ilu" src="assets/img/ilu/diagnoza.webp" alt="" width="256" height="256" loading="lazy"><b>Indywidualnie</b><p>Każdy problem traktujemy osobno, a&nbsp;plan terapii układamy pod konkretną osobę.</p></li>
+      <li><img class="ilu" src="assets/img/ilu/dokumenty.webp" alt="" width="256" height="256" loading="lazy"><b>Stałe szkolenia</b><p>Nasi specjaliści stale poszerzają wiedzę na szkoleniach specjalistycznych.</p></li>
+      <li><img class="ilu" src="assets/img/ilu/kolo-diagnostyka.webp" alt="" width="256" height="256" loading="lazy"><b>Nowoczesny sprzęt</b><p>Pracujemy na nowoczesnej aparaturze medycznej, także w&nbsp;diagnostyce wad postawy.</p></li>
+    </ul>
   </div>
 </section>
 
 <section class="section" data-why>
-  <aside class="why-note" aria-label="Uzasadnienie sekcji"><b><i>4</i>Dalsze kroki zamiast ślepego zaułka</b><dl><div><dt>Obecnie</dt><dd>Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.</dd></div><div><dt>Propozycja</dt><dd>Dwie karty: zespół i&nbsp;placówki, a&nbsp;pod nimi pas z&nbsp;zapisem.</dd></div><div><dt>Po co</dt><dd>Kto przeczytał o&nbsp;firmie, jest gotowy na kolejny krok. Dajemy mu go od razu.</dd></div></dl></aside>
+  <aside class="why-note" aria-label="Uzasadnienie sekcji"><b><i>5</i>Dalsze kroki zamiast ślepego zaułka</b><dl><div><dt>Obecnie</dt><dd>Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.</dd></div><div><dt>Propozycja</dt><dd>Dwie karty: zespół i&nbsp;placówki, a&nbsp;pod nimi pas z&nbsp;zapisem.</dd></div><div><dt>Po co</dt><dd>Kto przeczytał o&nbsp;firmie, jest gotowy na kolejny krok. Dajemy mu go od razu.</dd></div></dl></aside>
   <div class="wrap onas-dalej">
     <a class="onas-karta" href="kadra.html"><img class="ilu" src="assets/img/ilu/kolo-lekarze.webp" alt="" width="256" height="256" loading="lazy"><div><b>Poznaj nasz zespół</b><span>Fizjoterapeuci i&nbsp;lekarze: ortopeda, neurolog, neurochirurg</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a class="onas-karta" href="kontakt.html"><img class="ilu" src="assets/img/ilu/hist-dzis.webp" alt="" width="256" height="256" loading="lazy"><div><b>Nasze placówki</b><span>Szczecin, centrum i&nbsp;Pogodno, Koszalin. Adresy, godziny i&nbsp;dojazd</span></div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -264,7 +294,7 @@
 </section>
 <div class="proto-dock" id="proto-dock"><span class="proto-dock__label">Prototyp</span><button class="why-toggle" type="button" aria-pressed="false" data-why-toggle><span>Uzasadnienie zmian</span><span class="why-toggle__sw" aria-hidden="true"></span></button></div>
 <div class="toast" role="status" aria-live="polite" id="toast"></div>
-<script src="assets/js/main.js?v=1792355384" defer></script>
+<script src="assets/js/main.js?v=1792355622" defer></script>
 
 </body>
 </html>
