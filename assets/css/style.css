@@ -2496,3 +2496,15 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .onas4-hero .crumbs a { color: rgba(255, 255, 255, .78); }
 .onas4-hero .crumbs__sep { color: #fff; opacity: .5; }
 .onas4-hero .crumbs [aria-current="page"] { color: #fff; font-weight: 500; }
+
+/* O nas, telefon: twarz u góry, tytuł na dole na gradiencie */
+@media (max-width: 640px) {
+  .onas4-hero { align-items: flex-end; min-height: 0; aspect-ratio: 1 / 1; padding-block: 24px 26px; text-align: left; }
+  .onas4-hero__tlo { object-position: 80% 18%; }
+  .onas4-hero::after { background: linear-gradient(180deg, rgba(12, 36, 20, 0) 0%, rgba(12, 36, 20, .12) 38%, rgba(12, 36, 20, .78) 78%, rgba(12, 36, 20, .9) 100%); }
+  .onas4-hero__in { align-items: flex-start; }
+  .onas4-hero .crumbs { justify-content: flex-start; margin-bottom: 10px; font-size: 13px; }
+  .onas4-hero h1 { font-size: clamp(28px, 8vw, 34px); max-width: 13ch; line-height: 1.1; }
+}
+@media (max-width: 640px) { .onas4-hero h1 { max-width: none; } }
+@media (max-width: 400px) { .topbar__right > div:first-child { font-size: 12.5px; white-space: nowrap; } }
