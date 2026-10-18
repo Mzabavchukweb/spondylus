@@ -442,6 +442,7 @@ def build():
         body = re.sub(r"\{\{ilu:([\w-]+)\|([\w-]*)\}\}", ilu, body)
         body = re.sub(r"\{\{fotka:([\w/.-]+)\|([\w-]+)\}\}", fotka, body)
         body = re.sub(r"\{\{icon:([\w-]+)(?::([\w-]+))?\}\}", lambda m: icon(m.group(1), m.group(2) or ""), body)
+        body = body.replace('href="#" data-demo="1"', 'href="#" data-demo="1" aria-disabled="true" title="Podstrona w przygotowaniu"')
         body = re.sub(
             r"\{\{why:(\d+)\|(.*?)\|(.*?)\|(.*?)\|(.*?)\}\}",
             lambda m: why(*m.groups()), body, flags=re.S)
