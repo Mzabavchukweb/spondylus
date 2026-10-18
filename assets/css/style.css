@@ -2424,3 +2424,10 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
   .czas3__obraz--foto img { width: 120px; height: 120px; max-height: none; }
   .czas3__mapa .czas3__obraz { width: 100%; }
 }
+/* pas Spondylus: ilustracja kręgu i muszli po prawej */
+.onas3-nazwa .wrap { align-items: center; }
+.onas3-nazwa__def { margin-top: 24px; }
+.onas3-nazwa__ilu { justify-self: end; width: 100%; max-width: 520px; }
+.onas3-nazwa__ilu img { display: block; width: 100%; height: auto; }
+.onas3-nazwa::after { display: none; }
+@media (max-width: 960px) { .onas3-nazwa__ilu { justify-self: center; max-width: 420px; } }
