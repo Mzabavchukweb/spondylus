@@ -1929,3 +1929,67 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
 }
 @media (max-width: 760px) { .wzrost__ikona .ilu[src*="program-dzieci"] { width: 60px; height: 60px; } .wzrost__lista li { align-items: start; } .wzrost__lista li .wzrost__ikona { align-self: start; } }
 @media (min-width: 761px) { .wzrost__ikona .ilu[src*="hist-dzis"] { width: 124px; height: 124px; margin-bottom: -6px; } } @media (max-width: 760px) { .wzrost__ikona .ilu[src*="hist-dzis"] { width: 62px; height: 62px; } }
+
+/* v35: poprawki z audytu 18.10.2026 */
+/* K2: jeden element prototypu w prawym dolnym rogu, chowany przy przewijaniu w dół */
+.proto-dock { position: fixed; right: 20px; bottom: 20px; z-index: 90; display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 16px; background: var(--ink); color: #fff; border-radius: 999px; box-shadow: 0 16px 40px -12px rgba(0, 0, 0, .5); transition: transform .35s var(--ease), opacity .35s; }
+.proto-dock.is-ukryty { transform: translateY(calc(100% + 32px)); opacity: 0; pointer-events: none; }
+.proto-dock__label { font-size: 13px; color: #a9c2b0; }
+.proto-dock .why-toggle { position: static; transform: none; box-shadow: none; background: rgba(255, 255, 255, .08); padding: 8px 8px 8px 14px; font-size: 14px; max-width: none; }
+.why-toggle--menu { position: static; transform: none; box-shadow: none; width: 100%; justify-content: space-between; margin: 20px 0 4px; padding: 12px 12px 12px 18px; font-size: 15px; max-width: none; }
+@media (min-width: 761px) { .footer { padding-bottom: 72px; } }
+@media (max-width: 760px) { .proto-dock { display: none; } }
+@media (prefers-reduced-motion: reduce) { .proto-dock { transition: none; } }
+html.a11y-still .proto-dock.is-ukryty { transform: none; opacity: 1; pointer-events: auto; }
+
+/* K5: linki do podstron z kolejnego etapu */
+a[aria-disabled="true"] { cursor: default; }
+
+/* W1: krótsze przejście w biel, niższy pierwszy ekran */
+@media (min-width: 961px) {
+  .os .wrap { min-height: clamp(480px, 58vh, 540px); padding-block: 40px 56px; }
+  .os__media > img { object-position: 64% 32%; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%); mask-image: linear-gradient(to right, transparent 0, #000 9%); }
+}
+@media (min-width: 961px) and (max-width: 1279px) { .os__media > img { object-position: 40% 34%; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 8%); mask-image: linear-gradient(to right, transparent 0, #000 8%); } }
+
+/* W5: historia niższa, opis w podeście pod rokiem, „Dziś” w zieleni marki */
+.wzrost__lista { grid-template-rows: none; grid-auto-flow: row; align-items: end; }
+.wzrost__lista li { display: flex; flex-direction: column; justify-content: flex-end; grid-row: auto; height: auto; }
+.wzrost__lista li .wzrost__ikona { transform: none; margin-bottom: 8px; align-self: center; }
+.wzrost__ikona .ilu, .wzrost__ikona .ilu[src*="program-dzieci"], .wzrost__ikona .ilu[src*="hist-dzis"] { width: 76px; height: 76px; margin: 0; }
+.wzrost__slupek { flex-direction: column; justify-content: flex-start; gap: 6px; height: calc(var(--h) * 1.5px + 112px); padding: 18px 14px 14px; }
+.wzrost__opis { font-size: 14px; line-height: 1.4; color: var(--text); font-weight: 400; }
+.wzrost__dzis .wzrost__slupek { background: linear-gradient(180deg, #279d47 0%, #1e7d37 100%); }
+.wzrost__dzis .wzrost__opis { color: #fff; font-weight: 600; }
+@media (min-width: 761px) { .wzrost__slupek { padding-top: 18px; } }
+@media (max-width: 1100px) and (min-width: 761px) { .wzrost__opis { font-size: 13px; } .wzrost__slupek { padding-inline: 10px; } }
+@media (max-width: 760px) {
+  .wzrost__lista li { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 10px; align-items: center; }
+  .wzrost__lista li .wzrost__ikona { grid-row: auto; margin: 0; }
+  .wzrost__ikona .ilu, .wzrost__ikona .ilu[src*="program-dzieci"], .wzrost__ikona .ilu[src*="hist-dzis"] { width: 52px; height: 52px; }
+  .wzrost__slupek { height: auto; width: calc(55% + var(--h) * .45%); min-width: 0; padding: 10px 14px; gap: 2px; }
+  .wzrost__opis { font-size: 15px; }
+}
+
+/* D1: dwa programy obok siebie, niższe pole ikony */
+.prog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.prog__obraz { aspect-ratio: 16 / 6; }
+@media (max-width: 960px) { .prog { grid-template-columns: 1fr; } .prog__obraz { aspect-ratio: 21 / 7; } }
+
+/* D2: ikony refundacji jak w krokach wizyty, logo NFZ w linii z nagłówkiem */
+.nfz2__head { justify-content: flex-start; }
+.nfz2__logo { order: -1; width: auto; height: auto; border: 0; background: none; border-radius: 0; }
+.nfz2__logo img { width: 96px; }
+.nfz2__ikona { width: 76px; height: 76px; border-radius: 0; background: none; }
+.nfz2__ikona .ilu { width: 76px; height: 76px; }
+.nfz2__ikona i { top: -4px; left: -10px; }
+@media (max-width: 860px) { .nfz2__ikona, .nfz2__ikona .ilu { width: 64px; height: 64px; } }
+@media (max-width: 640px) { .nfz2__logo img { width: 64px; } }
+
+/* W2: portrety na stronie głównej bliżej jednej skali (pełne wyrównanie wymaga jednolitej sesji zdjęciowej) */
+.osoba__foto img[src*="magdalena-salabon"] { transform: scale(1.17); transform-origin: 50% 6%; }
+/* D1: ilustracja programu proporcjonalna do niższego pola */
+.prog__obraz .ilu { width: auto; height: 78%; }
+.osoba__foto img[src*="tomasz-zdeb"] { transform: scale(1.1); transform-origin: 50% 6%; }
+.osoba__foto img[src*="piotr-salapa"] { transform: scale(1.32); transform-origin: 50% 12%; }
+@media (max-width: 760px) { .wzrost__slupek { align-items: flex-start; text-align: left; } }

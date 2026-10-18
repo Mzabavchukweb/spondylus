@@ -29,8 +29,10 @@
   const pokaz = (txt) => { toast.textContent = txt; toast.classList.add('is-on'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('is-on'), 2600); };
   document.addEventListener('click', (e) => {
     const a = e.target.closest('[data-demo="1"]');
-    if (a) { e.preventDefault(); pokaz('Ta podstrona powstanie w kolejnym etapie. W prototypie pokazujemy wzór na przykładzie podologii.'); }
+    if (a) { e.preventDefault(); pokaz('Podstrona w przygotowaniu. Prototyp pokazuje stronę główną, kadrę i kontakt.'); }
   });
+  /* K5: linki do podstron z kolejnego etapu oznaczone jako nieaktywne */
+  $$('a[data-demo="1"]').forEach(a => { a.setAttribute('aria-disabled', 'true'); a.title = 'Podstrona w przygotowaniu'; });
 
   /* Rejestracja online: prawdziwe kalendarze ProAssist dla każdej placówki */
   const PLACOWKI = {
@@ -212,10 +214,25 @@
   });
 
   /* Tryb "Uzasadnienie zmian" dla klienta */
-  const wt = $('[data-why-toggle]');
-  const ustawWhy = (o) => { document.body.classList.toggle('why-on', o); wt.setAttribute('aria-pressed', String(o)); try { localStorage.setItem('spondylus-why', o ? '1' : '0'); } catch (e) {} };
-  if (wt) {
-    wt.addEventListener('click', () => ustawWhy(!document.body.classList.contains('why-on')));
+  const wts = $$('[data-why-toggle]');
+  const ustawWhy = (o) => { document.body.classList.toggle('why-on', o); wts.forEach(b => b.setAttribute('aria-pressed', String(o))); try { localStorage.setItem('spondylus-why', o ? '1' : '0'); } catch (e) {} };
+  if (wts.length) {
+    wts.forEach(b => b.addEventListener('click', () => ustawWhy(!document.body.classList.contains('why-on'))));
     try { if (localStorage.getItem('spondylus-why') === '1') ustawWhy(true); } catch (e) {}
+  }
+  /* K2: element prototypu chowa się przy przewijaniu w dół, wraca przy przewijaniu w górę */
+  const dock = $('#proto-dock');
+  if (dock) {
+    let ostatni = window.scrollY, tik = false;
+    window.addEventListener('scroll', () => {
+      if (tik) return; tik = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY, dol = y > ostatni + 4, gora = y < ostatni - 4;
+        const koniec = window.innerHeight + y >= document.documentElement.scrollHeight - 40;
+        if (dol && y > 200 && !koniec) dock.classList.add('is-ukryty');
+        else if (gora || y <= 200 || koniec) dock.classList.remove('is-ukryty');
+        if (dol || gora) ostatni = y; tik = false;
+      });
+    }, { passive: true });
   }
 })();

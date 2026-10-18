@@ -79,7 +79,6 @@ def why(nr, tytul, problem, rozwiazanie, efekt):
 
 
 OBSZARY = [
-    ("podologia.html", "foot", "Podologia", "Pielęgnacja i leczenie stóp, wrastające paznokcie, stopa cukrzycowa"),
     ("#", "spine", "Rehabilitacja", "Fizjoterapia ortopedyczna, pooperacyjna i neurologiczna"),
     ("#", "scan", "Diagnostyka wad postawy", "Badania aparatu ruchu, stóp i diagnostyka sportowa"),
     ("#", "run", "Medycyna sportowa", "Od amatorów po zawodowców: diagnostyka i powrót do treningu"),
@@ -161,6 +160,7 @@ def header(nav):
         <a class="d-link" href="#" data-demo="1">O nas {icon("chev-right")}</a>
         <a class="d-link" href="kontakt.html">Kontakt i placówki {icon("chev-right")}</a>
       </nav>
+      <button class="why-toggle why-toggle--menu" type="button" aria-pressed="false" data-why-toggle><span>Uzasadnienie zmian (prototyp)</span><span class="why-toggle__sw" aria-hidden="true"></span></button>
       <p class="drawer__info">Infolinia dla wszystkich placówek, pon.–pt.: Szczecin, centrum i Koszalin 9:00–18:00, Pogodno 8:00–19:00.</p>
     </div>
     <div class="drawer__akcje">
@@ -179,7 +179,7 @@ def footer():
     <div class="footer__grid">
       <div class="footer__marka">
         <span class="footer__logo"><img src="assets/img/logo.png" alt="Spondylus" width="312" height="97"></span>
-        <p>Centrum medyczne w Szczecinie i Koszalinie. Rehabilitacja, podologia, diagnostyka i zaopatrzenie medyczne od 1989 roku.</p>
+        <p>Centrum medyczne w Szczecinie i Koszalinie. Rehabilitacja, diagnostyka i zaopatrzenie medyczne od 1989 roku.</p>
         <div class="footer__kontakt">
           <span class="footer__etykieta">Infolinia dla wszystkich placówek</span>
           <a class="footer__phone" href="tel:+48665035035">665 035 035</a>
@@ -236,7 +236,7 @@ def footer():
       <button class="booking__back" type="button" data-back="1">{icon("arrow-left")}Zmień placówkę</button>
       <p style="margin:10px 0 16px">Koszalin: czego szukasz?</p>
       <div class="options">
-        <button class="option" type="button" data-place="koszalin-spec">{icon("stethoscope")}<div><b>Wizyta u specjalisty</b><span>Fizjoterapia, podologia, konsultacje</span></div>{icon("chev-right", "chev")}</button>
+        <button class="option" type="button" data-place="koszalin-spec">{icon("stethoscope")}<div><b>Wizyta u specjalisty</b><span>Fizjoterapia, konsultacje lekarskie</span></div>{icon("chev-right", "chev")}</button>
         <button class="option" type="button" data-place="koszalin-uslugi">{icon("sparkle")}<div><b>Usługa lub zabieg</b><span>Zabiegi i usługi dostępne w placówce</span></div>{icon("chev-right", "chev")}</button>
       </div>
     </div>
@@ -267,8 +267,7 @@ def footer():
   </div>
   <button class="btn btn--ghost btn--sm a11y-reset" type="button" data-a11y-reset>Przywróć ustawienia domyślne</button>
 </section>
-<button class="why-toggle" type="button" aria-pressed="false" data-why-toggle><span>Uzasadnienie<span class="why-toggle__txt-long"> zmian</span></span><span class="why-toggle__sw" aria-hidden="true"></span></button>
-<span class="proto-label">Propozycja nowej strony, prototyp</span>
+<div class="proto-dock" id="proto-dock"><span class="proto-dock__label">Prototyp</span><button class="why-toggle" type="button" aria-pressed="false" data-why-toggle><span>Uzasadnienie zmian</span><span class="why-toggle__sw" aria-hidden="true"></span></button></div>
 <div class="toast" role="status" aria-live="polite" id="toast"></div>
 <script src="assets/js/main.js?v={WERSJA}" defer></script>
 '''
@@ -407,6 +406,15 @@ def fotka(m):
     return "{{icon:%s}}" % ikona
 
 
+def twarde_spacje(html):
+    """D3: twarda spacja po jednoliterowych słowach (a, i, o, u, w, z), tylko w tekście między tagami."""
+    czesci = re.split(r"(<script\b.*?</script>|<style\b.*?</style>|<[^>]+>)", html, flags=re.S | re.I)
+    wzor = re.compile(r"(^|[\s(„])([aiouwzAIOUWZ]) (?=\S)")
+    for i in range(0, len(czesci), 2):
+        czesci[i] = wzor.sub(lambda m: m.group(1) + m.group(2) + "&nbsp;", czesci[i])
+    return "".join(czesci)
+
+
 def build():
     przygotuj_zdjecia_objawow()
     przygotuj_ilustracje()
@@ -423,6 +431,7 @@ def build():
             r"\{\{why:(\d+)\|(.*?)\|(.*?)\|(.*?)\|(.*?)\}\}",
             lambda m: why(*m.groups()), body, flags=re.S)
         html = head(meta["title"], meta["desc"], meta.get("body", "")) + header(meta.get("nav", "")) + '<main id="tresc">' + body + "</main>" + footer() + "\n</body>\n</html>\n"
+        html = twarde_spacje(html)
         (ROOT / src.name).write_text(html, encoding="utf-8")
         print("zbudowano", src.name)
 
