@@ -2455,3 +2455,27 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 }
 @media (max-width: 960px) { .onas3-hero .crumbs { margin-bottom: 16px; } }
 .onas3-hero h1 { font-size: clamp(34px, 3.7vw, 54px); max-width: none; }
+
+/* O nas: hero jak baner (zdjęcie na całą szerokość, tytuł na środku) + pasek z kartą */
+.onas4-hero { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; min-height: clamp(320px, 32vw, 460px); padding-block: 56px; background: var(--brand-900); text-align: center; }
+.onas4-hero__tlo { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 62% 28%; }
+.onas4-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(12, 36, 20, .58) 0%, rgba(12, 36, 20, .68) 100%); }
+.onas4-hero__in { display: flex; flex-direction: column; align-items: center; }
+.onas4-hero .crumbs { justify-content: center; margin-bottom: 18px; color: rgba(255, 255, 255, .8); font-size: 13px; letter-spacing: .02em; }
+.onas4-hero .crumbs a { color: rgba(255, 255, 255, .8); }
+.onas4-hero .crumbs [aria-current] { color: #fff; font-weight: 600; }
+.onas4-hero h1 { margin: 0; max-width: 18ch; color: #fff; font-size: clamp(34px, 4.4vw, 62px); line-height: 1.08; letter-spacing: -.03em; text-wrap: balance; }
+.onas4-pas { padding-block: clamp(28px, 3.5vw, 44px) 0; }
+.onas4-karta { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 24px 28px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+.onas4-karta p { margin: 0; max-width: 70ch; font-size: 17px; line-height: 1.6; color: var(--text); }
+.onas4-karta__cta { display: flex; flex: none; gap: 12px; }
+@media (max-width: 960px) {
+  .onas4-karta { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 640px) {
+  .onas4-hero { min-height: 260px; padding-block: 40px; }
+  .onas4-karta { padding: 20px; gap: 20px; }
+  .onas4-karta p { font-size: 16px; }
+  .onas4-karta__cta { width: 100%; flex-direction: column; }
+  .onas4-karta__cta .btn { justify-content: center; }
+}
