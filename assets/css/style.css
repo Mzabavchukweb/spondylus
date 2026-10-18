@@ -2329,21 +2329,6 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 /* Co Ci dolega: zdjęcia z Pexels, już wykadrowane do 3:2 */
 .objaw__img img[src*="/objawy/"] { object-position: 50% 50%; filter: none; }
 
-/* v42: hero na telefonie. Nagłówek na zdjęciu, dół cięty po skosie jak romb w logo,
-   zielona krawędź pod cięciem, ocena Google na zdjęciu */
-@media (max-width: 640px) {
-  .os .wrap { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "foto" "lead" "cta" "ocena"; gap: 0; padding-top: 0; }
-  .os .wrap > div:first-child { display: contents; }
-  .os__media { grid-area: foto; order: 0; margin: 0 -16px; aspect-ratio: 1 / 1.08; background: var(--brand-600); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 44px)); }
-  .os__media > img, .os__media::after { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7px), 0 calc(100% - 51px)); }
-  .os__media > img { object-position: 20% 34%; -webkit-mask-image: none; mask-image: none; }
-  .os__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(12, 36, 20, .92) 0, rgba(12, 36, 20, .62) 30%, rgba(12, 36, 20, 0) 58%); pointer-events: none; }
-  .os h1 { grid-area: foto; align-self: end; position: relative; z-index: 3; margin: 0; padding: 0 0 64px; color: #fff; font-size: clamp(31px, 8.8vw, 38px); max-width: 12ch; }
-  .os__lead { grid-area: lead; margin-top: 20px; }
-  .os .os__cta { grid-area: cta; margin-top: 22px; }
-  .os__ocena-m { display: none; }
-  .os__karta { display: inline-flex; z-index: 3; left: 16px; right: auto; top: 16px; bottom: auto; padding: 8px 12px 8px 10px; background: rgba(255, 255, 255, .94); }
-}
 
 /* O nas: założyciele */
 .onas-zal { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; }
