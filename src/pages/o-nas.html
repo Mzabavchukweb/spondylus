@@ -5,23 +5,27 @@
 <section class="page-hero" data-why>
   {{why:1|Strona „O nas”, która buduje zaufanie|Obecna strona to jeden długi akapit, a historia firmy rozjeżdża lata i opisy, więc trudno je połączyć.|Krótki wstęp ze zdjęciem z placówki, trzy liczby, obszary opieki, historia z rokiem przy każdym opisie i zasady pracy.|Pacjent, który porównuje placówki, w minutę widzi, że to rodzinna firma z 37-letnim doświadczeniem, a nie anonimowa sieć.}}
   <div class="wrap">
-    <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Strona główna</a><span aria-hidden="true">/</span><span>O nas</span></nav>
-    <div class="page-hero__grid">
+    <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Strona główna</a><span class="crumbs__sep" aria-hidden="true">{{icon:chev-right}}</span><span aria-current="page">O nas</span></nav>
+    <div class="page-hero__grid onas-hero">
       <div>
         <div class="kicker"><span class="vert"><i></i><i></i><i></i></span>O nas</div>
         <h1 class="reveal" style="max-width:17ch">Rodzinne centrum medyczne od 1989 roku</h1>
         <p class="page-hero__lead reveal">Jesteśmy zespołem specjalistów, dla których najważniejsze jest kompleksowe rozwiązanie problemu pacjenta. Zaczynaliśmy w Szczecinie, od 2005 roku jesteśmy też w Koszalinie.</p>
+        <div class="onas-hero__cta reveal"><button class="btn btn--primary" type="button" data-book>{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="#ludzie">Poznaj nasz zespół</a></div>
       </div>
-      <div class="page-hero__media reveal"><img src="assets/img/hist-konsultacja.webp" alt="Specjalistka Spondylus podczas rozmowy z pacjentką w gabinecie" width="960" height="720" fetchpriority="high"></div>
+      <div class="onas-hero__media reveal">
+        <div class="page-hero__media"><img src="assets/img/hist-konsultacja.webp" alt="Specjalistka Spondylus podczas rozmowy z pacjentką w gabinecie" width="960" height="720" fetchpriority="high"></div>
+        <div class="onas-hero__plakietka">{{ilu:hist-1989|}}<div><b>Od 1989 roku</b><span>w Szczecinie, od 2005 także w Koszalinie</span></div></div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="liczby" aria-label="Spondylus w liczbach">
+<section class="liczby onas-liczby" aria-label="Spondylus w liczbach">
   <div class="wrap">
-    <div class="liczba"><b>37 lat</b><span>opieki nad pacjentami, od 1989 roku</span></div>
-    <div class="liczba"><b>25 000+</b><span>dzieci przebadanych w programie „Zdrowa Nóżka i Kręgosłup”</span></div>
-    <div class="liczba"><b>3 placówki</b><span>w Szczecinie i Koszalinie, jedna infolinia 665&nbsp;035&nbsp;035</span></div>
+    <div class="liczba">{{ilu:hist-1997|}}<b>37 lat</b><span>opieki nad pacjentami, od 1989 roku</span></div>
+    <div class="liczba">{{ilu:program-dzieci|}}<b>25 000+</b><span>dzieci przebadanych w programie „Zdrowa Nóżka i Kręgosłup”</span></div>
+    <div class="liczba">{{ilu:hist-dzis|}}<b>3 placówki</b><span>w Szczecinie i Koszalinie, jedna infolinia 665&nbsp;035&nbsp;035</span></div>
   </div>
 </section>
 
@@ -45,8 +49,25 @@
   </div>
 </section>
 
+<section class="section onas-galeria-sekcja" data-why>
+  {{why:3|Prawdziwe zdjęcia z placówek|Na obecnej stronie „O nas” nie ma ani jednego zdjęcia z gabinetów.|Mozaika pięciu zdjęć z placówek Spondylus z krótkimi podpisami, co na nich widać.|Pacjent widzi prawdziwe gabinety i ludzi, a nie zdjęcia z banku. To buduje zaufanie przed pierwszą wizytą.}}
+  <div class="wrap">
+    <div class="head2">
+      <h2>Z życia naszych placówek</h2>
+      <p>Gabinety fizjoterapii, medycyna sportowa i zaopatrzenie medyczne. Tak wygląda u nas zwykły dzień.</p>
+    </div>
+    <div class="onas-galeria">
+      <figure class="onas-galeria__duze"><img src="assets/img/obszar-sport.webp" alt="Fizjoterapeuta Spondylus podczas terapii młodego sportowca" width="900" height="700" loading="lazy"><figcaption>Medycyna sportowa</figcaption></figure>
+      <figure><img src="assets/img/hist-terapia.webp" alt="Fizjoterapeuta Spondylus podczas terapii manualnej" width="600" height="600" loading="lazy"><figcaption>Fizjoterapia</figcaption></figure>
+      <figure><img src="assets/img/obszar-estetyka.webp" alt="Specjalistka Spondylus podczas zabiegu z użyciem aparatury" width="900" height="700" loading="lazy"><figcaption>Rehabilitacja i zabiegi</figcaption></figure>
+      <figure><img src="assets/img/hist-zaopatrzenie.webp" alt="Doradca Spondylus wśród wózków inwalidzkich w punkcie zaopatrzenia" width="600" height="600" loading="lazy"><figcaption>Zaopatrzenie medyczne</figcaption></figure>
+      <figure><img src="assets/img/obszar-obuwie.webp" alt="Obuwie ortopedyczne dla dzieci w Spondylus" width="900" height="700" loading="lazy"><figcaption>Obuwie ortopedyczne</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section class="section hist2-sekcja" id="historia" data-why>
-  {{why:3|Historia jako wykres wzrostu|Na obecnej stronie lata i opisy są rozsunięte, więc rok 2005 stoi przy opisie z 1997 roku i trudno je połączyć.|Siedem kamieni milowych jako rosnące podesty z ikoną, rokiem i opisem w jednym miejscu, od 1989 roku do dziś.|Jeden obraz pokazuje, że rodzinna firma stale się rozwija, a każdy fakt jest jednoznaczny.}}
+  {{why:4|Historia jako wykres wzrostu|Na obecnej stronie lata i opisy są rozsunięte, więc rok 2005 stoi przy opisie z 1997 roku i trudno je połączyć.|Siedem kamieni milowych jako rosnące podesty z ikoną, rokiem i opisem w jednym miejscu, od 1989 roku do dziś.|Jeden obraz pokazuje, że rodzinna firma stale się rozwija, a każdy fakt jest jednoznaczny.}}
   <div class="wrap">
     <div class="hist2__head hist2__head--bez-lat">
       <div>
@@ -83,7 +104,7 @@
 </section>
 
 <section class="section section--soft" data-why>
-  {{why:4|Zasady pracy w czterech punktach|Zasady są ukryte w długim akapicie o firmie.|Cztery krótkie karty z ikonami: kompleksowo, indywidualnie, stałe szkolenia, nowoczesny sprzęt.|Pacjent widzi, czego może się spodziewać, zanim przyjdzie na pierwszą wizytę.}}
+  {{why:5|Zasady pracy w czterech punktach|Zasady są ukryte w długim akapicie o firmie.|Cztery krótkie karty z ikonami: kompleksowo, indywidualnie, stałe szkolenia, nowoczesny sprzęt.|Pacjent widzi, czego może się spodziewać, zanim przyjdzie na pierwszą wizytę.}}
   <div class="wrap">
     <div class="head2">
       <h2>Jak pracujemy</h2>
@@ -98,11 +119,25 @@
   </div>
 </section>
 
-<section class="section onas-dalej-sekcja" data-why>
-  {{why:5|Dalsze kroki zamiast ślepego zaułka|Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.|Dwie karty: zespół i placówki, a pod nimi pas z zapisem.|Kto przeczytał o firmie, jest gotowy na kolejny krok. Dajemy mu go od razu.}}
-  <div class="wrap onas-dalej">
-    <a class="onas-karta" href="kadra.html">{{ilu:kolo-lekarze|}}<div><b>Poznaj nasz zespół</b><span>Fizjoterapeuci i lekarze: ortopeda, neurolog, neurochirurg</span></div>{{icon:arrow}}</a>
-    <a class="onas-karta" href="kontakt.html">{{ilu:hist-dzis|}}<div><b>Nasze placówki</b><span>Szczecin, centrum i Pogodno, Koszalin. Adresy, godziny i dojazd</span></div>{{icon:arrow}}</a>
+<section class="section onas-ludzie-sekcja" id="ludzie" data-why>
+  {{why:6|Twarze zamiast listy linków|Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.|Rząd portretów specjalistów z imieniem i specjalizacją, a pod nim dwa wyraźne przejścia: do całego zespołu i do placówek.|Najczęstsze pytanie przed wizytą to „do kogo idę?”. Konkretne twarze zmniejszają obawę przed pierwszą wizytą.}}
+  <div class="wrap">
+    <div class="head2">
+      <h2>Ludzie Spondylus</h2>
+      <p>Fizjoterapeuci i lekarze, którzy przy trudniejszych przypadkach konsultują pacjenta wspólnie.</p>
+    </div>
+    <ul class="onas-ludzie">
+      <li><span class="onas-ludzie__foto">{{portret:tomasz-gnus}}</span><b>Tomasz Gnus</b><span>Fizjoterapeuta</span></li>
+      <li><span class="onas-ludzie__foto">{{portret:magdalena-salabon}}</span><b>Magdalena Sałabon</b><span>Fizjoterapeutka dzieci</span></li>
+      <li><span class="onas-ludzie__foto">{{portret:gabriela-majorczyk}}</span><b>Gabriela Majorczyk</b><span>Fizjoterapeutka</span></li>
+      <li><span class="onas-ludzie__foto">{{portret:tomasz-zdeb}}</span><b>Tomasz Zdeb</b><span>Fizjoterapeuta</span></li>
+      <li><span class="onas-ludzie__foto">{{portret:piotr-salapa}}</span><b>Piotr Sałapa</b><span>Neurochirurg</span></li>
+      <li><span class="onas-ludzie__foto">{{portret:tomasz-dudzik}}</span><b>Tomasz Dudzik</b><span>Neurolog</span></li>
+    </ul>
+    <div class="onas-ludzie__cta">
+      <a class="btn btn--primary" href="kadra.html">Poznaj cały zespół {{icon:arrow}}</a>
+      <a class="btn btn--ghost" href="kontakt.html">{{icon:pin}}Nasze placówki</a>
+    </div>
   </div>
 </section>
 
