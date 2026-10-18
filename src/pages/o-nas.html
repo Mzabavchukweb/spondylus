@@ -2,65 +2,74 @@
 <!-- desc: Spondylus to rodzinne centrum medyczne założone w 1989 roku przez dr. Ryszarda Wetoszkę. Rehabilitacja, diagnostyka wad postawy, medycyna sportowa i zaopatrzenie z NFZ w Szczecinie i Koszalinie. -->
 <!-- nav: onas -->
 
-<section class="page-hero" data-why>
-  {{why:1|Strona „O nas” zaczyna się od ludzi, którzy stoją za firmą|Obecna strona to długi akapit o usługach, a historia firmy jest dopiero na końcu.|Pierwszy ekran mówi, kto prowadzi firmę i od kiedy. Dalej tylko historia, zespół i zaproszenie na wizytę.|Pacjent, który porównuje placówki, w kilka sekund widzi, że to rodzinna firma z twarzą, a nie anonimowa sieć.}}
+<section class="page-hero onas3-hero" data-why>
+  {{why:1|Pierwszy ekran mówi, kim jesteśmy|Obecna strona zaczyna się od napisu „od 30 lat”, choć firma działa od 1989 roku, i jednego długiego akapitu tekstu.|Nagłówek z rokiem założenia, dwa zdania z obecnej strony i zdjęcia z naszych placówek.|Pacjent od razu widzi, że to firma z długą historią i prawdziwymi ludźmi.}}
   <div class="wrap">
     <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Strona główna</a><span class="crumbs__sep" aria-hidden="true">{{icon:chev-right}}</span><span aria-current="page">O nas</span></nav>
-    <div class="page-hero__grid onas-hero">
+    <div class="onas3-hero__grid">
       <div>
-        <h1 class="reveal">Rodzinna firma od dwóch pokoleń</h1>
-        <p class="page-hero__lead reveal">Spondylus założył w 1989 roku dr Ryszard Wetoszka. W 1997 roku dołączył do niego syn, Wojciech Wetoszka. Dziś to trzy placówki w Szczecinie i Koszalinie, połączone jedną infolinią.</p>
-        <div class="onas-podpis reveal"><img src="assets/img/zalozyciele-kolo.webp" alt="Dr Ryszard Wetoszka i Wojciech Wetoszka" width="346" height="346"><div><b>Dr Ryszard Wetoszka i Wojciech Wetoszka</b><span>Założyciel i jego syn</span></div></div>
-        <div class="onas-hero__cta reveal"><button class="btn btn--primary" type="button" data-book>{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="#historia">Nasza historia</a></div>
+        <h1 class="reveal">Od 1989 roku dbamy o Wasze zdrowie</h1>
+        <p class="page-hero__lead reveal">Kultowe miejsce na medycznej mapie Szczecina i województwa zachodniopomorskiego. Jesteśmy zespołem specjalistów, dla których naczelną zasadą jest kompleksowe rozwiązywanie problemów naszych Pacjentów.</p>
+        <div class="onas-hero__cta reveal"><button class="btn btn--primary" type="button" data-book>{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="#historia">Historia firmy</a></div>
       </div>
-      <div class="page-hero__media reveal"><img src="assets/img/hist-konsultacja.webp" alt="Specjalistka Spondylus podczas rozmowy z pacjentką w gabinecie" width="960" height="720" fetchpriority="high"></div>
+      <div class="onas3-mozaika reveal">
+        <img class="onas3-mozaika__a" src="assets/img/obszar-rehabilitacja.webp" alt="Fizjoterapeuta Spondylus podczas terapii pacjentki" width="900" height="700" fetchpriority="high">
+        <img class="onas3-mozaika__b" src="assets/img/hist-konsultacja.webp" alt="Rozmowa z pacjentką w gabinecie Spondylus" width="960" height="720">
+        <img class="onas3-mozaika__c" src="assets/img/obszar-zaopatrzenie.webp" alt="Doradca w punkcie zaopatrzenia medycznego Spondylus przy wózkach inwalidzkich" width="900" height="700">
+      </div>
     </div>
+  </div>
+</section>
+
+<section class="section" data-why>
+  {{why:2|Czym się zajmujemy, bez ściany tekstu|Obszary działalności, kadra i sprzęt są wymienione w jednym akapicie na kilkanaście linijek.|Ten sam tekst podzielony na krótki wstęp i czytelną listę obszarów.|Pacjent w kilka sekund sprawdza, czy załatwi tu swoją sprawę.}}
+  <div class="wrap onas3-kim">
+    <div>
+      <h2>Wszystko w jednym miejscu</h2>
+      <p>Nasza kadra to specjaliści, którzy wciąż poszerzają swoją wiedzę na specjalistycznych szkoleniach, a w pracy z Pacjentami kładą nacisk na indywidualne podejście do każdego problemu.</p>
+      <p>Posiadamy bogatą bazę urządzeń medycznych najwyższej klasy, która poprawia efektywność prowadzonych procesów medycznych.</p>
+    </div>
+    <div>
+      <ul class="onas3-lista">
+        <li>Zaopatrzenie medyczne z refundacją NFZ</li>
+        <li>Zaawansowana diagnostyka wad postawy</li>
+        <li>Rehabilitacja medyczna i fizjoterapia</li>
+        <li>Fizykoterapia</li>
+        <li>Medycyna sportowa</li>
+        <li>Terapia estetyczna</li>
+      </ul>
+      <p class="onas3-lekarze"><b>Usługi lekarskie:</b> ortopedia, neurologia, chirurgia i urologia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="onas3-nazwa" aria-label="Skąd nazwa Spondylus">
+  <div class="wrap">
+    <p class="onas3-nazwa__slowo">Spondylus</p>
+    <p class="onas3-nazwa__def">Z greki: pojedynczy kręg kręgosłupa lub egzotyczna muszla. Skojarzenie starożytnych jest jak najbardziej trafne, bo kostny kręg ma liczne wyrostki, które upodabniają go do muszli.</p>
   </div>
 </section>
 
 <section class="section section--soft" id="historia" data-why>
-  {{why:2|Historia jako oś czasu z obrazem przy każdym roku|Na obecnej stronie lata i opisy są rozsunięte, więc trudno je połączyć.|Siedem lat, każdy z jednym zdaniem i obrazem. Przy 1997 roku zdjęcie właścicieli, przy 2005 mapa placówek.|Jeden obraz pokazuje, że rodzinna firma stale się rozwija.}}
+  {{why:3|Historia firmy jako czytelna oś czasu|Lata i opisy są rozsunięte po dwóch stronach osi, więc trudno je połączyć.|Każdy rok z opisem i grafiką w jednym wierszu. Grafiki pochodzą z obecnej strony, przy 2005 roku mapa obecnych placówek.|Jeden obraz pokazuje, że rodzinna firma od 1989 roku stale się rozwija.}}
   <div class="wrap">
-    <div class="head2"><h2>Nasza historia</h2><p>Od jednego zakładu w Szczecinie do trzech placówek w województwie zachodniopomorskim.</p></div>
-    <ol class="czas">
-      <li><b class="czas__rok">1989</b><p>Dr Ryszard Wetoszka zakłada Zakład Usług Medycznych w Szczecinie.</p><span class="czas__obraz">{{ilu:hist-1989|}}</span></li>
-      <li><b class="czas__rok">1997</b><p>Zakład staje się spółką cywilną. Do firmy dołącza syn założyciela, Wojciech Wetoszka.</p><span class="czas__obraz czas__obraz--foto"><img src="assets/img/zalozyciele-kolo.webp" alt="Dr Ryszard Wetoszka i Wojciech Wetoszka" width="346" height="346" loading="lazy"></span></li>
-      <li class="czas__mapa"><b class="czas__rok">2005</b><p>Otwieramy oddział w Koszalinie: sprzęt rehabilitacyjny i doradztwo medyczne, także z dojazdem do pacjenta, oraz gabinety fizjoterapii.</p><span class="czas__obraz"><img src="assets/img/mapa-placowek.webp" alt="Mapa województwa zachodniopomorskiego z placówkami Spondylus: dwie w Szczecinie i jedna w Koszalinie" width="1027" height="996" loading="lazy"></span></li>
-      <li><b class="czas__rok">2011</b><p>Z Urzędem Miasta Szczecin startuje program „Zdrowa Nóżka i Kręgosłup”. Przebadaliśmy już ponad 25&nbsp;000 dzieci.</p><span class="czas__obraz">{{ilu:program-dzieci|}}</span></li>
-      <li><b class="czas__rok">2018</b><p>Dołączamy medycynę sportową i nowoczesne narzędzia diagnostyczne.</p><span class="czas__obraz">{{ilu:kolo-sport|}}</span></li>
-      <li><b class="czas__rok">2020</b><p>Powstaje dział terapii estetycznej.</p><span class="czas__obraz">{{ilu:kolo-estetyka|}}</span></li>
-      <li><b class="czas__rok">Dziś</b><p>Trzy placówki w Szczecinie i Koszalinie i jedna infolinia 665&nbsp;035&nbsp;035.</p><span class="czas__obraz">{{ilu:hist-dzis|}}</span></li>
+    <h2 class="onas3-h">Historia firmy</h2>
+    <ol class="czas3">
+      <li><span class="czas3__rok">1989</span><div class="czas3__txt"><p>Powstaje ZUM, Zakład Usług Medycznych, założony przez doktora Ryszarda Wetoszkę, do dziś ikonę firmy.</p></div><span class="czas3__obraz"><img src="assets/img/hist-logo.webp" alt="Logo Spondylus" width="207" height="207" loading="lazy"></span></li>
+      <li><span class="czas3__rok">1997</span><div class="czas3__txt"><p>Zakład Usług Medycznych zostaje przekształcony w spółkę cywilną, do której dołącza syn właściciela, Wojciech Wetoszka.</p></div><span class="czas3__obraz czas3__obraz--foto"><img src="assets/img/zalozyciele-spolka.webp" alt="Dr Ryszard Wetoszka i Wojciech Wetoszka w recepcji Spondylus" width="236" height="236" loading="lazy"></span></li>
+      <li class="czas3__mapa"><span class="czas3__rok">2005</span><div class="czas3__txt"><p>Firma otwiera oddział w Koszalinie. Centrum Medyczne specjalizuje się w sprzęcie rehabilitacyjnym i doradztwie medycznym, również mobilnym, z bezpośrednim dojazdem do Pacjenta. W gabinetach świadczymy usługi fizjoterapeutyczne.</p></div><span class="czas3__obraz"><img src="assets/img/mapa-placowek.webp" alt="Mapa województwa zachodniopomorskiego z placówkami Spondylus: dwie w Szczecinie i jedna w Koszalinie" width="1027" height="996" loading="lazy"></span></li>
+      <li><span class="czas3__rok">2011</span><div class="czas3__txt"><p>Przy wsparciu Urzędu Miasta Szczecin rozpoczynamy profilaktykę wad postawy u dzieci w wieku szkolnym i przedszkolnym: program „Zdrowa Nóżka i Kręgosłup”. Przebadaliśmy już ponad 25&nbsp;000 dzieci.</p></div><span class="czas3__obraz"><img src="assets/img/hist-dzieci.webp" alt="Dzieci, grafika programu Zdrowa Nóżka i Kręgosłup" width="264" height="133" loading="lazy"></span></li>
+      <li><span class="czas3__rok">2018</span><div class="czas3__txt"><p>Uzupełniamy nasze usługi o medycynę sportową i wdrażamy nowoczesne narzędzia diagnostyczne.</p></div><span class="czas3__obraz"><img src="assets/img/hist-sport.webp" alt="Znak działu Medycyna sportowa" width="172" height="225" loading="lazy"></span></li>
+      <li><span class="czas3__rok">2020</span><div class="czas3__txt"><p>Tworzymy dział terapii estetycznej, poprzedzony intensywnymi testami procedur zdrowotnych i estetycznych. 16 czerwca otwieramy punkt zaopatrzenia medycznego w Przychodni Portowej, w którym odbywają się bezpłatne badania przesiewowe aparatu ruchu.</p></div><span class="czas3__obraz"><img src="assets/img/hist-estetyka.webp" alt="Znak działu Terapia estetyczna" width="174" height="221" loading="lazy"></span></li>
     </ol>
   </div>
 </section>
 
-<section class="section onas-ludzie-sekcja" id="ludzie" data-why>
-  {{why:3|Twarze zamiast listy linków|Strona kończy się zaproszeniem na Facebooka, bez drogi do zespołu ani placówek.|Rząd portretów specjalistów z imieniem i specjalizacją, a pod nim dwa wyraźne przejścia: do całego zespołu i do placówek.|Najczęstsze pytanie przed wizytą to „do kogo idę?”. Konkretne twarze zmniejszają obawę przed pierwszą wizytą.}}
-  <div class="wrap">
-    <div class="head2">
-      <h2>Ludzie Spondylus</h2>
-      <p>Fizjoterapeuci i lekarze, którzy przy trudniejszych przypadkach konsultują pacjenta wspólnie.</p>
-    </div>
-    <ul class="onas-ludzie">
-      <li><span class="onas-ludzie__foto">{{portret:tomasz-gnus}}</span><b>Tomasz Gnus</b><span>Fizjoterapeuta</span></li>
-      <li><span class="onas-ludzie__foto">{{portret:magdalena-salabon}}</span><b>Magdalena Sałabon</b><span>Fizjoterapeutka dzieci</span></li>
-      <li><span class="onas-ludzie__foto">{{portret:gabriela-majorczyk}}</span><b>Gabriela Majorczyk</b><span>Fizjoterapeutka</span></li>
-      <li><span class="onas-ludzie__foto">{{portret:tomasz-zdeb}}</span><b>Tomasz Zdeb</b><span>Fizjoterapeuta</span></li>
-      <li><span class="onas-ludzie__foto">{{portret:piotr-salapa}}</span><b>Piotr Sałapa</b><span>Neurochirurg</span></li>
-      <li><span class="onas-ludzie__foto">{{portret:tomasz-dudzik}}</span><b>Tomasz Dudzik</b><span>Neurolog</span></li>
-    </ul>
-    <div class="onas-ludzie__cta">
-      <a class="btn btn--primary" href="kadra.html">Poznaj cały zespół {{icon:arrow}}</a>
-      <a class="btn btn--ghost" href="kontakt.html">{{icon:pin}}Nasze placówki</a>
-    </div>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
+<section class="section">
   <div class="wrap">
     <div class="cta-band">
       <div class="vert-deco" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div><h2>Umów wizytę w dogodnej placówce</h2><p>Wybierz placówkę i wolny termin w kalendarzu online. Wolisz rozmowę? Zadzwoń na infolinię.</p></div>
+      <div><h2>Jedna infolinia dla wszystkich placówek</h2><p>Wszystkie nasze obiekty łączy jeden numer 665&nbsp;035&nbsp;035. Wizytę zarezerwujesz też online, w dogodnym dla siebie terminie.</p></div>
       <div class="cta-band__actions"><button class="btn btn--light" type="button" data-book>{{icon:calendar}}Umów wizytę</button><a class="btn btn--outline-light" href="tel:+48665035035">{{icon:phone}}665 035 035</a></div>
     </div>
   </div>
