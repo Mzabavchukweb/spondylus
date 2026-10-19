@@ -2508,3 +2508,8 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 }
 @media (max-width: 640px) { .onas4-hero h1 { max-width: none; } }
 @media (max-width: 400px) { .topbar__right > div:first-child { font-size: 12.5px; white-space: nowrap; } }
+/* Uzasadnienie na telefonie: karta nad treścią banera O nas, nie obok */
+@media (max-width: 960px) {
+  .why-on .onas4-hero { flex-direction: column; align-items: stretch; justify-content: flex-end; aspect-ratio: auto; min-height: 390px; padding-top: 0; }
+  .why-on .onas4-hero .why-note { margin: 12px 0 24px; text-align: left; }
+}
