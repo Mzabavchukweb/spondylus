@@ -18,7 +18,7 @@ Dostępność (WCAG 2.2 AA, axe-core, wszystkie strony na telefonie i komputerze
 npm run wcag
 ```
 
-## Dla wyszukiwarek AI
+## Tekstowa mapa treści
 
 `dist/llms.txt` (llmstxt.org) składa się sam z tytułów i opisów podstron, wpisów i danych placówek.
 

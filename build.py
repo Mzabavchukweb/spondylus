@@ -761,8 +761,8 @@ def rss(wpisy):
             f"{items}</channel></rss>\n")
 
 
-def llms(strony, wpisy):
-    """llms.txt (llmstxt.org): mapa treści dla wyszukiwarek i asystentów AI. Tylko fakty ze strony."""
+def mapa_tresci(strony, wpisy):
+    """llms.txt (standard llmstxt.org): tekstowa mapa treści serwisu. Tylko fakty ze strony."""
     czysty = lambda t: re.sub(r"\s*\|\s*Spondylus$", "", htmlmod.unescape(t))
     grupy = {"oferta": [], "kadra": [], "inne": []}
     for url, m in strony:
@@ -863,7 +863,7 @@ def build():
     (DIST / "sitemap.xml").write_text(sitemap(mapa), encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nDisallow: /api/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     (DIST / "feed.xml").write_text(rss(wpisy), encoding="utf-8")
-    (DIST / "llms.txt").write_text(llms(sorted(opisy), wpisy), encoding="utf-8")
+    (DIST / "llms.txt").write_text(mapa_tresci(sorted(opisy), wpisy), encoding="utf-8")
 
     bledy = sprawdz_linki(wyniki)
     print(f"zbudowano {len(wyniki)} stron ({len(wpisy)} wpisów), mapa strony: {len(mapa)} adresów")
