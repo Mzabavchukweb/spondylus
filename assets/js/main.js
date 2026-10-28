@@ -107,6 +107,8 @@
     const k = f.dataset.filter;
     $$('[data-group]').forEach(p => { p.hidden = !(k === 'wszyscy' || p.dataset.group.split(' ').includes(k)); });
   }));
+  /* /kadra/#lekarze (menu „Konsultacje lekarskie”) od razu pokazuje lekarzy */
+  if (location.hash === '#lekarze') { const l = filtry.find(f => f.dataset.filter === 'lekarz'); l && l.click(); }
 
   /* Spis treści podstrony: aktywna sekcja */
   const toc = $$('.toc a[href^="#"]');

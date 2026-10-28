@@ -1,22 +1,31 @@
-# Spondylus: prototyp nowej strony
+# spondylus.pl: strona statyczna (bez WordPressa)
 
-Statyczny prototyp strony spondylus.pl: strona główna i podstrony: O nas, kadra, profil specjalisty, kontakt, zaopatrzenie z NFZ oraz porównanie z obecną stroną (porownanie.html).
+Źródła w `src/`, gotowa strona w `dist/` (`python3 build.py`). Adresy 1:1 ze starej strony: `/slug/` = `dist/slug/index.html`.
 
-## Uruchomienie
+## Budowanie i podgląd
 
 ```
-python3 build.py
-python3 -m http.server 8765
+python3 build.py                     # składa dist/, sitemap.xml, robots.txt, .htaccess, feed.xml
+python3 narzedzia/kontrola_seo.py    # tytuły, opisy, H1, canonical, JSON-LD, obrazy
+python3 -m http.server 8790 --directory dist
 ```
 
-Następnie otwórz http://localhost:8765/index.html. Na macOS wystarczy dwukrotnie kliknąć `Otwórz prototyp.command`.
-Kalendarz rejestracji (ProAssist) działa tylko przez serwer http, nie z pliku.
+Build przerywa się na liście linków do nieistniejących stron (sprawdź wynik).
 
 ## Struktura
 
-- `src/pages/` treść podstron, z której `build.py` składa gotowe pliki HTML (nagłówek, stopka, panel dostępności)
-- `assets/css/style.css`, `assets/js/main.js` style i skrypty
-- `assets/img/` zdjęcia i ilustracje w formacie WebP
-- `narzedzia/` skrypty pomocnicze: jednolite portrety zespołu i koło „Zespół wokół pacjenta”
+- `src/pages/<slug>.html`: podstrony. Nagłówek w komentarzach: `title`, `desc`, `nav`, `okruszki` (`Nasza kadra=/kadra/ > Imię`),
+  `osoba` (`Imię | rola | placówka` → schema Physician), `og`, `noindex`.
+- `src/blog/<slug>.html`: wpisy (`h1`, `data`, `zmiana`, `og`). Lista na /blog/ i RSS składają się same.
+- `src/tresci/`: treści wyeksportowane ze starej strony (źródło dla `narzedzia/import_wp.py`, nie edytować).
+- `static/`: pliki kopiowane bez zmian (`api/kontakt.php`, favicon, PDF regulaminu pod starą ścieżką).
+- Przekierowania 301 i adresy usunięte (410): listy `PRZEKIEROWANIA` i `USUNIETE` w `build.py` → `dist/.htaccess`.
 
-Przełącznik „Uzasadnienie zmian” na stronie pokazuje przy każdej sekcji, co zmienia się względem obecnej strony i dlaczego.
+## Nowy specjalista albo wpis
+
+Skopiuj podobny plik w `src/pages` (profil) lub `src/blog` (wpis), zmień nagłówek i treść, dodaj kartę w `src/pages/kadra.html`,
+uruchom build i kontrolę SEO, wgraj `dist/`.
+
+## Pomiar
+
+GA4 `G-YJRR4EB0F8` i GTM `GTM-PB32PJXN` jak na starej stronie, Consent Mode v2 (domyślnie brak zgody, baner w stopce).

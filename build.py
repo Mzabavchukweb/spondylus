@@ -340,9 +340,8 @@ def head(m, url, jsonld):
 <link rel="icon" href="/assets/img/favicon.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/img/favicon.png">
 <link rel="alternate" type="application/rss+xml" title="Spondylus: poradniki" href="{SITE}/feed/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/onest-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css?v={WERSJA}">
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}
 gtag('consent','default',{{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500}});
@@ -593,6 +592,8 @@ def przetworz(body):
     body = re.sub(r"\{\{ilu:([\w-]+)\|([\w-]*)\}\}", ilu, body)
     body = re.sub(r"\{\{fotka:([\w/.-]+)\|([\w-]+)\}\}", fotka, body)
     body = re.sub(r"\{\{icon:([\w-]+)(?::([\w-]+))?\}\}", lambda m: icon(m.group(1), m.group(2) or ""), body)
+    # zdjęcie w karcie profilu to główny element ekranu: ładowane od razu, nie leniwie
+    body = re.sub(r'(<div class="profile__foto">\s*<img[^>]*?) loading="lazy"', r'\1 fetchpriority="high"', body)
     body = re.sub(r"\{\{tresc:([\w-]+)\}\}", lambda m: (ROOT / "src/tresci" / f"{m.group(1)}.html").read_text(encoding="utf-8"), body)
     return body
 
@@ -751,6 +752,11 @@ def build():
     for f in DIST.iterdir():  # czyszczenie zawartości, nie folderu: lokalny serwer podglądu działa dalej
         shutil.rmtree(f) if f.is_dir() else f.unlink()
     shutil.copytree(ROOT / "assets", DIST / "assets", ignore=shutil.ignore_patterns("src", ".DS_Store"))
+    css = (DIST / "assets/css/style.css").read_text(encoding="utf-8")  # lżejszy CSS: bez komentarzy i zbędnych odstępów
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s+", " ", css)
+    css = re.sub(r"\s*([{};,>])\s*", r"\1", css).replace(";}", "}")
+    (DIST / "assets/css/style.css").write_text(css.strip(), encoding="utf-8")
     for f in (ROOT / "static").glob("*") if (ROOT / "static").exists() else []:
         (shutil.copytree if f.is_dir() else shutil.copy2)(f, DIST / f.name)
 
