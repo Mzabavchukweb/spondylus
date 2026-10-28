@@ -20,9 +20,29 @@
 
   /* Menu mobilne */
   const drawer = $('#drawer');
-  const drawerSet = (o) => { drawer.classList.toggle('is-open', o); drawer.setAttribute('aria-hidden', String(!o)); document.body.style.overflow = o ? 'hidden' : ''; };
+  let drawerOd = null;
+  const drawerSet = (o) => {
+    drawer.classList.toggle('is-open', o); drawer.setAttribute('aria-hidden', String(!o)); document.body.style.overflow = o ? 'hidden' : '';
+    if (o) { drawerOd = document.activeElement; setTimeout(() => { const z = $('[data-drawer-close].burger', drawer) || $('a, button', drawer); z && z.focus(); }, 50); }
+    else if (drawerOd) { drawerOd.focus(); drawerOd = null; }
+  };
   $$('[data-drawer-open]').forEach(b => b.addEventListener('click', () => drawerSet(true)));
   $$('[data-drawer-close]').forEach(b => b.addEventListener('click', () => drawerSet(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && drawer.classList.contains('is-open')) drawerSet(false); });
+
+  /* WCAG 2.1.2 / 2.4.3: Tab nie wychodzi z otwartego okna modalnego (menu na telefonie, rejestracja) */
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const okno = [...document.querySelectorAll('.drawer.is-open [role="dialog"], .booking.is-open [role="dialog"]')].pop();
+    if (!okno) return;
+    const el = [...okno.querySelectorAll('a[href], button:not([disabled]), iframe, input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+      .filter(x => x.offsetParent !== null && !x.closest('[hidden]'));
+    if (!el.length) return;
+    const [pierwszy, ostatni] = [el[0], el[el.length - 1]];
+    if (e.shiftKey && document.activeElement === pierwszy) { e.preventDefault(); ostatni.focus(); }
+    else if (!e.shiftKey && document.activeElement === ostatni) { e.preventDefault(); pierwszy.focus(); }
+    else if (!okno.contains(document.activeElement)) { e.preventDefault(); pierwszy.focus(); }
+  });
 
   /* Rejestracja online: prawdziwe kalendarze ProAssist dla każdej placówki */
   const PLACOWKI = {

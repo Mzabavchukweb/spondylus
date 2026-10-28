@@ -1,5 +1,5 @@
 <!-- title: Tomasz Gnus, fizjoterapeuta Szczecin Pogodno | Spondylus -->
-<!-- desc: Tomasz Gnus, fizjoterapeuta z ponad 20-letnim doświadczeniem. Rehabilitacja po endoprotezoplastyce, rekonstrukcji ACL i urazach. Spondylus Szczecin Pogodno. -->
+<!-- desc: Tomasz Gnus, fizjoterapeuta w Szczecinie z ponad 20-letnim doświadczeniem. Rehabilitacja ortopedyczna, pooperacyjna, urazy, bóle kręgosłupa i wady postawy. -->
 <!-- nav: kadra -->
 <!-- okruszki: Nasza kadra=/kadra/ > Tomasz Gnus -->
 <!-- osoba: Tomasz Gnus | Fizjoterapeuta | szczecin-ul -->
@@ -7,83 +7,139 @@
 
 <section class="page-hero" style="padding-bottom:40px">
   <div class="wrap">
-    <nav class="crumbs" aria-label="Okruszki"><a href="index.html">Strona główna</a><span class="crumbs__sep" aria-hidden="true">/</span><a href="kadra.html">Nasza kadra</a><span class="crumbs__sep" aria-hidden="true">/</span><span aria-current="page">Tomasz Gnus</span></nav>
+    {{okruszki}}
   </div>
 </section>
 
-<section style="padding-bottom:var(--section)" data-why>
-  {{why:1|Profil, który odpowiada na pytania przed wizytą|Zdjęcie i opis w jednej kolumnie, dalej bardzo długi tekst. Gdzie przyjmuje i jak się zapisać, jest dopiero w połowie strony. Na końcu strony kalendarz ma 600 px szerokości i wychodzi poza ekran telefonu.|Karta specjalisty przypięta z boku: zdjęcie, specjalizacja, doświadczenie, placówka i przycisk zapisu od razu do kalendarza tej placówki. Treść podzielona na krótkie bloki, a pytania i odpowiedzi rozwijane.|Zapis jest zawsze w zasięgu jednego kliknięcia, niezależnie od tego, ile pacjent przeczyta. Sekcja pytań zostaje też jako dane strukturalne FAQ dla Google.}}
+<section style="padding-bottom:var(--section)">
   <div class="wrap profile">
-    <aside class="profile__card reveal">
+    <aside class="profile__card">
       <div class="profile__foto">{{portret:tomasz-gnus}}</div>
       <div class="profile__card-body">
         <div><div class="person__role" style="margin-top:0">Fizjoterapeuta</div><h1 style="font-size:30px;margin-top:4px">Tomasz Gnus</h1></div>
-        <div class="profile__meta">
-          <div>{{icon:star}}<span>Ponad 20 lat pracy z pacjentami</span></div>
-          <div>{{icon:spine}}<span>Rehabilitacja ortopedyczna, pooperacyjna, pourazowa i przeciążeniowa</span></div>
-          <div>{{icon:pin}}<span>Spondylus Szczecin Pogodno<br>ul. Unii Lubelskiej 2B/U1</span></div>
-        </div>
-        <button class="btn btn--primary" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button>
-        <a class="btn btn--ghost" href="tel:+48665035035">{{icon:phone}}665 035 035, wew. 2</a>
+        <div class="profile__meta"><div>{{icon:pin}}<span>Spondylus Szczecin Pogodno<br>ul. Unii Lubelskiej 2B</span></div></div>
+        <button class="btn btn--primary" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="tel:+48665035035">{{icon:phone}}665 035 035, wew. 2</a>
       </div>
     </aside>
-
     <div class="prose">
-      <p style="font-size:21px;color:var(--ink);line-height:1.5">Od ponad 20 lat pomaga pacjentom wracać do sprawności, zmniejszać ból i bezpiecznie odzyskiwać aktywność w codziennym życiu, pracy i sporcie.</p>
-      <p>Specjalizuje się w kompleksowej rehabilitacji ortopedycznej: po operacjach, urazach i kontuzjach, przy przeciążeniach oraz przewlekłym bólu kręgosłupa i stawów. W pracy nie opiera się na schematach. Każdy pacjent to inna historia, inne ciało i inne cele, dlatego terapia jest dobierana do stanu zdrowia, etapu leczenia i oczekiwań.</p>
-      <div class="tags"><span>Endoprotezoplastyka</span><span>Rekonstrukcja ACL</span><span>Łąkotki</span><span>Urazy sportowe</span><span>Dyskopatia</span><span>Rwa kulszowa</span><span>Zamrożony bark</span><span>Wady postawy</span></div>
-
-      <h2>Z czym przyjść na wizytę</h2>
-      <ul>
-        <li>stan po endoprotezoplastyce biodra lub kolana,</li>
-        <li>stan po rekonstrukcji ACL, innym zabiegu więzadłowym lub szyciu łąkotki,</li>
-        <li>skręcenie, zwichnięcie, złamanie lub uraz sportowy,</li>
-        <li>naderwanie mięśnia lub ścięgna,</li>
-        <li>ból kręgosłupa, dyskopatia, rwa kulszowa,</li>
-        <li>ból barku, kolana, biodra, łokcia lub stawu skokowego,</li>
-        <li>zamrożony bark, łokieć tenisisty, zmiany zwyrodnieniowe,</li>
-        <li>wady postawy i zaburzenia balansu ciała.</li>
-      </ul>
-
-      <h2>Obszary pracy</h2>
-      <details class="acc" open><summary><span class="ico">{{icon:spine}}</span>Rehabilitacja pooperacyjna{{icon:chev:chev}}</summary><div class="acc__body"><p>Jeden z głównych obszarów pracy: pacjenci po endoprotezoplastyce biodra lub kolana, rekonstrukcjach więzadeł, zabiegach w obrębie łąkotek i innych procedurach ortopedycznych.</p><p>Celem jest stopniowy i bezpieczny powrót do sprawności: ruchomość stawu, siła mięśniowa, stabilizacja i nauka prawidłowego obciążania kończyny. Plan zależy od rodzaju zabiegu, zaleceń lekarza i etapu gojenia.</p></div></details>
-      <details class="acc"><summary><span class="ico">{{icon:run}}</span>Rehabilitacja po urazach i kontuzjach{{icon:chev:chev}}</summary><div class="acc__body"><p>Skręcenia, zwichnięcia, złamania, naderwania mięśni i ścięgien oraz urazy sportowe, zarówno u osób aktywnych rekreacyjnie, jak i u sportowców.</p><p>Terapia obejmuje ocenę funkcjonalną, pracę manualną, ćwiczenia, odbudowę kontroli ruchu i stopniowe zwiększanie obciążeń, a także profilaktykę nawrotów.</p></div></details>
-      <details class="acc"><summary><span class="ico">{{icon:scan}}</span>Bóle kręgosłupa i schorzenia przewlekłe{{icon:chev:chev}}</summary><div class="acc__body"><p>Przewlekły ból kręgosłupa, dyskopatie, rwa kulszowa, zmiany zwyrodnieniowe i zespoły przeciążeniowe. Fizjoterapia może obejmować terapię manualną, ćwiczenia indywidualne, stabilizację i naukę prawidłowych wzorców ruchowych.</p></div></details>
-      <details class="acc"><summary><span class="ico">{{icon:users}}</span>Wady postawy i balans strukturalny ciała{{icon:chev:chev}}</summary><div class="acc__body"><p>Ocena ustawienia ciała, analiza ograniczeń ruchowych, terapia tkanek i ćwiczenia wspierające prawidłową postawę, dobrane do wieku, aktywności i stylu życia.</p></div></details>
-
-      <h2>Jak przygotować się do wizyty</h2>
-      <p>Na pierwszą wizytę warto zabrać dokumentację dotyczącą aktualnego problemu. Pomaga to ocenić stan, dobrać bezpieczne metody i zaplanować kolejne etapy.</p>
-      <ul>
-        <li>wyniki badań obrazowych: RTG, USG, rezonans lub tomografia,</li>
-        <li>wypisy ze szpitala i opisy przebytych zabiegów,</li>
-        <li>zalecenia od lekarza prowadzącego lub ortopedy,</li>
-        <li>informacje o przyjmowanych lekach i chorobach przewlekłych,</li>
-        <li>wygodny strój, w którym można ćwiczyć.</li>
-      </ul>
-
-      <h2>Najczęstsze pytania</h2>
-      <details class="acc"><summary>Czy na wizytę trzeba mieć skierowanie?{{icon:chev:chev}}</summary><div class="acc__body" style="padding-left:22px"><p>W przypadku wizyty prywatnej skierowanie zwykle nie jest wymagane. Warto jednak zabrać dokumentację medyczną, wyniki badań i zalecenia lekarza.</p></div></details>
-      <details class="acc"><summary>Czy można zgłosić się po urazie sportowym?{{icon:chev:chev}}</summary><div class="acc__body" style="padding-left:22px"><p>Tak. Terapia może pomóc po skręceniach, zwichnięciach, złamaniach, naderwaniach mięśni i ścięgien oraz innych kontuzjach. Plan dobierany jest do rodzaju urazu i celu pacjenta.</p></div></details>
-      <details class="acc"><summary>Czy fizjoterapia może pomóc przy bólu kręgosłupa?{{icon:chev:chev}}</summary><div class="acc__body" style="padding-left:22px"><p>Fizjoterapia może być elementem postępowania przy bólach kręgosłupa, dyskopatii, rwie kulszowej i przeciążeniach. Terapia jest dobierana po wywiadzie i ocenie funkcjonalnej.</p></div></details>
-      <details class="acc"><summary>Gdzie przyjmuje Tomasz Gnus?{{icon:chev:chev}}</summary><div class="acc__body" style="padding-left:22px"><p>W placówce Spondylus Szczecin Pogodno przy ul. Unii Lubelskiej 2B/U1.</p></div></details>
+<p><strong>Tomasz Gnus</strong> od ponad 20 lat pomaga pacjentom wracać do sprawności, zmniejszać dolegliwości bólowe i bezpiecznie odzyskiwać aktywność w codziennym życiu, pracy oraz sporcie.</p>
+<p>Specjalizuje się w kompleksowej rehabilitacji ortopedycznej, w tym w pracy z pacjentami po operacjach, urazach, kontuzjach, przeciążeniach oraz przewlekłych dolegliwościach bólowych kręgosłupa i stawów. Wieloletnia praktyka kliniczna pozwala mu trafnie ocenić problem i dobrać terapię do indywidualnych potrzeb pacjenta.</p>
+<p>W pracy terapeutycznej nie opiera się na schematach. Każdy pacjent to inna historia, inne ciało i inne cele, dlatego terapia jest dobierana indywidualnie do stanu zdrowia, etapu leczenia i oczekiwań pacjenta.</p>
+<h2>Umów wizytę fizjoterapeutyczną</h2>
+<p><strong>Miejsce przyjęć:</strong> Spondylus Szczecin Pogodno – ul. Unii Lubelskiej 2B/U1<br/>
+<strong>Rejestracja telefoniczna:</strong> <a href="tel:+48665035035">665 035 035</a></p>
+<p><a href="#rejestracja"> Umów wizytę online </a></p>
+<h2>Zakres rehabilitacji ortopedycznej</h2>
+<p>Tomasz Gnus prowadzi rehabilitację pacjentów ortopedycznych po zabiegach operacyjnych, urazach, przeciążeniach oraz w przebiegu schorzeń przewlekłych. Terapia może obejmować pracę nad zmniejszeniem bólu, poprawą zakresu ruchu, odbudową siły mięśniowej, stabilizacją oraz bezpiecznym powrotem do codziennej aktywności.</p>
+<ul>
+<li>rehabilitacja po endoprotezoplastyce biodra i kolana,</li>
+<li>rehabilitacja po rekonstrukcji więzadeł, w tym ACL,</li>
+<li>rehabilitacja po szyciu łąkotek,</li>
+<li>terapia po skręceniach, zwichnięciach i złamaniach,</li>
+<li>rehabilitacja po naderwaniach mięśni i ścięgien,</li>
+<li>fizjoterapia po urazach sportowych i przeciążeniach,</li>
+<li>terapia zespołów bólowych kręgosłupa,</li>
+<li>fizjoterapia przy dyskopatii i rwie kulszowej,</li>
+<li>rehabilitacja przy zmianach zwyrodnieniowych stawów,</li>
+<li>terapia przy zamrożonym barku i łokciu tenisisty,</li>
+<li>praca z wadami postawy i zaburzeniami balansu strukturalnego ciała.</li>
+</ul>
+<h2>Rehabilitacja pooperacyjna</h2>
+<p>Rehabilitacja pooperacyjna jest jednym z głównych obszarów pracy Tomasza Gnusa. Dotyczy między innymi pacjentów po endoprotezoplastyce stawu biodrowego lub kolanowego, rekonstrukcjach więzadeł, zabiegach w obrębie łąkotek oraz innych procedurach ortopedycznych.</p>
+<p>Celem terapii jest stopniowy i bezpieczny powrót do sprawności, poprawa ruchomości stawu, odbudowa siły mięśniowej, praca nad stabilizacją oraz nauka prawidłowego obciążania kończyny. Plan rehabilitacji jest dostosowany do rodzaju zabiegu, zaleceń lekarza oraz aktualnego etapu gojenia.</p>
+<h2>Rehabilitacja po urazach i kontuzjach</h2>
+<p>Tomasz Gnus pracuje z pacjentami po skręceniach, zwichnięciach, złamaniach, naderwaniach mięśni i ścięgien oraz urazach sportowych. Rehabilitacja może być pomocna zarówno u osób aktywnych rekreacyjnie, jak i u sportowców, którzy chcą wrócić do treningów w sposób bezpieczny i kontrolowany.</p>
+<p>Terapia obejmuje ocenę funkcjonalną, pracę manualną, ćwiczenia, odbudowę kontroli ruchu oraz stopniowe zwiększanie obciążeń. Ważnym elementem jest również profilaktyka nawrotów kontuzji.</p>
+<h2>Bóle kręgosłupa i schorzenia przewlekłe</h2>
+<p>W gabinecie Tomasz Gnus zajmuje się również pacjentami z przewlekłymi dolegliwościami bólowymi kręgosłupa, dyskopatiami, rwą kulszową, zmianami zwyrodnieniowymi stawów oraz zespołami przeciążeniowymi.</p>
+<p>Fizjoterapia może obejmować terapię manualną, ćwiczenia indywidualne, pracę nad stabilizacją, poprawą ruchomości oraz naukę prawidłowych wzorców ruchowych. Celem jest zmniejszenie dolegliwości i poprawa codziennego funkcjonowania pacjenta.</p>
+<h2>Wady postawy i balans strukturalny ciała</h2>
+<p>Tomasz Gnus prowadzi również terapię ukierunkowaną na poprawę postawy ciała i przywracanie balansu strukturalnego. Praca może obejmować ocenę ustawienia ciała, analizę ograniczeń ruchowych, terapię tkanek oraz ćwiczenia wspierające prawidłową postawę.</p>
+<p>Terapia dobierana jest indywidualnie, z uwzględnieniem wieku, aktywności, stylu życia i objawów pacjenta.</p>
+<h2>Indywidualne podejście do pacjenta</h2>
+<p>W pracy z pacjentem Tomasz Gnus łączy różne metody terapeutyczne, aby jak najlepiej dopasować terapię do konkretnego problemu. Każda wizyta poprzedzona jest rozmową, oceną funkcjonalną i analizą objawów.</p>
+<p>Plan terapii zależy od aktualnego stanu zdrowia, rodzaju urazu lub schorzenia, etapu leczenia, poziomu aktywności oraz celu pacjenta — od zmniejszenia bólu, przez powrót do pracy, aż po powrót do sportu.</p>
+<h2>Z czym zgłosić się do Tomasza Gnusa?</h2>
+<p>Wizyta może być wskazana u osób po operacjach ortopedycznych, po urazach, z bólem kręgosłupa lub stawów, ograniczeniem ruchomości, osłabieniem mięśniowym oraz problemami z powrotem do aktywności.</p>
+<ul>
+<li>stan po endoprotezoplastyce biodra lub kolana,</li>
+<li>stan po rekonstrukcji ACL lub innym zabiegu więzadłowym,</li>
+<li>stan po szyciu łąkotki,</li>
+<li>skręcenie, zwichnięcie, złamanie lub uraz sportowy,</li>
+<li>naderwanie mięśnia lub ścięgna,</li>
+<li>ból kręgosłupa, dyskopatia, rwa kulszowa,</li>
+<li>ból barku, kolana, biodra, łokcia lub stawu skokowego,</li>
+<li>zamrożony bark, łokieć tenisisty, zmiany zwyrodnieniowe,</li>
+<li>wady postawy i zaburzenia balansu ciała,</li>
+<li>potrzeba bezpiecznego powrotu do sportu lub codziennej aktywności.</li>
+</ul>
+<h2>Jak przygotować się do wizyty?</h2>
+<p>Na pierwszą wizytę warto zabrać dokumentację medyczną dotyczącą aktualnego problemu. Pomaga to lepiej ocenić stan pacjenta, dobrać bezpieczne metody terapii i zaplanować kolejne etapy rehabilitacji.</p>
+<ul>
+<li>wyniki badań obrazowych: RTG, USG, rezonans magnetyczny lub tomografia komputerowa,</li>
+<li>wypisy ze szpitala i opisy przebytych zabiegów operacyjnych,</li>
+<li>zalecenia od lekarza prowadzącego lub ortopedy,</li>
+<li>informacje o przyjmowanych lekach i chorobach przewlekłych,</li>
+<li>wygodny strój umożliwiający ocenę ruchu i wykonanie ćwiczeń,</li>
+<li>informacje o celu terapii, np. powrót do pracy, sportu lub konkretnej aktywności.</li>
+</ul>
+<h2>Najważniejsze informacje</h2>
+<table>
+<tbody>
+<tr>
+<td><strong>Specjalista</strong></td>
+<td>Tomasz Gnus</td>
+</tr>
+<tr>
+<td><strong>Zawód</strong></td>
+<td>fizjoterapeuta</td>
+</tr>
+<tr>
+<td><strong>Doświadczenie</strong></td>
+<td>ponad 20 lat pracy z pacjentami</td>
+</tr>
+<tr>
+<td><strong>Główna specjalizacja</strong></td>
+<td>rehabilitacja ortopedyczna, pooperacyjna, pourazowa i przeciążeniowa</td>
+</tr>
+<tr>
+<td><strong>Zakres</strong></td>
+<td>endoprotezoplastyka, rekonstrukcje więzadeł, urazy sportowe, bóle kręgosłupa, dyskopatie, rwa kulszowa, wady postawy</td>
+</tr>
+<tr>
+<td><strong>Miasto</strong></td>
+<td>Szczecin</td>
+</tr>
+<tr>
+<td><strong>Miejsce przyjęć</strong></td>
+<td>Spondylus Szczecin Pogodno – ul. Unii Lubelskiej 2B/U1</td>
+</tr>
+<tr>
+<td><strong>Rejestracja</strong></td>
+<td><a href="tel:+48665035035">665 035 035</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Najczęstsze pytania</h2>
+<h3>Czy Tomasz Gnus prowadzi rehabilitację po operacjach ortopedycznych?</h3>
+<p>Tak, Tomasz Gnus specjalizuje się w rehabilitacji ortopedycznej, w tym po endoprotezoplastyce biodra i kolana, rekonstrukcji więzadeł oraz zabiegach w obrębie łąkotek.</p>
+<h3>Czy można zgłosić się po urazie sportowym?</h3>
+<p>Tak, terapia może być pomocna po skręceniach, zwichnięciach, złamaniach, naderwaniach mięśni i ścięgien oraz innych kontuzjach sportowych. Plan rehabilitacji dobierany jest do rodzaju urazu i celu pacjenta.</p>
+<h3>Czy fizjoterapia może pomóc przy bólu kręgosłupa?</h3>
+<p>Fizjoterapia może być elementem postępowania przy bólach kręgosłupa, dyskopatii, rwie kulszowej i przeciążeniach. Terapia jest dobierana po wywiadzie i ocenie funkcjonalnej pacjenta.</p>
+<h3>Czy Tomasz Gnus pracuje z pacjentami po endoprotezie?</h3>
+<p>Tak, prowadzi rehabilitację pacjentów po endoprotezoplastyce stawu biodrowego i kolanowego. Celem terapii jest poprawa ruchomości, siły, stabilizacji i bezpieczny powrót do codziennych aktywności.</p>
+<h3>Czy na wizytę trzeba mieć skierowanie?</h3>
+<p>W przypadku wizyty prywatnej skierowanie zwykle nie jest wymagane. Warto jednak zabrać dokumentację medyczną, wyniki badań oraz zalecenia lekarza, jeśli pacjent je posiada.</p>
+<h3>Gdzie przyjmuje Tomasz Gnus w Szczecinie?</h3>
+<p>Tomasz Gnus przyjmuje w placówce Spondylus Szczecin Pogodno przy ul. Unii Lubelskiej 2B/U1.</p>
+<h3>Jak umówić wizytę?</h3>
+<p>Wizytę można umówić telefonicznie pod numerem <a href="tel:+48665035035">665 035 035</a> albo korzystając z formularza rejestracji online poniżej.</p>
+<h2>Rejestracja online</h2>
+<p>Wybierz dogodny termin wizyty fizjoterapeutycznej:</p>
+<h2>Umów wizytę u fizjoterapeuty w Szczecinie</h2>
+<p>Rejestracja telefoniczna: <strong><a href="tel:+48665035035">665 035 035</a></strong><br/>
+Miejsce przyjęć: <strong>Spondylus Szczecin Pogodno – ul. Unii Lubelskiej 2B/U1</strong></p>
     </div>
   </div>
 </section>
-
-<section style="padding-bottom:0">
-  <div class="wrap">
-    <div class="cta-band">
-      <div class="vert-deco" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div><h2>Umów wizytę u Tomasza Gnusa</h2><p>Kalendarz online placówki na Pogodnie albo telefon: 665 035 035, wew. 2.</p></div>
-      <div class="cta-band__actions"><button class="btn btn--light" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button><a class="btn btn--outline-light" href="tel:+48665035035">{{icon:phone}}Zadzwoń</a></div>
-    </div>
-  </div>
-</section>
-
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Czy na wizytę trzeba mieć skierowanie?","acceptedAnswer":{"@type":"Answer","text":"W przypadku wizyty prywatnej skierowanie zwykle nie jest wymagane. Warto jednak zabrać dokumentację medyczną, wyniki badań i zalecenia lekarza."}},
-{"@type":"Question","name":"Czy można zgłosić się po urazie sportowym?","acceptedAnswer":{"@type":"Answer","text":"Tak. Terapia może pomóc po skręceniach, zwichnięciach, złamaniach, naderwaniach mięśni i ścięgien oraz innych kontuzjach."}},
-{"@type":"Question","name":"Czy fizjoterapia może pomóc przy bólu kręgosłupa?","acceptedAnswer":{"@type":"Answer","text":"Fizjoterapia może być elementem postępowania przy bólach kręgosłupa, dyskopatii, rwie kulszowej i przeciążeniach."}},
-{"@type":"Question","name":"Gdzie przyjmuje Tomasz Gnus?","acceptedAnswer":{"@type":"Answer","text":"W placówce Spondylus Szczecin Pogodno przy ul. Unii Lubelskiej 2B/U1."}}]}
-</script>

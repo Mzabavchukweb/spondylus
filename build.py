@@ -605,6 +605,18 @@ def przetworz(body):
 ZNANE = set()
 
 
+def nowa_karta(html):
+    """Linki otwierane w nowej karcie mówią o tym czytnikowi ekranu (WCAG 3.2.5, technika G201)."""
+    def a(m):
+        tag, tresc = m.group(1), m.group(2)
+        if "nowej karcie" in tag + tresc:
+            return m.group(0)
+        if 'aria-label="' in tag:
+            return re.sub(r'aria-label="([^"]*)"', r'aria-label="\1 (otwiera się w nowej karcie)"', tag, count=1) + tresc + "</a>"
+        return tag + tresc + '<span class="sr-only"> (otwiera się w nowej karcie)</span></a>'
+    return re.sub(r'(<a\b[^>]*target="_blank"[^>]*>)(.*?)</a>', a, html, flags=re.S)
+
+
 def adresy_absolutne(html):
     """Linki prototypu (x.html, assets/...) na adresy produkcyjne (/x/, /assets/...)."""
     def link(m):
@@ -637,7 +649,7 @@ def zapisz(url, html):
 def strona(m, url, body):
     jsonld = dane_strukturalne(m, url, body)
     html = head(m, url, jsonld) + header(m.get("nav", "")) + '<main id="tresc">' + body + "</main>" + footer() + "\n</body>\n</html>\n"
-    html = twarde_spacje(html)
+    html = twarde_spacje(nowa_karta(html))
     return adresy_absolutne(html)
 
 

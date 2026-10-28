@@ -12,26 +12,28 @@ const EKRANY = { telefon: { width: 390, height: 844 }, komputer: { width: 1366, 
 
 const br = await chromium.launch({ channel: 'chrome' });
 const zbior = new Map();
-for (const [ekran, vp] of Object.entries(EKRANY)) {
-  const ctx = await br.newContext({ viewport: vp });
-  await ctx.route(/googletagmanager|google-analytics/, r => r.abort());
-  for (const url of adresy) {
-    const p = await ctx.newPage();
-    let wynik;
-    try {
-    await p.goto(BAZA + url, { waitUntil: 'load' });
+const sprawdz = async (ctx, ekran, url) => {
+  const p = await ctx.newPage();
+  try {
+    await p.goto(BAZA + url, { waitUntil: 'domcontentloaded', timeout: 20000 });
     await p.addScriptTag({ content: AXE });
-    wynik = await p.evaluate(async () => (await axe.run(document, {
+    const wynik = await p.evaluate(async () => (await axe.run(document, {
       runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'] },
     })).violations.map(v => ({ id: v.id, wplyw: v.impact, opis: v.help, wezly: v.nodes.map(n => n.target.join(' ')) })));
-    } catch (e) { console.log(`błąd ${ekran} ${url}: ${e.message.split('\n')[0]}`); await p.close().catch(() => {}); continue; }
     for (const v of wynik) {
       const k = `${v.id} (${v.wplyw}): ${v.opis}`;
       if (!zbior.has(k)) zbior.set(k, new Set());
       v.wezly.slice(0, 3).forEach(w => zbior.get(k).add(`${ekran} ${url} ${w}`));
     }
-    await p.close();
-  }
+  } catch (e) { console.log(`błąd ${ekran} ${url}: ${e.message.split('\n')[0]}`); }
+  await p.close().catch(() => {});
+};
+for (const [ekran, vp] of Object.entries(EKRANY)) {
+  const ctx = await br.newContext({ viewport: vp });
+  await ctx.route(/googletagmanager|google-analytics|proassist/, r => r.abort());
+  const kolejka = [...adresy];
+  await Promise.all(Array.from({ length: 4 }, async () => { while (kolejka.length) await sprawdz(ctx, ekran, kolejka.shift()); }));
+  console.log(`${ekran}: sprawdzono ${adresy.length} stron`);
   await ctx.close();
 }
 await br.close();

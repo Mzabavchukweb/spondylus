@@ -10,7 +10,17 @@ python3 narzedzia/kontrola_seo.py    # tytuły, opisy, H1, canonical, JSON-LD, o
 python3 -m http.server 8790 --directory dist
 ```
 
-Build przerywa się na liście linków do nieistniejących stron (sprawdź wynik).
+Build wypisuje linki do nieistniejących stron (lista ma być pusta).
+
+Dostępność (WCAG 2.2 AA, axe-core, wszystkie strony na telefonie i komputerze; wymaga `npm install` i podglądu na :8790):
+
+```
+npm run wcag
+```
+
+## Dla wyszukiwarek AI
+
+`dist/llms.txt` (llmstxt.org) składa się sam z tytułów i opisów podstron, wpisów i danych placówek.
 
 ## Struktura
 

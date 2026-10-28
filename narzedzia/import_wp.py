@@ -115,6 +115,7 @@ INNE = {
 }
 
 KADRA = {  # slug: (imię i nazwisko, rola, placówka, portret w assets/img/portrety albo None)
+    "tomasz-gnus": ("Tomasz Gnus", "Fizjoterapeuta", "szczecin-ul", "tomasz-gnus"),
     "adam-kaminski": ("Adam Kamiński", "Ortopeda, dr hab. n. med.", "szczecin-ul", "adam-kaminski"),
     "dawid-pacek": ("Dawid Pacek", "Ortopeda, dr n. med.", "szczecin-ul", None),
     "rafal-przybylski": ("Rafał Przybylski", "Ortopeda, dr n. med.", "szczecin-ul", None),
@@ -212,6 +213,7 @@ def czysty_opis(t):
     t = re.sub(r"\s*" + emoji + r"\s*(?=[A-ZĄĆĘŁŃÓŚŹŻ])", ". ", t)  # emotka między zdaniami = koniec zdania
     t = re.sub(r"\s*" + emoji + r"\s*", " ", t)
     t = re.sub(r"\s+", " ", t).strip()
+    t = t.replace(" – ", ", ").replace(" - ", ", ")  # myślnik jako przecinek (zasady tekstów)
     t = re.sub(r"([.?!])(\s*\.)+", r"\1", t)
     t = t.replace("\u043a\u0441", "ks")  # cyrylica w starym opisie („haluксами”)
     if t and t[-1] not in ".?!":
@@ -223,10 +225,12 @@ def czysty_opis(t):
 
 def cta(tel="+48665035035", tel_txt="665 035 035", book=""):
     b = f' data-book="{book}"' if book else " data-book"
-    return f'''<section class="cta-band">
+    return f'''<section style="padding-bottom:0">
   <div class="wrap">
-    <div><h2>Umów wizytę</h2><p>Rejestracja dobierze specjalistę i najbliższy termin w Szczecinie lub Koszalinie.</p></div>
-    <div class="cta-band__actions"><button class="btn btn--primary" type="button"{b}>{{{{icon:calendar}}}}Umów wizytę</button><a class="btn btn--ghost" href="tel:{tel}">{{{{icon:phone}}}}{tel_txt}</a></div>
+    <div class="cta-band">
+      <div><h2>Umów wizytę</h2><p>Rejestracja dobierze specjalistę i najbliższy termin w Szczecinie lub Koszalinie.</p></div>
+      <div class="cta-band__actions"><a class="btn btn--light" href="tel:{tel}">{{{{icon:phone}}}}{tel_txt}</a><button class="btn btn--outline-light" type="button"{b}>{{{{icon:calendar}}}}Umów wizytę</button></div>
+    </div>
   </div>
 </section>'''
 
