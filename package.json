@@ -1,0 +1,7 @@
+{
+  "name": "spondylus-strona",
+  "private": true,
+  "description": "Narzędzia kontroli strony spondylus.pl (WCAG). Strona sama nie wymaga Node.",
+  "scripts": { "wcag": "node narzedzia/wcag.mjs" },
+  "devDependencies": { "axe-core": "4.10.3", "playwright": "1.56.1" }
+}

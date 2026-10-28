@@ -27,7 +27,7 @@ USLUGI = {
         h1="Rehabilitacja w Szczecinie i Koszalinie",
         lead="Fizjoterapia ortopedyczna, pourazowa, pooperacyjna i neurologiczna. Terapia dobrana po diagnostyce, metody manualne i fizykalne.",
         title="Rehabilitacja Szczecin: poradnia rehabilitacyjna | Spondylus",
-        desc="Rehabilitacja w Spondylus: terapia manualna, kinezyterapia, fizykoterapia i masaż. Program dobrany po diagnostyce. Szczecin i Koszalin, od 1989 roku.",
+        desc="Rehabilitacja w Spondylus: terapia manualna, kinezyterapia i fizykoterapia. Program dobrany po diagnostyce. Fizjoterapia w Szczecinie i Koszalinie od 1989 roku.",
         okruszki="Oferta=/oferta/ > Rehabilitacja", book=""),
     "zakres-uslug-diagnostycznych": dict(
         h1="Diagnostyka wad postawy i aparatu ruchu",
@@ -36,10 +36,10 @@ USLUGI = {
         desc="Komputerowe badanie stóp, diagnostyka postawy ciała, analiza chodu i badania dla sportowców. Diagnostyka dzieci i dorosłych w Spondylus w Szczecinie.",
         okruszki="Oferta=/oferta/ > Diagnostyka", book=""),
     "medycyna-sportowa": dict(
-        h1="Medycyna sportowa w Szczecinie i Koszalinie",
+        h1="Poradnia medycyny sportowej",
         lead="Diagnostyka i badania dla osób aktywnych, leczenie kontuzji i bezpieczny powrót do treningu.",
-        title="Medycyna sportowa Szczecin i Koszalin: poradnia | Spondylus",
-        desc="Poradnia medycyny sportowej Spondylus: diagnostyka sportowa, badania dla aktywnych, leczenie kontuzji i powrót do treningu. Szczecin i Koszalin.",
+        title="Medycyna sportowa Szczecin: poradnia | Spondylus",
+        desc="Poradnia medycyny sportowej Spondylus: diagnostyka sportowa, badania dla osób aktywnych, leczenie kontuzji i bezpieczny powrót do treningu.",
         okruszki="Oferta=/oferta/ > Medycyna sportowa", book=""),
     "medycyna-estetyczna": dict(
         h1="Medycyna estetyczna w Spondylus",

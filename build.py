@@ -155,6 +155,7 @@ def header(nav):
       <a href="index.html#pierwsza-wizyta">Pierwsza wizyta</a>
       <a href="kadra.html"{cur("kadra")}>Nasza kadra</a>
       <a href="refundacja.html"{cur("nfz")}>Refundacja NFZ</a>
+      <a href="blog.html"{cur("blog")}>Poradniki</a>
       <a href="o-nas.html"{cur("onas")}>O nas</a>
       <a href="kontakt.html"{cur("kontakt")}>Kontakt</a>
     </nav>
@@ -187,8 +188,10 @@ def header(nav):
         <a class="d-link" href="kadra.html">Nasza kadra {icon("chev-right")}</a>
         <a class="d-link" href="refundacja.html">Refundacja NFZ {icon("chev-right")}</a>
         <a class="d-link" href="index.html#opinie">Opinie pacjentów {icon("chev-right")}</a>
+        <a class="d-link" href="blog.html">Poradniki {icon("chev-right")}</a>
         <a class="d-link" href="o-nas.html">O nas {icon("chev-right")}</a>
         <a class="d-link" href="kontakt.html">Kontakt i placówki {icon("chev-right")}</a>
+        <a class="d-link" href="https://spondylus-sklep.pl/" target="_blank" rel="noopener">Sklep internetowy<span class="sr-only"> (otwiera się w nowej karcie)</span> {icon("chev-right")}</a>
       </nav>
       <p class="drawer__info">Infolinia dla wszystkich placówek, od poniedziałku do piątku: Szczecin, centrum i Koszalin 9:00 do 18:00, Pogodno 8:00 do 19:00.</p>
     </div>
@@ -231,6 +234,7 @@ def footer():
           <li><a href="index.html#opinie">Opinie pacjentów</a></li>
           <li><a href="o-nas.html">O nas</a></li>
           <li><a href="blog.html">Poradniki</a></li>
+          <li><a href="https://spondylus-sklep.pl/" target="_blank" rel="noopener">Sklep internetowy<span class="sr-only"> (otwiera się w nowej karcie)</span></a></li>
           <li><a href="rejestracja-online.html">Rejestracja online</a></li>
         </ul>
       </div>
@@ -745,6 +749,50 @@ def rss(wpisy):
             f"{items}</channel></rss>\n")
 
 
+def llms(strony, wpisy):
+    """llms.txt (llmstxt.org): mapa treści dla wyszukiwarek i asystentów AI. Tylko fakty ze strony."""
+    czysty = lambda t: re.sub(r"\s*\|\s*Spondylus$", "", htmlmod.unescape(t))
+    grupy = {"oferta": [], "kadra": [], "inne": []}
+    for url, m in strony:
+        if m.get("noindex") or url == "/":
+            continue
+        grupy["oferta" if m.get("nav") in ("oferta", "nfz") or url == "/refundacja/" else
+              "kadra" if m.get("nav") == "kadra" else "inne"].append(f"- [{czysty(m['title'])}]({SITE}{url}): {htmlmod.unescape(m['desc'])}")
+    placowki = "\n".join(f"- {p['nazwa']}: {p['ulica']}, {(p['kod'] + ' ') if p['kod'] else ''}{p['miasto']}. "
+                         f"Poniedziałek do piątku {p['od']} do {p['do']}. Infolinia 665 035 035, wewnętrzny {p['wew']}."
+                         for p in PLACOWKI.values())
+    poradniki = "\n".join(f"- [{htmlmod.unescape(m['h1'])}]({SITE}{u}): {htmlmod.unescape(m['desc'])}" for u, m in wpisy)
+    return f"""# Spondylus
+
+> Centrum medyczne w Szczecinie i Koszalinie, działające od 1989 roku. Rehabilitacja, diagnostyka wad postawy,
+> medycyna sportowa, konsultacje lekarskie (ortopeda, neurolog, neurochirurg), dietetyka, medycyna estetyczna
+> oraz zaopatrzenie medyczne, także z refundacją NFZ.
+
+Jedna infolinia dla wszystkich placówek: +48 665 035 035. E-mail: doktor@spondylus.pl.
+Rejestracja online: {SITE}/rejestracja-online/
+
+## Placówki
+
+{placowki}
+
+## Usługi i programy
+
+{chr(10).join(grupy["oferta"])}
+
+## Specjaliści
+
+{chr(10).join(grupy["kadra"])}
+
+## Poradniki
+
+{poradniki}
+
+## Informacje
+
+{chr(10).join(grupy["inne"])}
+"""
+
+
 def build():
     przygotuj_zdjecia_objawow()
     przygotuj_ilustracje()
@@ -760,7 +808,7 @@ def build():
     for f in (ROOT / "static").glob("*") if (ROOT / "static").exists() else []:
         (shutil.copytree if f.is_dir() else shutil.copy2)(f, DIST / f.name)
 
-    wyniki, mapa, wpisy = {}, {}, []
+    wyniki, mapa, wpisy, opisy = {}, {}, [], []
     for plik in sorted(BLOG.glob("*.html")) if BLOG.exists() else []:
         m, body = wczytaj(plik)
         url = f"/{plik.stem}/"
@@ -787,6 +835,7 @@ def build():
         if "{{wpisy}}" in body:
             body = body.replace("{{wpisy}}", lista_wpisow(wpisy))
         wyniki[url] = strona(m, url, body)
+        opisy.append((url, m))
         if not m.get("noindex"):
             mapa[url] = m.get("zmiana") or datetime.date.fromtimestamp(plik.stat().st_mtime).isoformat()
 
@@ -802,6 +851,7 @@ def build():
     (DIST / "sitemap.xml").write_text(sitemap(mapa), encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nDisallow: /api/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     (DIST / "feed.xml").write_text(rss(wpisy), encoding="utf-8")
+    (DIST / "llms.txt").write_text(llms(sorted(opisy), wpisy), encoding="utf-8")
 
     bledy = sprawdz_linki(wyniki)
     print(f"zbudowano {len(wyniki)} stron ({len(wpisy)} wpisów), mapa strony: {len(mapa)} adresów")

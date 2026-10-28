@@ -2,3 +2,4 @@ assets/src/
 __pycache__/
 .DS_Store
 dist/
+node_modules/
