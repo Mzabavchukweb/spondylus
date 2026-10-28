@@ -13,6 +13,7 @@ import os
 import pathlib
 import re
 import shutil
+import sys
 
 ROOT = pathlib.Path(__file__).parent
 WERSJA = str(int(max((ROOT / "assets/css/style.css").stat().st_mtime, (ROOT / "assets/js/main.js").stat().st_mtime)))
@@ -20,6 +21,9 @@ SRC = ROOT / "src" / "pages"
 BLOG = ROOT / "src" / "blog"
 DIST = ROOT / "dist"
 SITE = "https://spondylus.pl"
+# Podgląd na GitHub Pages: `python3 build.py --podglad /spondylus` (adresy z prefiksem, cała kopia ukryta przed Google,
+# canonical dalej wskazuje spondylus.pl, żeby podgląd nie konkurował z prawdziwą stroną)
+PODGLAD = sys.argv[sys.argv.index("--podglad") + 1] if "--podglad" in sys.argv else ""
 GA4, GTM = "G-YJRR4EB0F8", "GTM-PB32PJXN"                 # te same identyfikatory co na starej stronie
 WERYFIKACJA = "lbUk6mZ_tkEB4CB4ezk1PtR3wNAIBQ8iYaYgEqLZlIA"   # Google Search Console (meta ze starej strony)
 
@@ -640,7 +644,16 @@ def sprawdz_linki(wyniki):
     return sorted(set(bledy))
 
 
+def na_podglad(html):
+    html = re.sub(r'((?:href|src|action|data-src)=")/(?!/)', rf"\1{PODGLAD}/", html)
+    html = re.sub(r'(srcset=")/(?!/)', rf"\1{PODGLAD}/", html)
+    html = html.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, nofollow">')
+    return html.replace("<body", '<body data-podglad="1"', 1)
+
+
 def zapisz(url, html):
+    if PODGLAD:
+        html = na_podglad(html)
     cel = DIST / url.strip("/") / "index.html" if url != "/" else DIST / "index.html"
     cel.parent.mkdir(parents=True, exist_ok=True)
     cel.write_text(html, encoding="utf-8")
@@ -862,6 +875,9 @@ def build():
     (DIST / ".htaccess").write_text(htaccess(), encoding="utf-8")
     (DIST / "sitemap.xml").write_text(sitemap(mapa), encoding="utf-8")
     (DIST / "robots.txt").write_text(f"User-agent: *\nDisallow: /api/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    if PODGLAD:  # podgląd: nic do indeksowania, bez .htaccess i PHP (GitHub Pages ich nie obsługuje)
+        (DIST / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
+        (DIST / ".nojekyll").write_text("", encoding="utf-8")
     (DIST / "feed.xml").write_text(rss(wpisy), encoding="utf-8")
     (DIST / "llms.txt").write_text(mapa_tresci(sorted(opisy), wpisy), encoding="utf-8")
 

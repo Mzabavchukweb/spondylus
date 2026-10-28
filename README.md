@@ -22,6 +22,12 @@ npm run wcag
 
 `dist/llms.txt` (llmstxt.org) składa się sam z tytułów i opisów podstron, wpisów i danych placówek.
 
+## Podgląd na żywo
+
+Każdy push na `main` buduje podgląd na GitHub Pages: https://mzabavchukweb.github.io/spondylus/
+(`python3 build.py --podglad /spondylus`: adresy z prefiksem, noindex i robots Disallow, canonical na spondylus.pl,
+formularz kontaktowy nieaktywny). Produkcję buduje się bez `--podglad`.
+
 ## Struktura
 
 - `src/pages/<slug>.html`: podstrony. Nagłówek w komentarzach: `title`, `desc`, `nav`, `okruszki` (`Nasza kadra=/kadra/ > Imię`),

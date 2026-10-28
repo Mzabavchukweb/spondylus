@@ -143,6 +143,7 @@
   $$('form[data-kontakt]').forEach(f => f.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!f.reportValidity()) return;
+    if (document.body.dataset.podglad) { const b = $('.form__blad', f); b.textContent = 'To podgląd strony: formularz zadziała po wdrożeniu na spondylus.pl.'; b.hidden = false; return; }
     const btn = $('button[type=submit]', f), blad = $('.form__blad', f);
     btn.disabled = true; blad.hidden = true;
     try {
