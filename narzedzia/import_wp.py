@@ -32,7 +32,7 @@ USLUGI = {
     "zakres-uslug-diagnostycznych": dict(
         h1="Diagnostyka wad postawy i aparatu ruchu",
         lead="Komputerowe badanie stóp, diagnostyka posturalna, badania dla sportowców i dzieci. Wynik, który pokazuje, od czego zacząć terapię.",
-        title="Diagnostyka wad postawy i badanie stóp Szczecin | Spondylus",
+        title="Diagnostyka medyczna: usługi diagnostyczne | Spondylus",
         desc="Komputerowe badanie stóp, diagnostyka postawy ciała, analiza chodu i badania dla sportowców. Diagnostyka dzieci i dorosłych w Spondylus w Szczecinie.",
         okruszki="Oferta=/oferta/ > Diagnostyka", book=""),
     "medycyna-sportowa": dict(
@@ -44,14 +44,14 @@ USLUGI = {
     "medycyna-estetyczna": dict(
         h1="Medycyna estetyczna w Spondylus",
         lead="Zabiegi pielęgnacyjne i modelujące sylwetkę prowadzone pod opieką zespołu medycznego.",
-        title="Medycyna estetyczna Szczecin: twarz i ciało | Spondylus",
-        desc="Medycyna estetyczna w Spondylus: zabiegi pielęgnacyjne, ujędrniające i modelujące sylwetkę, prowadzone przez zespół medyczny. Umów konsultację.",
+        title="Medycyna estetyczna Szczecin | Spondylus",
+        desc="Medycyna estetyczna w Spondylus, zabiegi pielęgnacyjne i modelujące sylwetkę prowadzone przez zespół medyczny. Poznaj ofertę terapii estetycznych.",
         okruszki="Oferta=/oferta/ > Medycyna estetyczna", book=""),
     "dietetyka": dict(
         h1="Dietetyka kliniczna w Szczecinie",
         lead="Indywidualne porady żywieniowe i plany dietetyczne dopasowane do stanu zdrowia, terapii i celów.",
-        title="Dietetyk kliniczny Szczecin: porady i plany diety | Spondylus",
-        desc="Dietetyka kliniczna w Spondylus: indywidualne porady żywieniowe i plany diety dopasowane do zdrowia, terapii i aktywności. Umów wizytę w Szczecinie.",
+        title="Dietetyczka kliniczna Szczecin | Spondylus",
+        desc="Dietetyka w Spondylus, indywidualne porady żywieniowe i plany dietetyczne dopasowane do Twoich celów zdrowotnych. Sprawdź ofertę specjalistów.",
         okruszki="Oferta=/oferta/ > Dietetyka", book=""),
     "zaopatrzenie-medyczne": dict(
         h1="Zaopatrzenie medyczne w Szczecinie i Koszalinie",
@@ -68,8 +68,8 @@ USLUGI = {
     "aktywny-senior": dict(
         h1="Program Aktywny Senior",
         lead="Bezpłatne konsultacje i badania profilaktyczne dla osób po 60. roku życia.",
-        title="Aktywny Senior: program dla seniorów 60+ Szczecin | Spondylus",
-        desc="Aktywny Senior w Spondylus: programy i zajęcia wspierające zdrowie, sprawność i samodzielność seniorów. Bezpłatne konsultacje i badania profilaktyczne.",
+        title="Aktywny Senior Szczecin | Spondylus",
+        desc="Aktywny Senior w Spondylus, programy i zajęcia wspierające zdrowie, sprawność i dobre samopoczucie osób starszych. Sprawdź ofertę dla seniorów.",
         okruszki="Programy=/oferta/ > Aktywny Senior", book=""),
     "podologia": dict(
         h1="Podologia w Szczecinie",
@@ -80,8 +80,8 @@ USLUGI = {
     "mobilny-podolog": dict(
         h1="Mobilny Podolog z dojazdem do domu",
         lead="Zabiegi podologiczne w domu pacjenta na terenie Szczecina. Umów wizytę: 609 442 071.",
-        title="Mobilny podolog Szczecin: wizyty domowe | Spondylus",
-        desc="Mobilny podolog Spondylus: pielęgnacja stóp i zabiegi podologiczne z dojazdem do domu pacjenta w Szczecinie. Umów wizytę pod numerem 609 442 071.",
+        title="Mobilny Podolog z dojazdem do domu | Spondylus",
+        desc="Mobilny podolog Spondylus, profesjonalna pielęgnacja i zabiegi podologiczne z dojazdem do domu pacjenta na terenie Szczecina. Sprawdź szczegóły usługi.",
         okruszki="Programy=/oferta/ > Mobilny Podolog", book="", tel="+48609442071", tel_txt="609 442 071"),
     "oferta": dict(
         h1="Oferta Spondylus",
