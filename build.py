@@ -32,7 +32,7 @@ PLACOWKI = {
                     "miasto": "Szczecin", "wew": "1", "od": "09:00", "do": "18:00"},
     "szczecin-ul": {"nazwa": "Spondylus Szczecin Pogodno", "ulica": "ul. Unii Lubelskiej 2B", "kod": "71-252",
                     "miasto": "Szczecin", "wew": "2", "od": "08:00", "do": "19:00"},
-    "koszalin": {"nazwa": "Spondylus Koszalin", "ulica": "ul. Jana Pawła II 21", "kod": "",
+    "koszalin": {"nazwa": "Spondylus Koszalin", "ulica": "ul. Jana Pawła II 21", "kod": "75-452",
                  "miasto": "Koszalin", "wew": "4", "od": "09:00", "do": "18:00"},
 }
 
@@ -83,7 +83,7 @@ ICONS = {
 }
 
 
-IKONA_OBSZARU = {"spine": "rehabilitacja", "scan": "diagnostyka", "run": "sport", "stethoscope": "lekarze", "leaf": "dietetyka", "sparkle": "estetyka", "crutch": "zaopatrzenie"}
+IKONA_OBSZARU = {"foot": "podologia", "spine": "rehabilitacja", "scan": "diagnostyka", "run": "sport", "stethoscope": "lekarze", "leaf": "dietetyka", "sparkle": "estetyka", "crutch": "zaopatrzenie"}
 
 
 def DEMO(h):
@@ -111,6 +111,7 @@ OBSZARY = [
     ("/kadra/#lekarze", "stethoscope", "Konsultacje lekarskie", "Ortopeda, neurolog, neurochirurg"),
     ("/dietetyka/", "leaf", "Dietetyka", "Kliniczna i sportowa, wsparcie terapii"),
     ("/medycyna-estetyczna/", "sparkle", "Medycyna estetyczna", "Zabiegi pod opieką zespołu medycznego"),
+    ("/podologia/", "foot", "Podologia", "Pielęgnacja stóp, odciski, wrastające paznokcie"),
     ("/zaopatrzenie-medyczne/", "crutch", "Zaopatrzenie medyczne", "Wkładki, obuwie i sprzęt, także z NFZ"),
 ]
 
@@ -118,7 +119,6 @@ PROGRAMY = [
     ("/zdrowa-nozka-i-kregoslup/", "Zdrowa Nóżka i Kręgosłup"),
     ("/aktywny-senior/", "Aktywny Senior"),
     ("/mobilny-podolog/", "Mobilny Podolog"),
-    ("/podologia/", "Podologia"),
     ("/oferta/", "Pełna oferta"),
 ]
 
@@ -156,7 +156,6 @@ def header(nav):
     <a class="header__logo" href="index.html" aria-label="Spondylus, strona główna"><img src="assets/img/logo.png" alt="Spondylus" width="312" height="97"></a>
     <nav class="nav" aria-label="Menu główne">
       <button type="button" aria-expanded="false" aria-controls="mega" data-mega{' class="is-current"' if nav == "oferta" else ""}>Oferta {icon("chev")}</button>
-      <a href="index.html#pierwsza-wizyta">Pierwsza wizyta</a>
       <a href="kadra.html"{cur("kadra")}>Nasza kadra</a>
       <a href="refundacja.html"{cur("nfz")}>Refundacja NFZ</a>
       <a href="blog.html"{cur("blog")}>Poradniki</a>

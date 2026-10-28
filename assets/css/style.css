@@ -2549,3 +2549,8 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .posts .post p { font-size: 16px; }
 .spec__foto--brak { display: grid; place-items: center; }
 .spec__inicjaly { font-size: 56px; font-weight: 700; color: var(--brand-600); letter-spacing: .02em; }
+.asortyment { list-style: none; padding: 0; margin: 24px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+.asortyment a { display: flex; align-items: center; min-height: 52px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); font-weight: 600; text-decoration: none; }
+/* 8 obszarów w menu oferty (z podologią): ramka „Nie wiesz, do kogo…” jako pasek pod siatką */
+.mega .mega__aside { grid-column: 1 / -1; grid-row: auto; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 16px 22px; }
+.mega .mega__aside p { margin: 0; flex: 1 1 260px; }
