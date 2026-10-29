@@ -330,8 +330,8 @@ p { margin: 0; }
 .layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
 .toc { position: sticky; top: 112px; display: grid; gap: 4px; }
 .toc b { font-size: 14px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
-.toc a { padding: 10px 14px; border-radius: var(--r-sm); text-decoration: none; color: var(--text); font-weight: 500; font-size: 15px; border-left: 3px solid transparent; }
-.toc a.is-active { background: var(--brand-50); color: var(--brand-600); border-left-color: var(--brand-500); }
+.toc a { padding: 10px 14px; border-radius: var(--r-sm); text-decoration: none; color: var(--text); font-weight: 500; font-size: 15px; }
+.toc a.is-active { background: var(--brand-50); color: var(--brand-600); }
 .toc__card { margin-top: 18px; background: var(--brand-900); color: #cfe0d4; border-radius: var(--r-lg); padding: 22px; font-size: 15px; }
 .toc__card b { color: #fff; font-size: 18px; display: block; margin-bottom: 6px; }
 .toc__card .btn { margin-top: 16px; width: 100%; }
@@ -1163,7 +1163,7 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
 /* Historia: oś czasu ułożona jak kręgosłup */
 .dzieje2 { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(36px, 6vw, 96px); align-items: start; }
 .dzieje2__intro { position: sticky; top: 120px; }
-.dzieje2__cytat { margin-top: 22px; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.45; color: var(--ink); font-weight: 500; max-width: 30ch; padding-left: 20px; border-left: 4px solid var(--brand-600); }
+.dzieje2__cytat { margin-top: 22px; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.45; color: var(--ink); font-weight: 500; max-width: 30ch; }
 .kregoslup { list-style: none; margin: 0; padding: 0 0 0 64px; position: relative; }
 .kregoslup::before { content: ""; position: absolute; left: 25px; top: 18px; bottom: 18px; width: 2px; background: #cfe3d5; }
 .kregoslup li { position: relative; padding: 6px 0 26px; }
@@ -1191,7 +1191,7 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
 #historia { padding-block: clamp(56px, 6vw, 88px); }
 .hist__head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 64px; align-items: end; margin-bottom: clamp(36px, 4vw, 52px); }
 .hist__head h2 { font-size: clamp(30px, 3.2vw, 46px); }
-.hist__cytat { margin: 0; font-size: clamp(18px, 1.4vw, 20px); line-height: 1.5; color: var(--text); max-width: 44ch; padding-left: 18px; border-left: 3px solid var(--brand-600); }
+.hist__cytat { margin: 0; font-size: clamp(18px, 1.4vw, 20px); line-height: 1.5; color: var(--text); max-width: 44ch; }
 .hist { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); position: relative; }
 .hist::before { content: ""; position: absolute; left: 0; right: 0; top: 13px; height: 2px; background: #cfe3d5; }
 .hist li { position: relative; padding-right: 18px; }
@@ -1973,7 +1973,7 @@ a[aria-disabled="true"] { cursor: default; }
 @media (min-width: 961px) { .onas-hist__intro { position: sticky; top: 120px; } }
 .onas-hist__intro h2 { font-size: clamp(28px, 3vw, 42px); }
 .onas-hist__intro > p { margin-top: 14px; font-size: 18px; max-width: 36ch; }
-.onas-nazwa { margin-top: 28px; padding: 20px 22px; border-left: 4px solid var(--brand-600); background: #fff; border-radius: 0 var(--r-md) var(--r-md) 0; }
+.onas-nazwa { margin-top: 28px; padding: 20px 22px; background: #fff; border-radius: var(--r-md); }
 .onas-nazwa b { color: var(--ink); font-size: 16px; }
 .onas-nazwa p { margin-top: 6px; font-size: 16px; line-height: 1.55; }
 .onas-os { list-style: none; margin: 0; padding: 0; position: relative; }
@@ -2574,13 +2574,14 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .etapy__kiedy { display: block; margin: 20px 22px 0; font-weight: 700; font-size: 18px; color: var(--ink); }
 .etapy li p { margin: 8px 22px 24px; font-size: 15.5px; line-height: 1.55; }
 .etapy__stopka { margin-top: clamp(24px, 3vw, 36px); max-width: 80ch; font-size: 17px; }
-.sygnaly { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.sygnaly li { padding: 20px 22px; background: var(--bg-soft); border-radius: 12px; border-left: 3px solid var(--brand-600); }
-.sygnaly b { display: block; font-size: 18px; color: var(--ink); }
-.sygnaly span { display: block; margin-top: 6px; font-size: 16px; }
+.sygnaly { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: syg; }
+.sygnaly li { counter-increment: syg; display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 16px; padding: 22px; background: var(--bg-soft); border-radius: 12px; }
+.sygnaly li::before { content: counter(syg); grid-row: 1 / span 2; width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--brand-600); font-family: var(--display); font-weight: 700; font-size: 17px; display: grid; place-items: center; }
+.sygnaly b { font-size: 18px; color: var(--ink); line-height: 1.3; padding-top: 8px; }
+.sygnaly span { margin-top: 6px; font-size: 16px; }
 .badanie { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
 .galeria { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .galeria img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
 @media (max-width: 1100px) { .zao-oferta--4, .etapy { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 960px) { .badanie { grid-template-columns: 1fr; } .page-hero__media--ilu { aspect-ratio: 4 / 3; } }
-@media (max-width: 640px) { .zao-oferta--4, .etapy { grid-template-columns: 1fr; } .zao-oferta--4 li { grid-template-columns: 56px minmax(0, 1fr); } .zao-oferta--4 .ilu { grid-row: 1 / span 2; width: 56px; height: 56px; } }
+@media (max-width: 640px) { .zao-oferta--4, .etapy { grid-template-columns: 1fr; } .zao-oferta--4 li { grid-template-columns: 56px minmax(0, 1fr); } .zao-oferta--4 .ilu { grid-row: 1 / span 2; width: 56px; height: 56px; } .zao-oferta--4 b, .zao-oferta--4 span { grid-column: 2; } }
