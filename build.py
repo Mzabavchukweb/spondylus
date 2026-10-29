@@ -635,6 +635,8 @@ def adresy_absolutne(html):
     html = re.sub(r'href="([\w-]+)\.html(#[\w-]+)?"', link, html)
     html = re.sub(r'(src|href|srcset|data-src)="assets/', r'\1="/assets/', html)
     html = re.sub(r"url\((['\"]?)assets/", r"url(\1/assets/", html)
+    # każdy kandydat w srcset, nie tylko pierwszy
+    html = re.sub(r'srcset="([^"]*)"', lambda m: 'srcset="' + re.sub(r'(^|,\s*)assets/', r'\1/assets/', m.group(1)) + '"', html)
     return html
 
 
@@ -652,7 +654,7 @@ def sprawdz_linki(wyniki):
 
 def na_podglad(html):
     html = re.sub(r'((?:href|src|action|data-src)=")/(?!/)', rf"\1{PODGLAD}/", html)
-    html = re.sub(r'(srcset=")/(?!/)', rf"\1{PODGLAD}/", html)
+    html = re.sub(r'srcset="([^"]*)"', lambda m: 'srcset="' + re.sub(r'(^|,\s*)/(?!/)', rf"\1{PODGLAD}/", m.group(1)) + '"', html)
     html = html.replace('<meta name="robots" content="index, follow, max-image-preview:large">', '<meta name="robots" content="noindex, nofollow">')
     return html.replace("<body", '<body data-podglad="1"', 1)
 
