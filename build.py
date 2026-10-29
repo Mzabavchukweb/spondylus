@@ -538,6 +538,8 @@ def okruszki_ld(okruszki, url):
 def faq_ld(body):
     """Pytania i odpowiedzi z <details><summary> na stronie (to samo, co widzi pacjent)."""
     pary = re.findall(r"<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>", body, re.S)
+    # tylko prawdziwe pytania (np. paragrafy regulaminu w akordeonie to nie FAQ)
+    pary = [(q, a) for q, a in pary if re.sub(r"<[^>]+>", "", q).strip().endswith("?")]
     if len(pary) < 2:
         return None
     txt = lambda h: re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", h))).strip()
