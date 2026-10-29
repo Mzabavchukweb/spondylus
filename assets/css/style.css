@@ -55,7 +55,11 @@ body {
   overflow-x: clip;
 }
 img { display: block; max-width: 100%; height: auto; }
-a { color: var(--brand-600); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a { color: var(--brand-600); text-decoration: none; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+/* linki w tekście bez podkreślenia: od tekstu odróżnia je kolor i grubość (WCAG 1.4.1), podkreślenie tylko przy fokusie
+   z klawiatury i w panelu dostępności („Podkreśl linki”) */
+main a:not([class]), .cookies a:not([class]) { font-weight: 600; }
+a:focus-visible { text-decoration: underline; }
 button { font: inherit; }
 :focus-visible { outline: 3px solid var(--brand-400); outline-offset: 3px; border-radius: 6px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -2535,7 +2539,7 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .places--rejestracja { margin: 8px 0 40px; }
 .form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form__blad { margin: 4px 0 0; color: #b42318; font-weight: 600; }
-.footer__cookies { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; cursor: pointer; }
+.footer__cookies { background: none; border: 0; padding: 0; font: inherit; color: inherit; cursor: pointer; }
 .cookies { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 90; max-width: 560px; padding: 20px 22px;
   background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.14); }
 .cookies p { margin: 0 0 14px; font-size: 16px; line-height: 1.5; }
