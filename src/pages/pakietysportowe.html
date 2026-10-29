@@ -6,8 +6,36 @@
 <section class="page-hero">
   <div class="wrap">
     {{okruszki}}
-    <h1>Sportowe Pakiety Medyczne</h1>
-    <p class="page-hero__lead">Pakiety dla klubów i zawodników. Szczegóły i dostęp do pakietu: infolinia <a href="tel:+48665035035">665 035 035</a>.</p>
-    <p style="margin-top:18px"><a class="link-arrow" href="regulamin-sportowych-pakietow-medycznych.html">Regulamin Sportowych Pakietów Medycznych</a></p>
+    <div class="page-hero__grid">
+      <div>
+        <h1>Sportowe Pakiety Medyczne</h1>
+        <p class="page-hero__lead">Pakiety dla klubów i zawodników. Szczegóły i dostęp do pakietu: infolinia <a href="tel:+48665035035">665 035 035</a>.</p>
+        <div class="page-hero__cta"><a class="btn btn--primary" href="tel:+48665035035">{{icon:phone}}665 035 035</a><a class="btn btn--ghost" href="regulamin-sportowych-pakietow-medycznych.html">Regulamin pakietów</a></div>
+      </div>
+      <div class="page-hero__media page-hero__media--ilu" aria-hidden="true">{{ilu:scena-medycyna-sportowa|ilu-kolo-sport}}</div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="head2">
+      <h2>Opieka medyczna dla sportowców</h2>
+      <p>W Spondylus zawodnik ma pod jednym dachem diagnostykę sportową, lekarzy i fizjoterapię.</p>
+    </div>
+    <ul class="obszary obszary--3">
+      <li><a href="medycyna-sportowa.html">{{ilu:ikona-ksiazeczka|}}<h3>Medycyna sportowa</h3><p>Badania dla aktywnych, książeczka sportowa, leczenie kontuzji i powrót do treningu.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="zakres-uslug-diagnostycznych.html">{{ilu:ikona-ekg|}}<h3>Diagnostyka sportowa</h3><p>Badanie posturalne, spirometria i EKG z badaniem SDS.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="regulamin-sportowych-pakietow-medycznych.html">{{ilu:dokumenty|}}<h3>Regulamin pakietów</h3><p>Regulamin Sportowych Pakietów Medycznych z załącznikiem do pobrania.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>Pytania o pakiet?</h2><p>Szczegóły i dostęp do pakietu otrzymasz pod numerem infolinii.</p></div>
+      <div class="cta-band__actions"><a class="btn btn--light" href="tel:+48665035035">{{icon:phone}}665 035 035</a><button class="btn btn--outline-light" type="button" data-book>{{icon:calendar}}Umów wizytę</button></div>
+    </div>
   </div>
 </section>

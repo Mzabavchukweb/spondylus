@@ -2668,3 +2668,7 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .spec__foto--brak .ilu { width: 52%; height: auto; }
 .profile__foto--ilu { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--bg-soft); }
 .profile__foto--ilu .ilu { width: 46%; height: auto; }
+.obszary--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .obszary--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .obszary--3 { grid-template-columns: 1fr; } }
+.linki-prog--waski { max-width: 720px; margin-top: 0; }
