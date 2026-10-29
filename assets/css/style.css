@@ -2558,3 +2558,29 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 /* 8 obszarów w menu oferty (z podologią): ramka „Nie wiesz, do kogo…” jako pasek pod siatką */
 .mega .mega__aside { grid-column: 1 / -1; grid-row: auto; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 16px 22px; }
 .mega .mega__aside p { margin: 0; flex: 1 1 260px; }
+
+/* Podstrony programów i usług (wzór: Zdrowa Nóżka): ilustracja w nagłówku, skrót, etapy, sygnały, galeria */
+.page-hero__media--ilu { background: var(--bg-soft); display: grid; place-items: center; padding: clamp(16px, 3vw, 36px); }
+.page-hero__media--ilu .ilu { width: 100%; height: 100%; object-fit: contain; }
+.page-hero__media--ilu .ilu:not(.ilu--scena) { width: 42%; height: auto; }
+.zao-oferta--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.zao-oferta--4 li { grid-template-columns: 1fr; row-gap: 10px; }
+.zao-oferta--4 .ilu { grid-row: auto; width: 72px; height: 72px; }
+.etapy { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.etapy li { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.etapy__ilu { aspect-ratio: 4 / 3; background: var(--bg-soft); display: grid; place-items: center; padding: 12px; }
+.etapy__ilu img { width: 100%; height: 100%; object-fit: contain; }
+.etapy__ilu .ilu--stara { mix-blend-mode: multiply; }
+.etapy__kiedy { display: block; margin: 20px 22px 0; font-weight: 700; font-size: 18px; color: var(--ink); }
+.etapy li p { margin: 8px 22px 24px; font-size: 15.5px; line-height: 1.55; }
+.etapy__stopka { margin-top: clamp(24px, 3vw, 36px); max-width: 80ch; font-size: 17px; }
+.sygnaly { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.sygnaly li { padding: 20px 22px; background: var(--bg-soft); border-radius: 12px; border-left: 3px solid var(--brand-600); }
+.sygnaly b { display: block; font-size: 18px; color: var(--ink); }
+.sygnaly span { display: block; margin-top: 6px; font-size: 16px; }
+.badanie { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.galeria { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.galeria img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+@media (max-width: 1100px) { .zao-oferta--4, .etapy { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .badanie { grid-template-columns: 1fr; } .page-hero__media--ilu { aspect-ratio: 4 / 3; } }
+@media (max-width: 640px) { .zao-oferta--4, .etapy { grid-template-columns: 1fr; } .zao-oferta--4 li { grid-template-columns: 56px minmax(0, 1fr); } .zao-oferta--4 .ilu { grid-row: 1 / span 2; width: 56px; height: 56px; } }

@@ -435,6 +435,11 @@ def ilu(m):
         return f'<img class="ilu ilu--scena" src="assets/img/ilu/{nazwa}.webp" alt="" width="{w}" height="{h}" loading="lazy">'
     if plik.exists():
         return f'<img class="ilu" src="assets/img/ilu/{nazwa}.webp" alt="" width="256" height="256" loading="lazy">'
+    if ikona.startswith("img:") and (ROOT / ikona[4:]).exists():
+        # zastępczo dotychczasowa grafika, dopóki nie ma nowej ilustracji
+        from PIL import Image
+        w, h = Image.open(ROOT / ikona[4:]).size
+        return f'<img class="ilu ilu--stara" src="{ikona[4:]}" alt="" width="{w}" height="{h}" loading="lazy">'
     if ikona.startswith("ilu-") and (ROOT / f"assets/img/ilu/{ikona[4:]}.webp").exists():
         return f'<img class="ilu" src="assets/img/ilu/{ikona[4:]}.webp" alt="" width="256" height="256" loading="lazy">'
     return "{{icon:%s}}" % ikona if ikona else ""
@@ -596,7 +601,7 @@ def przetworz(body):
     body = re.sub(r"\{\{why:.*?\}\}", "", body, flags=re.S)
     body = body.replace(" data-why", "")
     body = re.sub(r"\{\{portret:([\w-]+)\}\}", portret, body)
-    body = re.sub(r"\{\{ilu:([\w-]+)\|([\w-]*)\}\}", ilu, body)
+    body = re.sub(r"\{\{ilu:([\w-]+)\|([\w:/.-]*)\}\}", ilu, body)
     body = re.sub(r"\{\{fotka:([\w/.-]+)\|([\w-]+)\}\}", fotka, body)
     body = re.sub(r"\{\{icon:([\w-]+)(?::([\w-]+))?\}\}", lambda m: icon(m.group(1), m.group(2) or ""), body)
     # zdjęcie w karcie profilu to główny element ekranu: ładowane od razu, nie leniwie
