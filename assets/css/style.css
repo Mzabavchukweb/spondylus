@@ -2665,3 +2665,6 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .prose .profile__faq summary { margin: 0; }
 @media (max-width: 640px) { .prose table, .prose tbody, .prose tr, .prose td { display: block; width: 100%; } .prose td:first-child { width: 100%; padding-bottom: 2px; } .prose td + td { padding-top: 0; } .prose tr:nth-child(even) td { background: #fff; } }
 @media (min-width: 1101px) { .profile .prose ul:has(> li:nth-child(7)) { columns: 2; column-gap: 36px; } .profile .prose ul:has(> li:nth-child(7)) > li { break-inside: avoid; } }
+.spec__foto--brak .ilu { width: 52%; height: auto; }
+.profile__foto--ilu { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--bg-soft); }
+.profile__foto--ilu .ilu { width: 46%; height: auto; }
