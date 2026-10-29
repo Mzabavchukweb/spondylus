@@ -2652,3 +2652,16 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .katalog__lista > li { padding-top: 0; border-top: 0; }
 .zao-refund .onas-zaj__liczby { border-top: 0; display: grid; gap: 8px; }
 .zao-refund .onas-zaj__liczby li { border-bottom: 0; padding: 14px 18px; background: var(--bg-soft); border-radius: 12px; }
+/* Profile specjalistów: lead, tabela informacji bez linii, pytania jako akordeon */
+.profile .prose > p:first-child { font-size: clamp(18px, 1.5vw, 20px); line-height: 1.6; color: var(--ink); }
+.profile .prose h2 { padding-top: 8px; }
+.prose table { border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; background: var(--bg-soft); font-size: 16px; }
+.prose th, .prose td { border: 0; padding: 14px 20px; }
+.prose tr:nth-child(even) td { background: #fff; }
+.prose td:first-child { width: 34%; color: var(--ink); }
+.prose td strong { font-weight: 700; }
+.prose .profile__faq { margin-top: 20px; }
+.prose .profile__faq .acc__body > * + * { margin-top: 12px; }
+.prose .profile__faq summary { margin: 0; }
+@media (max-width: 640px) { .prose table, .prose tbody, .prose tr, .prose td { display: block; width: 100%; } .prose td:first-child { width: 100%; padding-bottom: 2px; } .prose td + td { padding-top: 0; } .prose tr:nth-child(even) td { background: #fff; } }
+@media (min-width: 1101px) { .profile .prose ul:has(> li:nth-child(7)) { columns: 2; column-gap: 36px; } .profile .prose ul:has(> li:nth-child(7)) > li { break-inside: avoid; } }
