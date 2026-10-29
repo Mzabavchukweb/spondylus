@@ -2647,3 +2647,8 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 @media (max-width: 760px) { .katalog { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .obszary { grid-template-columns: 1fr; } .obszary a { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 16px; } .obszary .ilu { width: 64px; height: 64px; grid-row: 1 / span 3; margin: 0; } }
 .page-hero__media--ilu .ilu--stara { width: calc(100% + 2 * clamp(16px, 3vw, 36px)); height: calc(100% + 2 * clamp(16px, 3vw, 36px)); max-width: none; margin: calc(-1 * clamp(16px, 3vw, 36px)); object-fit: cover; }
+/* bez linii pod pozycjami: odstęp i tło zamiast kresek */
+.katalog__lista { gap: 18px; }
+.katalog__lista > li { padding-top: 0; border-top: 0; }
+.zao-refund .onas-zaj__liczby { border-top: 0; display: grid; gap: 8px; }
+.zao-refund .onas-zaj__liczby li { border-bottom: 0; padding: 14px 18px; background: var(--bg-soft); border-radius: 12px; }
