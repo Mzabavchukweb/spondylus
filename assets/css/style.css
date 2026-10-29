@@ -2685,3 +2685,5 @@ h3.etapy__kiedy { font-family: inherit; letter-spacing: 0; line-height: 1.3; }
 @media (max-width: 640px) { .zao-oferta--4 .kafel__t { grid-column: 2; } }
 .nfz2 .kafel__t { font-size: 20px; }
 @media (max-width: 960px) { .nfz2 .kafel__t { font-size: 18px; } }
+.zao-oferta--skrot { margin-top: clamp(36px, 5vw, 56px); }
+.linki-prog a { font-weight: 400; } .linki-prog b { font-weight: 700; }
