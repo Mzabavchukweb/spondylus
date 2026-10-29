@@ -8,6 +8,7 @@ Każda strona w src/pages zaczyna się od komentarzy z metadanymi:
 """
 import datetime
 import html as htmlmod
+from html.parser import HTMLParser
 import json
 import os
 import pathlib
@@ -735,7 +736,7 @@ USUNIETE = ["koszyk", "produkty", "zamowienie", "login", "kion", "membership-acc
 
 def htaccess():
     linie = ["# Wygenerowane przez build.py. Nie edytować ręcznie.", "Options -Indexes", "DirectoryIndex index.html",
-             "ErrorDocument 404 /404.html", "AddDefaultCharset utf-8", "", "RewriteEngine On",
+             "ErrorDocument 404 /404.html", "AddDefaultCharset utf-8", "AddType text/markdown;charset=utf-8 .md", "AddType text/plain;charset=utf-8 .txt", "", "RewriteEngine On",
              "# jeden adres: https i bez www",
              "RewriteCond %{HTTPS} off [OR]", "RewriteCond %{HTTP_HOST} ^www\\. [NC]",
              "RewriteRule ^(.*)$ https://spondylus.pl/$1 [R=301,L]",
@@ -782,27 +783,218 @@ def rss(wpisy):
             f"{items}</channel></rss>\n")
 
 
-def mapa_tresci(strony, wpisy):
-    """llms.txt (standard llmstxt.org): tekstowa mapa treści serwisu. Tylko fakty ze strony."""
+class DoMarkdown(HTMLParser):
+    """Treść strony (<main>) jako czysty Markdown dla wyszukiwarek AI: nagłówki, akapity, listy, tabele, pytania."""
+    POMIN = {"script", "style", "svg", "button", "form", "img", "picture", "iframe", "select", "input", "textarea", "noscript"}
+    BLOK = {"p", "div", "section", "ul", "ol", "table", "details", "address", "header", "article", "aside", "figure", "blockquote", "dl"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out, self.stos, self.pomin, self.listy, self.link, self.wiersz = [], [], 0, [], None, None
+
+    def _blok(self):
+        if self.out and not self.out[-1].endswith("\n\n"):
+            self.out.append("\n\n")
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        kl = a.get("class") or ""
+        ukryty = (a.get("aria-hidden") == "true" or re.search(r"\b(sr-only|crumbs|btn|page-hero__cta|obszary__wiecej|faq__kontakt|galeria|cookies|os__ocena-m|proc__nr|nfz2__ikona)\b", kl)
+                  or a.get("data-book") is not None)
+        if self.pomin or tag in self.POMIN or (ukryty and tag not in ("br",)) or tag == "nav":
+            if tag not in ("br", "img", "input"):
+                self.pomin += 1
+                self.stos.append((tag, True))
+            return
+        self.stos.append((tag, False))
+        if re.fullmatch(r"h[1-6]", tag):
+            if self.listy:
+                self.listy[-1].append("karta")
+            self._blok(); self.out.append("#" * int(tag[1]) + " ")
+        elif tag == "summary":
+            self._blok(); self.out.append("### ")
+        elif tag in ("ul", "ol"):
+            self.listy.append([tag, 0]); self._blok()
+        elif tag == "li":
+            if self.listy:
+                self.listy[-1][1] += 1
+                znak = f"{self.listy[-1][1]}." if self.listy[-1][0] == "ol" else "-"
+                wciecie = sum(1 for l in self.listy[:-1] if "karta" not in l)
+                self.out.append("\n" + "  " * wciecie + znak + " ")
+        elif tag == "tr":
+            self.wiersz = []
+        elif tag in ("td", "th"):
+            if self.wiersz is not None:
+                self.wiersz.append("")
+        elif tag == "br":
+            self.out.append("\n")
+        elif tag in ("strong",):
+            self.out.append("**")
+        elif tag == "a":
+            href = a.get("href") or ""
+            if href.startswith("/") and not href.startswith("//"):
+                href = SITE + href
+            self.link = href if href.startswith(("http", "mailto:")) else None
+            if self.link:
+                self.out.append("[")
+                self.link_od = len(self.out) - 1
+        elif tag in self.BLOK:
+            self._blok()
+
+    def handle_endtag(self, tag):
+        if not self.stos:
+            return
+        # zamykamy do najbliższego pasującego znacznika (HTML bywa niedomknięty)
+        while self.stos:
+            t, pomin = self.stos.pop()
+            if pomin:
+                self.pomin -= 1
+            if t == tag:
+                break
+        if self.pomin:
+            return
+        if re.fullmatch(r"h[1-6]", tag) or tag == "summary":
+            self.out.append("\n\n")
+        elif tag in ("ul", "ol"):
+            if self.listy:
+                self.listy.pop()
+            self.out.append("\n\n")
+        elif tag == "tr" and self.wiersz is not None:
+            k = [re.sub(r"\s+", " ", x).strip() for x in self.wiersz if x.strip()]
+            if len(k) >= 2:
+                self.out.append(f"\n- **{k[0]}:** " + "; ".join(k[1:]))
+            elif k:
+                self.out.append("\n- " + k[0])
+            self.wiersz = None
+        elif tag == "table":
+            self.out.append("\n\n")
+        elif tag == "strong":
+            self.out.append("**")
+        elif tag in ("span", "b", "em", "small", "i", "time"):
+            self.out.append(" ")
+        elif tag == "a" and self.link:
+            seg = "".join(self.out[self.link_od + 1:])
+            if "\n" in seg:  # karta-link: nagłówek karty staje się linkiem
+                seg = re.sub(r"(#{1,6} )([^\n]+)", lambda m: f"{m.group(1)}[{m.group(2).strip()}]({self.link})", seg, count=1)
+                if "](" not in seg:
+                    seg = seg.rstrip() + f"\n\nStrona: {self.link}"
+                self.out[self.link_od:] = [seg]
+            elif len(seg.strip()) > 90:
+                self.out[self.link_od:] = [seg.strip() + f" (strona: {self.link})"]
+            else:
+                self.out.append(f"]({self.link})")
+            self.link = None
+        elif tag in self.BLOK:
+            self._blok()
+
+    def handle_data(self, data):
+        if self.pomin:
+            return
+        t = re.sub(r"\s+", " ", data)
+        if self.wiersz is not None and self.wiersz:
+            self.wiersz[-1] += t
+            return
+        if t.strip() or (self.out and not self.out[-1].endswith((" ", "\n"))):
+            self.out.append(t)
+
+    def wynik(self):
+        md = "".join(self.out).replace(" ", " ")
+        md = re.sub(r"\*\*\s*\*\*", "", md)
+        md = re.sub(r"\n\s*(?:-|\d+\.)\s*\n+(\s*#{1,6} )", r"\n\n\1", md)  # pusty punkt przed kartą
+        md = re.sub(r"\[\s*\]\([^)]*\)", "", md)
+        md = re.sub(r"(?<=\S) {2,}", " ", md)
+        md = re.sub(r"\[ +", "[", md)
+        md = re.sub(r" +\]", "]", md)
+        md = re.sub(r" +([.,:;!?)])", r"\1", md)
+        md = re.sub(r"[ \t]+\n", "\n", md)
+        md = re.sub(r"\n(#{1,6}) +", r"\n\1 ", md)
+        md = re.sub(r"\n{3,}", "\n\n", md)
+        linie = []
+        for l in md.split("\n"):
+            # kilka kafelków-linków w jednym wierszu: każdy osobno
+            if l.startswith("[") and l.count("](") >= 2:
+                linie += ["- " + x.strip() for x in re.split(r"(?<=\)) (?=\[)", l)]
+                continue
+            if l.count("(strona: ") >= 2:
+                linie += [x.strip() + "\n" for x in re.split(r"(?<=\)) (?=\S)", l)]
+                continue
+            linie.append(l)
+        md = "\n".join(l.strip() if not l.lstrip().startswith(("-", "1", "2", "3", "4", "5", "6", "7", "8", "9")) else l.rstrip() for l in linie)
+        return re.sub(r"\n{3,}", "\n\n", md).strip() + "\n"
+
+
+def strona_md(html, url, m):
+    """Wersja Markdown jednej strony: adres, opis i treść z <main>."""
+    tresc = re.search(r'<main id="tresc">(.*)</main>', html, re.S).group(1)
+    tresc = re.sub(r'<section[^>]*class="[^"]*cta-band[^"]*".*?</section>', "", tresc, flags=re.S)
+    p = DoMarkdown(); p.feed(tresc)
+    md = p.wynik()
+    naglowek = f"Adres: {SITE}{url}\nOpis: {htmlmod.unescape(m['desc'])}\n"
+    h1 = re.search(r"^# .+$", md, re.M)
+    if h1:  # tytuł strony zawsze na górze (w profilach h1 stoi po roli specjalisty)
+        md = h1.group(0) + "\n\n" + (md[:h1.start()] + md[h1.end():]).strip() + "\n"
+    else:
+        md = f"# {htmlmod.unescape(m.get('h1') or m['title'])}\n\n" + md
+    pierwsza, _, reszta = md.partition("\n")
+    stopka = (f"\n---\nSpondylus, centrum medyczne w Szczecinie i Koszalinie. Infolinia +48 665 035 035 "
+              f"(wewnętrzny 1 Szczecin centrum, 2 Szczecin Pogodno, 4 Koszalin). Rejestracja online: {SITE}/rejestracja-online/\n")
+    return re.sub(r"\n{3,}", "\n\n", f"{pierwsza}\n\n{naglowek}{reszta}{stopka}")
+
+
+def adres_md(url):
+    return f"{SITE}/index.md" if url == "/" else f"{SITE}{url.rstrip('/')}.md"
+
+
+def faq_strony_glownej(html):
+    pary = re.findall(r"<details[^>]*>\s*<summary[^>]*>(.*?)</summary>(.*?)</details>", html, re.S)
+    txt = lambda h: re.sub(r"\s+", " ", htmlmod.unescape(re.sub(r"<[^>]+>", " ", h))).strip()
+    return "\n".join(f"- **{txt(q)}** {txt(a)}" for q, a in pary if txt(q).endswith("?"))
+
+
+def mapa_tresci(strony, wpisy, html_glowna):
+    """llms.txt (standard llmstxt.org): mapa treści serwisu dla wyszukiwarek AI. Tylko fakty ze strony."""
     czysty = lambda t: re.sub(r"\s*\|\s*Spondylus$", "", htmlmod.unescape(t))
-    grupy = {"oferta": [], "kadra": [], "inne": []}
+    grupy = {"oferta": [], "kadra": [], "inne": [], "opcjonalne": []}
     for url, m in strony:
-        if m.get("noindex") or url == "/":
+        if m.get("noindex") or url in ("/", "/404/"):
             continue
-        grupy["oferta" if m.get("nav") in ("oferta", "nfz") or url == "/refundacja/" else
-              "kadra" if m.get("nav") == "kadra" else "inne"].append(f"- [{czysty(m['title'])}]({SITE}{url}): {htmlmod.unescape(m['desc'])}")
+        opis = htmlmod.unescape(m["desc"])
+        if m.get("osoba"):
+            imie, rola, pl = [x.strip() for x in m["osoba"].split("|")]
+            gdzie = PLACOWKI[pl]["nazwa"] if pl in PLACOWKI else ""
+            opis = f"{rola}, {gdzie}. {opis}" if gdzie else f"{rola}. {opis}"
+        linia = f"- [{czysty(m['title'])}]({SITE}{url}): {opis} Tekst: {adres_md(url)}"
+        if re.search(r"polityka|regulamin", url):
+            grupy["opcjonalne"].append(linia)
+        elif m.get("nav") in ("oferta", "nfz") or url in ("/refundacja/", "/pakietysportowe/"):
+            grupy["oferta"].append(linia)
+        elif m.get("nav") == "kadra":
+            grupy["kadra"].append(linia)
+        else:
+            grupy["inne"].append(linia)
     placowki = "\n".join(f"- {p['nazwa']}: {p['ulica']}, {(p['kod'] + ' ') if p['kod'] else ''}{p['miasto']}. "
                          f"Poniedziałek do piątku {p['od']} do {p['do']}. Infolinia 665 035 035, wewnętrzny {p['wew']}."
                          for p in PLACOWKI.values())
-    poradniki = "\n".join(f"- [{htmlmod.unescape(m['h1'])}]({SITE}{u}): {htmlmod.unescape(m['desc'])}" for u, m in wpisy)
+    poradniki = "\n".join(f"- [{htmlmod.unescape(m['h1'])}]({SITE}{u}): {htmlmod.unescape(m['desc'])} Tekst: {adres_md(u)}" for u, m in wpisy)
     return f"""# Spondylus
 
-> Centrum medyczne w Szczecinie i Koszalinie, działające od 1989 roku. Rehabilitacja, diagnostyka wad postawy,
-> medycyna sportowa, konsultacje lekarskie (ortopeda, neurolog, neurochirurg), dietetyka, medycyna estetyczna
-> oraz zaopatrzenie medyczne, także z refundacją NFZ.
+> Spondylus to centrum medyczne w Szczecinie i Koszalinie, działające od 1989 roku. Rehabilitacja i fizjoterapia,
+> diagnostyka wad postawy i komputerowe badanie stóp, medycyna sportowa, konsultacje lekarskie (ortopeda, neurolog,
+> neurochirurg), podologia, dietetyka, medycyna estetyczna oraz zaopatrzenie medyczne, także z refundacją NFZ.
 
-Jedna infolinia dla wszystkich placówek: +48 665 035 035. E-mail: doktor@spondylus.pl.
-Rejestracja online: {SITE}/rejestracja-online/
+Każda strona serwisu ma wersję tekstową w Markdown (adres strony z końcówką .md, np. {SITE}/oferta.md).
+Cała treść serwisu w jednym pliku: {SITE}/llms-full.txt
+
+## Najważniejsze informacje
+
+- Firma rodzinna założona w 1989 roku przez dr. Ryszarda Wetoszkę; w 1997 roku dołączył jego syn, Wojciech Wetoszka.
+- Trzy placówki: dwie w Szczecinie (centrum i Pogodno) i jedna w Koszalinie, połączone jedną infolinią +48 665 035 035.
+- Wizytę prywatną umawia się online w kalendarzu wybranej placówki ({SITE}/rejestracja-online/) albo telefonicznie; skierowanie zwykle nie jest potrzebne.
+- Spondylus ma umowę z NFZ na zaopatrzenie w wyroby medyczne: wózki, wkładki, obuwie i sprzęt na zlecenie. Opis krok po kroku: {SITE}/refundacja/
+- Program „Zdrowa Nóżka i Kręgosłup”: badania postawy i stóp dzieci w przedszkolach, ponad 25 000 przebadanych dzieci.
+- Program „Aktywny Senior”: bezpłatne konsultacje i badania profilaktyczne dla osób po 60. roku życia; zapisy pod numerem 609 442 071.
+- Mobilny Podolog: zabiegi podologiczne w domu pacjenta na terenie Szczecina; umawianie pod numerem 609 442 071.
+- Kontakt e-mail: doktor@spondylus.pl.
 
 ## Placówki
 
@@ -816,6 +1008,10 @@ Rejestracja online: {SITE}/rejestracja-online/
 
 {chr(10).join(grupy["kadra"])}
 
+## Najczęstsze pytania pacjentów
+
+{faq_strony_glownej(html_glowna)}
+
 ## Poradniki
 
 {poradniki}
@@ -823,6 +1019,10 @@ Rejestracja online: {SITE}/rejestracja-online/
 ## Informacje
 
 {chr(10).join(grupy["inne"])}
+
+## Optional
+
+{chr(10).join(grupy["opcjonalne"])}
 """
 
 
@@ -872,6 +1072,18 @@ def build():
         if not m.get("noindex"):
             mapa[url] = m.get("zmiana") or datetime.date.fromtimestamp(plik.stat().st_mtime).isoformat()
 
+    meta = dict(opisy)
+    meta.update(dict(wpisy))
+    pelny = []
+    for url, html in list(wyniki.items()):
+        m = meta.get(url)
+        if m and not m.get("noindex") and url != "/404/":
+            md = strona_md(html, url, m)
+            plik_md = DIST / ("index.md" if url == "/" else url.strip("/") + ".md")
+            plik_md.write_text(md, encoding="utf-8")
+            pelny.append(md)
+            html = html.replace("</head>", f'<link rel="alternate" type="text/markdown" href="{adres_md(url)}">\n</head>', 1)
+            wyniki[url] = html
     for url, html in wyniki.items():
         zapisz(url, html)
     # 404: osobny plik w katalogu głównym (ErrorDocument)
@@ -882,12 +1094,21 @@ def build():
 
     (DIST / ".htaccess").write_text(htaccess(), encoding="utf-8")
     (DIST / "sitemap.xml").write_text(sitemap(mapa), encoding="utf-8")
-    (DIST / "robots.txt").write_text(f"User-agent: *\nDisallow: /api/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+    boty = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot",
+            "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "Googlebot"]
+    (DIST / "robots.txt").write_text(
+        "User-agent: *\nDisallow: /api/\n\n"
+        + "".join(f"User-agent: {b}\nAllow: /\nDisallow: /api/\n\n" for b in boty)
+        + f"# Mapa treści dla modeli językowych: {SITE}/llms.txt (pełna treść: {SITE}/llms-full.txt)\n"
+        + f"Sitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
     if PODGLAD:  # podgląd: nic do indeksowania, bez .htaccess i PHP (GitHub Pages ich nie obsługuje)
         (DIST / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
         (DIST / ".nojekyll").write_text("", encoding="utf-8")
     (DIST / "feed.xml").write_text(rss(wpisy), encoding="utf-8")
-    (DIST / "llms.txt").write_text(mapa_tresci(sorted(opisy), wpisy), encoding="utf-8")
+    (DIST / "llms.txt").write_text(mapa_tresci(sorted(opisy), wpisy, wyniki.get("/", "")), encoding="utf-8")
+    (DIST / "llms-full.txt").write_text(
+        f"# Spondylus: pełna treść serwisu {SITE}\n\nWszystkie strony i poradniki w Markdown, w kolejności mapy treści ({SITE}/llms.txt).\n\n"
+        + "\n\n".join(pelny), encoding="utf-8")
 
     bledy = sprawdz_linki(wyniki)
     print(f"zbudowano {len(wyniki)} stron ({len(wpisy)} wpisów), mapa strony: {len(mapa)} adresów")

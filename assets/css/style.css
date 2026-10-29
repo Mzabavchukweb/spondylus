@@ -2675,3 +2675,13 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .onas-zaj__liczby { border-top: 0; display: grid; gap: 8px; }
 .onas-zaj__liczby li { border-bottom: 0; padding: 12px 16px; background: #fff; border-radius: 12px; }
 .section--soft .onas-zaj__liczby li, .onas-zaj .onas-zaj__liczby li { background: #fff; }
+/* tytuły kafelków i kroków jako nagłówki h3 (wygląd jak dotąd) */
+.kafel__t { margin: 0; font-family: inherit; font-size: 18px; font-weight: 700; line-height: 1.3; letter-spacing: 0; color: var(--ink); }
+.zao-oferta .kafel__t { padding-top: 4px; }
+.zao-oferta:not(.zao-oferta--4) .kafel__t { grid-column: 2; }
+.sygnaly .kafel__t { padding-top: 8px; }
+.nfz2 .kafel__t { display: block; }
+h3.etapy__kiedy { font-family: inherit; letter-spacing: 0; line-height: 1.3; }
+@media (max-width: 640px) { .zao-oferta--4 .kafel__t { grid-column: 2; } }
+.nfz2 .kafel__t { font-size: 20px; }
+@media (max-width: 960px) { .nfz2 .kafel__t { font-size: 18px; } }

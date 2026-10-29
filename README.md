@@ -20,7 +20,7 @@ npm run wcag
 
 ## Tekstowa mapa treści
 
-`dist/llms.txt` (llmstxt.org) składa się sam z tytułów i opisów podstron, wpisów i danych placówek.
+`dist/llms.txt` (llmstxt.org) składa się sam: najważniejsze fakty, placówki, usługi, specjaliści (rola i placówka), pytania ze strony głównej, poradniki. Każda indeksowana strona ma wersję Markdown (`/oferta.md`, `/index.md`) z treści `<main>` (klasa `DoMarkdown` w build.py) i link `rel="alternate" type="text/markdown"` w `<head>`; `dist/llms-full.txt` to cała treść serwisu w jednym pliku. `robots.txt` wpuszcza wprost boty wyszukiwarek AI.
 
 ## Podgląd na żywo
 
