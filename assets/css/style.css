@@ -2585,3 +2585,22 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 @media (max-width: 1100px) { .zao-oferta--4, .etapy { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 960px) { .badanie { grid-template-columns: 1fr; } .page-hero__media--ilu { aspect-ratio: 4 / 3; } }
 @media (max-width: 640px) { .zao-oferta--4, .etapy { grid-template-columns: 1fr; } .zao-oferta--4 li { grid-template-columns: 56px minmax(0, 1fr); } .zao-oferta--4 .ilu { grid-row: 1 / span 2; width: 56px; height: 56px; } .zao-oferta--4 b, .zao-oferta--4 span { grid-column: 2; } }
+/* Karty metod i usług: ilustracja, tytuł, opis, lista z haczykiem */
+.metody { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.metody > li { display: flex; flex-direction: column; gap: 12px; padding: clamp(22px, 2.4vw, 30px); background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+.section:not(.section--soft) .metody > li { background: var(--bg-soft); border-color: transparent; }
+.metody .ilu { width: 76px; height: 76px; margin-bottom: 4px; }
+.metody h3 { font-size: clamp(21px, 1.8vw, 24px); line-height: 1.2; }
+.metody p { font-size: 16px; line-height: 1.6; }
+.metody ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; }
+.metody ul li { position: relative; padding-left: 28px; font-size: 15.5px; line-height: 1.5; }
+.metody ul li::before { content: ""; position: absolute; left: 2px; top: .42em; width: 13px; height: 7px; border-left: 2px solid var(--brand-600); border-bottom: 2px solid var(--brand-600); transform: rotate(-45deg); }
+.metody--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.galeria--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(28px, 4vw, 44px); }
+.linki-prog { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 12px; }
+.linki-prog a { display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: 16px; align-items: center; padding: 16px 18px; background: #fff; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); }
+.linki-prog .ilu { width: 56px; height: 56px; grid-row: 1 / span 2; }
+.linki-prog b { font-size: 17px; }
+.linki-prog span { font-size: 15px; color: var(--text); }
+@media (max-width: 1100px) { .metody { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .metody, .metody--2 { grid-template-columns: 1fr; } .galeria--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
