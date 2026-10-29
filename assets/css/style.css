@@ -2624,3 +2624,26 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .zao-refund .onas-zaj__liczby { margin-bottom: 0; }
 .zao-refund .page-hero__cta { margin-top: 24px; }
 .zao-oferta:not(.zao-oferta--4) b, .zao-oferta:not(.zao-oferta--4) span { grid-column: 2; }
+/* Oferta: kafelki obszarów i katalog usług */
+.obszary { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.obszary a { display: flex; flex-direction: column; height: 100%; padding: clamp(22px, 2.2vw, 28px); background: #fff; border: 1px solid var(--line); border-radius: 12px; color: var(--text); text-decoration: none; }
+.section:not(.section--soft) .obszary a { background: var(--bg-soft); border-color: transparent; }
+.obszary .ilu { width: 88px; height: 88px; margin-bottom: 16px; }
+.obszary h3 { font-size: 20px; color: var(--ink); line-height: 1.25; }
+.obszary p { margin-top: 8px; font-size: 15.5px; line-height: 1.5; flex: 1; }
+.obszary__wiecej { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-weight: 700; font-size: 15px; color: var(--brand-600); }
+.obszary__wiecej svg { width: 18px; height: 18px; }
+.katalog { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.katalog > li { padding: clamp(22px, 2.6vw, 32px); background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+.katalog h3 { font-size: clamp(22px, 2vw, 26px); }
+.katalog h3 a { color: var(--ink); text-decoration: none; }
+.katalog__lista { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 14px; }
+.katalog__lista > li { padding-top: 14px; border-top: 1px solid var(--line); }
+.katalog__lista b { display: block; font-size: 16.5px; color: var(--ink); }
+.katalog__lista ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.katalog__lista ul li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.5; }
+.katalog__lista ul li::before { content: ""; position: absolute; left: 2px; top: .45em; width: 12px; height: 6px; border-left: 2px solid var(--brand-600); border-bottom: 2px solid var(--brand-600); transform: rotate(-45deg); }
+@media (max-width: 1100px) { .obszary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .katalog { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .obszary { grid-template-columns: 1fr; } .obszary a { display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 16px; } .obszary .ilu { width: 64px; height: 64px; grid-row: 1 / span 3; margin: 0; } }
+.page-hero__media--ilu .ilu--stara { width: calc(100% + 2 * clamp(16px, 3vw, 36px)); height: calc(100% + 2 * clamp(16px, 3vw, 36px)); max-width: none; margin: calc(-1 * clamp(16px, 3vw, 36px)); object-fit: cover; }

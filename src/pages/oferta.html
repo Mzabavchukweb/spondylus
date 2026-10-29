@@ -6,53 +6,75 @@
 <section class="page-hero">
   <div class="wrap">
     {{okruszki}}
-    <h1>Oferta Spondylus</h1>
-    <p class="page-hero__lead">Rehabilitacja, diagnostyka, konsultacje lekarskie, dietetyka, medycyna sportowa i estetyczna oraz zaopatrzenie medyczne.</p>
+    <div class="page-hero__grid">
+      <div>
+        <h1>Oferta Spondylus</h1>
+        <p class="page-hero__lead">Rehabilitacja, diagnostyka, konsultacje lekarskie, dietetyka, medycyna sportowa i estetyczna oraz zaopatrzenie medyczne.</p>
+        <div class="page-hero__cta"><button class="btn btn--primary" type="button" data-book>{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="#katalog">Pełny katalog usług</a></div>
+      </div>
+      <div class="page-hero__media page-hero__media--ilu" aria-hidden="true">{{ilu:scena-oferta|img:assets/img/hero-rehabilitacja.webp}}</div>
+    </div>
   </div>
 </section>
 
-<section class="section" style="padding-bottom:0">
-  <div class="wrap wrap--tekst">
-    <h2 class="sr-only">Obszary</h2>
-    <ul class="svc"><li><a href="rehabilitacja-2.html"><span class="svc__name">Rehabilitacja</span><span class="svc__desc">Ortopedyczna, pourazowa, pooperacyjna i neurologiczna: terapia manualna, kinezyterapia, fizykoterapia.</span></a></li><li><a href="zakres-uslug-diagnostycznych.html"><span class="svc__name">Diagnostyka wad postawy</span><span class="svc__desc">Komputerowe badanie stóp, diagnostyka posturalna i badania dla sportowców.</span></a></li><li><a href="medycyna-sportowa.html"><span class="svc__name">Medycyna sportowa</span><span class="svc__desc">Badania dla aktywnych, leczenie kontuzji i powrót do treningu.</span></a></li><li><a href="kadra.html#lekarze"><span class="svc__name">Konsultacje lekarskie</span><span class="svc__desc">Ortopeda, neurolog i neurochirurg w Szczecinie.</span></a></li><li><a href="dietetyka.html"><span class="svc__name">Dietetyka</span><span class="svc__desc">Porady żywieniowe i plany diety dopasowane do zdrowia i terapii.</span></a></li><li><a href="medycyna-estetyczna.html"><span class="svc__name">Medycyna estetyczna</span><span class="svc__desc">Zabiegi pielęgnacyjne i modelujące sylwetkę pod opieką zespołu medycznego.</span></a></li><li><a href="zaopatrzenie-medyczne.html"><span class="svc__name">Zaopatrzenie medyczne</span><span class="svc__desc">Wkładki, obuwie, ortezy i sprzęt rehabilitacyjny.</span></a></li><li><a href="refundacja.html"><span class="svc__name">Refundacja NFZ</span><span class="svc__desc">Wózek, kule, wkładki i obuwie na zlecenie: jak to załatwić krok po kroku.</span></a></li><li><a href="zdrowa-nozka-i-kregoslup.html"><span class="svc__name">Program Zdrowa Nóżka i Kręgosłup</span><span class="svc__desc">Badania postawy i stóp dzieci w przedszkolach.</span></a></li><li><a href="aktywny-senior.html"><span class="svc__name">Program Aktywny Senior</span><span class="svc__desc">Bezpłatne konsultacje i badania dla seniorów 60+.</span></a></li><li><a href="podologia.html"><span class="svc__name">Podologia</span><span class="svc__desc">Zabiegi na stopy w gabinecie podologicznym.</span></a></li><li><a href="mobilny-podolog.html"><span class="svc__name">Mobilny Podolog</span><span class="svc__desc">Zabiegi podologiczne w domu pacjenta.</span></a></li></ul>
+<section class="section section--soft">
+  <div class="wrap">
+    <div class="head2">
+      <h2>Obszary</h2>
+      <p>Jedna infolinia, trzy placówki w Szczecinie i Koszalinie. Wybierz obszar, a rejestracja dobierze specjalistę.</p>
+    </div>
+    <ul class="obszary">
+      <li><a href="rehabilitacja-2.html">{{ilu:kolo-rehabilitacja|}}<h3>Rehabilitacja</h3><p>Ortopedyczna, pourazowa, pooperacyjna i neurologiczna: terapia manualna, kinezyterapia, fizykoterapia.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="zakres-uslug-diagnostycznych.html">{{ilu:kolo-diagnostyka|}}<h3>Diagnostyka wad postawy</h3><p>Komputerowe badanie stóp, diagnostyka posturalna i badania dla sportowców.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="medycyna-sportowa.html">{{ilu:kolo-sport|}}<h3>Medycyna sportowa</h3><p>Badania dla aktywnych, leczenie kontuzji i powrót do treningu.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="kadra.html#lekarze">{{ilu:kolo-lekarze|}}<h3>Konsultacje lekarskie</h3><p>Ortopeda, neurolog i neurochirurg w Szczecinie.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="podologia.html">{{ilu:kolo-podologia|}}<h3>Podologia</h3><p>Zabiegi na stopy w gabinecie podologicznym.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="dietetyka.html">{{ilu:kolo-dietetyka|}}<h3>Dietetyka</h3><p>Porady żywieniowe i plany diety dopasowane do zdrowia i terapii.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="medycyna-estetyczna.html">{{ilu:kolo-estetyka|}}<h3>Medycyna estetyczna</h3><p>Zabiegi pielęgnacyjne i modelujące sylwetkę pod opieką zespołu medycznego.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="zaopatrzenie-medyczne.html">{{ilu:kolo-zaopatrzenie|}}<h3>Zaopatrzenie medyczne</h3><p>Wkładki, obuwie, ortezy i sprzęt rehabilitacyjny.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+    </ul>
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap wrap--tekst">
-    <h2>Pełny katalog usług</h2>
-    <div class="prose">
-<p> <strong>Usługi diagnostyczne</strong>  Katalog usług diagnostycznych realizowanych w naszych gabinetach przedstawia się następująco:</p>
-<h2>Diagnostyka aparatu ruchu</h2>
-<ul><li>diagnostyka komputerowa stóp z wykorzystaniem cyfrowych mat pedobarograficznych</li><li>diagnostyka posturalna, która obejmuje cały zakres naszego aparatu ruchu</li><li>diagnostyka wad postawy dla najmłodszych Pacjentów, do 6 roku życia włącznie, pozostających w procesie fizjologicznej autokorekty</li></ul>
-<p><strong>DIAGNOSTYKA SPORTOWA </strong>– badanie posturalne, którego zakres został opisany w podpunkcie diagnostyki aparatu ruchu,</p><ul><li>diagnostyka spirometryczna, pozwalająca na określenie wydolności oddechowej sportowca</li><li>diagnostyka kardiologiczna EKG w trybie spoczynkowym uzupełniona badaniem SDS, określającym ryzyko nagłej śmierci sercowej sportowca</li></ul>
-<h2>Diagnostyka podologiczna</h2>
-<ul><li>ocena zaburzeń w obrębie stopy i stawu skokowo-goleniowego Pacjenta</li><li>badanie czucia powierzchownego oraz pomiar wskaźnika kostka-ramię (ABI)</li></ul>
-<p><strong>DIAGNOSTYKA ULTRASONOGRAFICZNA POSTĘPÓW TERAPII<br/>
-</strong> <strong><br/>
-Usługi rehabilitacyjne</strong>  Nasz zespół medyczny realizuje rehabilitację osób w pełnym przekroju wiekowym. Pracujemy metodami:</p>
-<h2>Terapia manualna</h2>
-<ul><li>eliminację blokad, przykurczów i sklejeń oraz zastojów limfatycznych (obrzęków)</li><li>rozluźnianie mięśniowo-powięziowe, manipulacje, mobilizacje oraz terapie punktów spustowych</li><li>kształcenie właściwych wzorców ruchu i postawy</li><li>regulacja napięcia mięśniowego, np. stretching medyczny</li><li>wzmocnienie efektów terapii – ćwiczenia, stabilizacja centralna</li></ul>
-<h2>Fizykoterapia</h2>
-<ul><li>elektroterapia</li><li>magnetoterapia</li><li>krioterapia</li><li>nowoczesne metody terapii z zastosowaniem głębokiej stymulacji kawitacyjnej oraz skupionej fali uderzeniowej</li></ul>
-<p><strong>KINEZYTERAPIA</strong> <strong><br/>
-Usługi podologiczne</strong>  Zakres usług podologicznych w Spondylus obejmuje kompleksową opiekę nad stopą, rozpoczynając od podstawowej pielęgnacji, poprzez leczenie zakażeń, do zaawansowanego leczenia ran. Katalog usług podologicznych, realizowanych w naszych gabinetach, przedstawia się następująco:</p>
-<p><strong>PIELĘGNACJA STÓP<br/>
-</strong><br/>
-<strong>KOREKCJA WRASTAJĄCYCH PAZNOKCI</strong></p>
-<ul><li>metodą Arkady</li><li>klamry ortonyksyjne</li><li>tamponada</li></ul>
-<h2>Leczenie zmian skórnych</h2>
-<ul><li>dermatoskopia</li><li>badania mykologiczne</li><li>leczenie brodawek metodą farmakologiczną i  elektrokagulacji</li></ul>
-<p>PIELĘGNACJA STOPY CUKRZYCOWEJ</p>
-<p>MOBILNE USŁUGI PODOLOGICZNE<br/>
-<strong><br/>
-Zaopatrzenie medyczne</strong>  W placówkach doktora Spondylusa, w ramach zaopatrzenia medycznego, oferujemy:</p>
-<ul><li>indywidualne wkładki ortopedyczne, w tym dla diabetyków</li><li>obuwie profilaktyczne i zindywidualizowane (w tym NFZ)</li><li>zaopatrzenie w sprzęt pielęgnacyjny i pomocniczy; produkty kompresyjne, artykułu medyczne, suplementy diety, preparaty i kosmetyki, produkty ortopedyczne, ortezy i stabilizatory, zaopatrzenie stomijne, produkty chłonne</li><li>ciężki sprzęt rehabilitacyjny, doradztwo w doborze rozwiązań</li></ul>
-<h2><strong>Umów wizytę online</strong><br/>
-w Szczecinie</h2>
-<h2><strong>Umów wizytę online</strong><br/>
-w Szczecinie</h2>
+  <div class="wrap">
+    <div class="head2">
+      <h2>Programy i pomoc</h2>
+      <p>Programy profilaktyki dla dzieci i seniorów, wizyty domowe oraz pomoc w formalnościach NFZ.</p>
     </div>
+    <ul class="obszary">
+      <li><a href="refundacja.html">{{ilu:wozek|}}<h3>Refundacja NFZ</h3><p>Wózek, kule, wkładki i obuwie na zlecenie: jak to załatwić krok po kroku.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="zdrowa-nozka-i-kregoslup.html">{{ilu:program-dzieci|}}<h3>Zdrowa Nóżka i Kręgosłup</h3><p>Badania postawy i stóp dzieci w przedszkolach.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="aktywny-senior.html">{{ilu:program-senior|}}<h3>Aktywny Senior</h3><p>Bezpłatne konsultacje i badania dla seniorów 60+.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+      <li><a href="mobilny-podolog.html">{{ilu:program-dom|}}<h3>Mobilny Podolog</h3><p>Zabiegi podologiczne w domu pacjenta.</p><span class="obszary__wiecej">Zobacz {{icon:arrow}}</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section--soft" id="katalog">
+  <div class="wrap">
+    <div class="head2">
+      <h2>Pełny katalog usług</h2>
+      <p>Wszystkie usługi w jednym miejscu. Szczegóły znajdziesz na stronie każdego obszaru.</p>
+    </div>
+    <ul class="katalog">
+      <li>
+        <h3><a href="zakres-uslug-diagnostycznych.html">Diagnostyka</a></h3>
+        <ul class="katalog__lista"><li><b>Diagnostyka aparatu ruchu</b><ul><li>komputerowa diagnostyka stóp na cyfrowych matach pedobarograficznych</li><li>diagnostyka posturalna całego aparatu ruchu</li><li>diagnostyka wad postawy dzieci do 6 roku życia włącznie</li></ul></li><li><b>Diagnostyka sportowa</b><ul><li>badanie posturalne</li><li>diagnostyka spirometryczna</li><li>EKG spoczynkowe z badaniem SDS</li></ul></li><li><b>Diagnostyka podologiczna</b><ul><li>ocena zaburzeń stopy i stawu skokowo-goleniowego</li><li>badanie czucia powierzchownego i pomiar wskaźnika kostka-ramię (ABI)</li></ul></li><li><b>USG postępów terapii (RUSI)</b></li></ul>
+      </li>
+      <li>
+        <h3><a href="rehabilitacja-2.html">Rehabilitacja</a></h3>
+        <ul class="katalog__lista"><li><b>Terapia manualna</b><ul><li>eliminacja blokad, przykurczów, sklejeń i obrzęków</li><li>rozluźnianie mięśniowo-powięziowe, manipulacje, mobilizacje, punkty spustowe</li><li>kształcenie wzorców ruchu i postawy</li><li>regulacja napięcia mięśniowego, stretching medyczny</li><li>ćwiczenia, stabilizacja centralna</li></ul></li><li><b>Fizykoterapia</b><ul><li>elektroterapia</li><li>magnetoterapia</li><li>krioterapia</li><li>głęboka stymulacja kawitacyjna i skupiona fala uderzeniowa</li></ul></li><li><b>Kinezyterapia</b></li></ul>
+      </li>
+      <li>
+        <h3><a href="podologia.html">Podologia</a></h3>
+        <ul class="katalog__lista"><li><b>Pielęgnacja stóp</b></li><li><b>Korekcja wrastających paznokci</b><ul><li>metoda Arkady</li><li>klamry ortonyksyjne</li><li>tamponada</li></ul></li><li><b>Leczenie zmian skórnych</b><ul><li>dermatoskopia</li><li>badania mykologiczne</li><li>leczenie brodawek metodą farmakologiczną i elektrokoagulacji</li></ul></li><li><b>Pielęgnacja stopy cukrzycowej</b></li><li><b>Mobilne usługi podologiczne</b></li></ul>
+      </li>
+      <li>
+        <h3><a href="zaopatrzenie-medyczne.html">Zaopatrzenie medyczne</a></h3>
+        <ul class="katalog__lista"><li><b>Indywidualne wkładki ortopedyczne, w tym dla diabetyków</b></li><li><b>Obuwie profilaktyczne i zindywidualizowane (w tym NFZ)</b></li><li><b>Sprzęt pielęgnacyjny i pomocniczy</b><ul><li>produkty kompresyjne i ortopedyczne, ortezy i stabilizatory</li><li>zaopatrzenie stomijne, produkty chłonne</li><li>artykuły medyczne, suplementy diety, preparaty i kosmetyki</li></ul></li><li><b>Ciężki sprzęt rehabilitacyjny i doradztwo w doborze</b></li></ul>
+      </li>
+    </ul>
   </div>
 </section>
 
