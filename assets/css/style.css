@@ -2617,3 +2617,10 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 @media (min-width: 1101px) { .metody--pakiety > li:last-child:nth-child(3n+2) { grid-column: span 2; } }
 @media (min-width: 761px) and (max-width: 1100px) { .metody--pakiety > li:last-child:nth-child(odd) { grid-column: span 2; } }
 @media (max-width: 640px) { .linki-prog--szeroki a { grid-template-columns: 1fr; row-gap: 10px; } .linki-prog--szeroki .ilu { grid-row: auto; } }
+.metody-lista { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.metody-lista li { position: relative; padding: 16px 18px 16px 46px; background: var(--bg-soft); border-radius: 12px; font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+.metody-lista li::before { content: ""; position: absolute; left: 20px; top: 1.25em; width: 13px; height: 7px; border-left: 2px solid var(--brand-600); border-bottom: 2px solid var(--brand-600); transform: rotate(-45deg); }
+@media (max-width: 640px) { .metody-lista { grid-template-columns: 1fr; } }
+.zao-refund .onas-zaj__liczby { margin-bottom: 0; }
+.zao-refund .page-hero__cta { margin-top: 24px; }
+.zao-oferta:not(.zao-oferta--4) b, .zao-oferta:not(.zao-oferta--4) span { grid-column: 2; }
