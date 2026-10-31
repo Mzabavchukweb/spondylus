@@ -737,6 +737,11 @@ USUNIETE = ["koszyk", "produkty", "zamowienie", "login", "kion", "membership-acc
 def htaccess():
     linie = ["# Wygenerowane przez build.py. Nie edytować ręcznie.", "Options -Indexes", "DirectoryIndex index.html",
              "ErrorDocument 404 /404.html", "AddDefaultCharset utf-8", "AddType text/markdown;charset=utf-8 .md", "AddType text/plain;charset=utf-8 .txt", "", "RewriteEngine On",
+             "# Booksy podologa w Koszalinie (reguła klienta, 302 bez parametrów, bez cache)",
+             "RewriteRule ^podolog-koszalin/?$ https://booksy.com/pl-pl/358403_spondylus-podolog_podologia_19501_koszalin [R=302,L,QSD]",
+             "<IfModule mod_headers.c>",
+             '    Header always set Cache-Control "no-store" "expr=%{REQUEST_URI} =~ m#^/podolog-koszalin/?$#"',
+             "</IfModule>", "",
              "# jeden adres: https i bez www",
              "RewriteCond %{HTTPS} off [OR]", "RewriteCond %{HTTP_HOST} ^www\\. [NC]",
              "RewriteRule ^(.*)$ https://spondylus.pl/$1 [R=301,L]",
