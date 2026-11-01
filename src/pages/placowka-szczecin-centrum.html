@@ -7,25 +7,43 @@
 <section class="page-hero">
   <div class="wrap">
     {{okruszki}}
-    <h1>Spondylus Szczecin, centrum, al. Jana Pawła II 36</h1>
-    <p class="page-hero__lead">Centrum Medyczne Spondylus w centrum Szczecina.</p>
+    <div class="page-hero__grid">
+      <div>
+        <h1>Spondylus Szczecin, centrum</h1>
+        <p class="page-hero__lead">Centrum Medyczne Spondylus w centrum Szczecina.</p>
+        <div class="plac-info">
+          <span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span>
+          <address>al. Jana Pawła II 36, 70-453 Szczecin</address>
+          <div class="place__godz">{{icon:clock}}pon. do pt. 9:00 do 18:00</div>
+          <div class="place__ext">{{icon:phone}}<a href="tel:+48665035035">665 035 035</a> wew. 1</div>
+        </div>
+        <div class="page-hero__cta"><button class="btn btn--primary" type="button" data-book="szczecin-jp">{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">{{icon:map}}Nawiguj</a></div>
+      </div>
+      <a class="page-hero__media plac-mapa" href="https://www.google.com/maps/dir/?api=1&destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener" aria-label="Mapa dojazdu: al. Jana Pawła II 36, 70-453 Szczecin, otwiera Google Maps"><img src="assets/img/mapa-szczecin-centrum.webp" alt="" width="860" height="520"></a>
+    </div>
   </div>
 </section>
 
 <section class="section section--soft">
   <div class="wrap">
-    <div class="places places--jedna"><div class="place"><a class="map map--statyczna" href="https://www.google.com/maps/dir/?api=1&destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener" aria-label="Mapa dojazdu: al. Jana Pawła II 36, 70-453 Szczecin, otwiera Google Maps"><img src="assets/img/mapa-szczecin-centrum.webp" alt="" width="860" height="520" loading="lazy"></a><h3>Szczecin, centrum</h3><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><address>al. Jana Pawła II 36<br>70-453 Szczecin</address><div class="place__godz">{{icon:clock}}pon. do pt. 9:00 do 18:00</div><div class="place__ext">{{icon:phone}}<a href="tel:+48665035035">665 035 035</a> wew. 1</div><div class="place__actions"><button class="btn btn--primary btn--sm" type="button" data-book="szczecin-jp">Umów wizytę</button><a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/dir/?api=1&destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">{{icon:map}}Nawiguj</a></div></div></div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
     <div class="head2">
       <h2>Kto przyjmuje w tej placówce</h2>
       <p>Specjaliści, którzy na swoich profilach podają tę placówkę jako miejsce przyjęć.</p>
     </div>
-    <ul class="linki-prog linki-prog--kadra"><li><a href="magdalena-salabon.html"><b>Magdalena Sałabon</b><span>fizjoterapeutka dzieci</span></a></li></ul>
-    <p class="zao-mala"><a href="kadra.html">Cały zespół Spondylus</a></p>
+    <div class="team-grid spec-grid spec-grid--plac">
+      <article class="spec" data-group="fizjo">
+        <a class="spec__foto" href="magdalena-salabon.html" tabindex="-1" aria-hidden="true">{{portret:magdalena-salabon}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Fizjoterapeutka dzieci i młodzieży</p>
+          <h3 class="spec__imie"><a href="magdalena-salabon.html">Magdalena Sałabon</a></h3>
+          <p class="spec__opis">Dzieci i młodzież z wadami postawy, wadami stóp i skrzywieniem kręgosłupa. Pomaga też przy obrzękach.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Wady postawy</li><li>Skrzywienie kręgosłupa</li><li>Obrzęki</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin, al. Jana Pawła II 36</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="szczecin-jp">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+    </div>
+    <div class="sekcja-dalej"><a class="btn btn--ghost" href="kadra.html">Cały zespół Spondylus {{icon:arrow}}</a></div>
   </div>
 </section>
 

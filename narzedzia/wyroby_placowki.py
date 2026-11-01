@@ -124,30 +124,49 @@ def okruszki(*kroki):
     return " > ".join(kroki)
 
 
+def produkt(nazwa, marki):
+    """„KAPS Wkładki pełne MASTER” -> („KAPS”, „Wkładki pełne MASTER”); marka z listy marek grupy."""
+    for m in marki:
+        rdzen = m.split(" (")[0]
+        if nazwa.upper().startswith(rdzen.upper() + " "):
+            return rdzen, nazwa[len(rdzen) + 1:]
+        if rdzen.upper() in nazwa.upper():
+            return rdzen, nazwa
+    return "", nazwa
+
+
 def strona_grupy(g):
     kat = [sklep(k) for k in g["kat"]]
     linki_kat = "".join(f'<li><a href="{u}" target="_blank" rel="noopener">{n}</a></li>' for n, u, _ in kat)
-    marki = "".join(f"<li>{m}</li>" for m in g["marki"])
-    przyklady = "".join(f"<li>{p}</li>" for p in g["przyklady"])
-    nfz = ""
+    marki = ", ".join(m for m in g["marki"])
+    karty = []
     if g["nfz"]:
-        nfz = f'''
+        karty.append(f'''<li>{{{{ilu:skierowanie|}}}}<h3>Refundacja NFZ</h3>
+        <p>NFZ może refundować: {g["nfz"].lower()}. NFZ dopłaca do wysokości limitu, potrzebne jest zlecenie. Wykazy wyrobów i limity cen publikuje NFZ na stronie <a href="https://www.nfz.gov.pl" target="_blank" rel="noopener">nfz.gov.pl</a>.</p>
+        <a class="zao-info__link" href="refundacja.html">Jak dostać sprzęt z refundacją {{{{icon:arrow}}}}</a></li>''')
+    karty.append('''<li>{{ilu:ikona-pinezka|}}<h3>Dobór w placówce</h3>
+        <p>W Koszalinie przy ul. Jana Pawła II 21 działa strefa zaopatrzenia medycznego. O dostępność konkretnego produktu i dobór zapytaj na infolinii 665 035 035.</p>
+        <a class="zao-info__link" href="placowki.html">Adresy i godziny placówek {{icon:arrow}}</a></li>''')
+    karty.append(f'''<li>{{{{ilu:ikona-pakiet|}}}}<h3>Sklep internetowy</h3>
+        <p>Produkty z tej grupy kupisz też online w sklepie spondylus-sklep.pl. Marki, m.in.: {marki}.</p>
+        <ul class="zao-info__kat" aria-label="Kategorie w sklepie">{linki_kat}</ul></li>''')
+    url0 = kat[0][1]
+    produkty = ""
+    if g["przyklady"]:
+        kafle = "".join(
+            f'<li><a href="{url0}" target="_blank" rel="noopener"><span>{m}</span><b>{n}</b><em>W sklepie internetowym</em></a></li>'
+            for m, n in (produkt(x, g["marki"]) for x in g["przyklady"]))
+        produkty = f'''
 <section class="section">
-  <div class="wrap zao-refund">
-    <div>
-      <h2>Refundacja NFZ</h2>
-      <p>NFZ może refundować: {g["nfz"].lower()}. NFZ dopłaca do wysokości limitu, potrzebne jest zlecenie.</p>
-      <p class="zao-mala">Wykazy wyrobów i limity cen publikuje NFZ na stronie <a href="https://www.nfz.gov.pl" target="_blank" rel="noopener">nfz.gov.pl</a>.</p>
+  <div class="wrap">
+    <div class="head2">
+      <h2>Przykładowe produkty</h2>
+      <p>Wybrane produkty z kategorii w sklepie spondylus-sklep.pl. Pełna oferta jest w sklepie internetowym.</p>
     </div>
-    <ul class="linki-prog">
-      <li><a href="refundacja.html">{{{{ilu:skierowanie|}}}}<b>Jak dostać sprzęt z refundacją NFZ</b><span>Zlecenie, potwierdzenie, odbiór i kto pokrywa udział własny.</span></a></li>
-    </ul>
+    <ul class="zao-produkty">{kafle}</ul>
   </div>
 </section>
 '''
-    przyk = f'''
-      <h3 class="kafel__t">Przykładowe produkty</h3>
-      <ul class="zao-lista">{przyklady}</ul>''' if przyklady else ""
     return f'''<!-- title: {g["title"]} -->
 <!-- desc: {g["desc"]} -->
 <!-- nav: wyroby -->
@@ -156,49 +175,27 @@ def strona_grupy(g):
 <section class="page-hero">
   <div class="wrap">
     {{{{okruszki}}}}
-    <div class="page-hero__grid">
+    <div class="page-hero__grid page-hero__grid--produkt">
       <div>
         <h1>{g["h1"]}</h1>
         <p class="page-hero__lead">{g["lead"]}</p>
-        <div class="page-hero__cta">{TEL}<a class="btn btn--ghost" href="#sklep">Sklep internetowy</a></div>
+        <div class="page-hero__cta">{TEL}<a class="btn btn--ghost" href="{url0}" target="_blank" rel="noopener">Sklep internetowy</a></div>
       </div>
-      <div class="page-hero__media page-hero__media--ilu" aria-hidden="true">{{{{ilu:{g["ikona"]}|}}}}</div>
+      <div class="page-hero__media page-hero__media--ilu page-hero__media--produkt" aria-hidden="true">{{{{ilu:{g["ikona"]}|}}}}</div>
     </div>
   </div>
 </section>
-{nfz}
-<section class="section section--soft" id="sklep">
+
+<section class="section section--soft">
   <div class="wrap">
     <div class="head2">
-      <h2>W sklepie internetowym</h2>
-      <p>Produkty z tej grupy kupisz też online w sklepie <a href="https://spondylus-sklep.pl/" target="_blank" rel="noopener">spondylus-sklep.pl</a>.</p>
+      <h2>{"Refundacja, dobór i zakup" if g["nfz"] else "Dobór i zakup"}</h2>
+      <p>Doradzimy przy wyborze. Zadzwoń na infolinię albo kup online.</p>
     </div>
-    <div class="zao-sklep">
-      <div>
-        <h3 class="kafel__t">Kategorie w sklepie</h3>
-        <ul class="asortyment">{linki_kat}</ul>
-      </div>
-      <div>
-        <h3 class="kafel__t">Marki, m.in.</h3>
-        <ul class="zao-chipy">{marki}</ul>{przyk}
-      </div>
-    </div>
+    <ul class="zao-info zao-info--{len(karty)}">{"".join(karty)}</ul>
   </div>
 </section>
-
-<section class="section">
-  <div class="wrap zao-refund">
-    <div>
-      <h2>Dobór i odbiór w placówce</h2>
-      <p>W Koszalinie przy ul. Jana Pawła II 21 działa strefa zaopatrzenia medycznego. O dostępność konkretnego produktu i dobór zapytaj na infolinii 665 035 035.</p>
-    </div>
-    <ul class="linki-prog">
-      <li><a href="placowki.html">{{{{ilu:ikona-pinezka|}}}}<b>Nasze placówki</b><span>Adresy, godziny i dojazd w Szczecinie i Koszalinie.</span></a></li>
-      <li><a href="zaopatrzenie-medyczne.html">{{{{ilu:dokumenty|}}}}<b>Wszystkie wyroby medyczne</b><span>Pozostałe grupy produktów i sklep internetowy.</span></a></li>
-    </ul>
-  </div>
-</section>
-
+{produkty}
 <section style="padding-bottom:0">
   <div class="wrap">
     <div class="cta-band">
@@ -223,14 +220,14 @@ def karta(p, szczegoly=True):
 
 
 def karta_jp39():
-    return (f'<div class="place place--bez-mapy"><h3>{JP39["nazwa"]}</h3><address>{JP39["ulica"]}<br>{JP39["kod"]}</address>'
-            f'<div class="place__ext">{{{{icon:phone}}}}<a href="tel:+48665035035">665 035 035</a></div>'
-            f'<div class="place__actions"><a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/dir/?api=1&destination={JP39["cel"]}" target="_blank" rel="noopener">{{{{icon:map}}}}Nawiguj</a></div></div>')
+    return (f'<div class="place-pasek"><div><h3>{JP39["nazwa"]}</h3><address>{JP39["ulica"]}, {JP39["kod"]}</address></div>'
+            f'<div class="place-pasek__akcje"><div class="place__ext">{{{{icon:phone}}}}<a href="tel:+48665035035">665 035 035</a></div>'
+            f'<a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/dir/?api=1&destination={JP39["cel"]}" target="_blank" rel="noopener">{{{{icon:map}}}}Nawiguj</a></div></div>')
 
 
 def strona_placowki_hub():
-    karty = "".join(karta(p) for p in PLACOWKI) + karta_jp39()
-    return f'''<!-- title: Placówki Spondylus w Szczecinie i Koszalinie -->
+    karty = "".join(karta(p) for p in PLACOWKI)
+    return f"""<!-- title: Placówki Spondylus w Szczecinie i Koszalinie -->
 <!-- desc: Placówki Spondylus: Szczecin al. Jana Pawła II 36 i 39, Pogodno ul. Unii Lubelskiej 2B, Koszalin ul. Jana Pawła II 21. Godziny, dojazd, infolinia 665 035 035. -->
 <!-- nav: placowki -->
 <!-- okruszki: Placówki -->
@@ -246,43 +243,68 @@ def strona_placowki_hub():
 
 <section class="section section--soft">
   <div class="wrap">
-    <div class="places places--4">{karty}</div>
+    <div class="places">{karty}</div>
+    {karta_jp39()}
   </div>
 </section>
 
 <section class="section">
-  <div class="wrap zao-refund">
-    <div>
+  <div class="wrap">
+    <div class="head2">
       <h2>Wyroby medyczne w placówkach</h2>
       <p>Centrum Medyczne w Koszalinie łączy strefę zaopatrzenia medycznego i strefę gabinetową. O dostępność konkretnego produktu w wybranej placówce zapytaj na infolinii.</p>
     </div>
-    <ul class="linki-prog">
+    <ul class="linki-prog linki-prog--siatka">
       <li><a href="zaopatrzenie-medyczne.html">{{{{ilu:wozek|}}}}<b>Wyroby medyczne</b><span>Wkładki, obuwie, ortezy, wózki i sprzęt do domu, także z refundacją NFZ.</span></a></li>
       <li><a href="refundacja.html">{{{{ilu:skierowanie|}}}}<b>Refundacja NFZ</b><span>Jak zrealizować zlecenie na wyroby medyczne.</span></a></li>
     </ul>
   </div>
 </section>
-'''
+"""
+
+
+KADRA_SRC = (SRC / "kadra.html").read_text(encoding="utf-8")
+
+
+def karta_kadry(slug):
+    """Karta specjalisty 1:1 z listy kadry (zdjęcie, rola, opis, tagi, rejestracja)."""
+    i = KADRA_SRC.find(f'href="{slug}.html"')
+    s = KADRA_SRC.rfind("<article", 0, i)
+    e = KADRA_SRC.find("</article>", i) + len("</article>")
+    return KADRA_SRC[s:e] if i != -1 else ""
 
 
 def strona_placowki(p):
-    kadra = "".join(f'<li><a href="{s}.html"><b>{n}</b><span>{r}</span></a></li>' for s, n, r in p["kadra"])
-    zao = ""
+    przyciski = "".join(f'<button class="btn btn--primary" type="button" data-book="{k}">{{{{icon:calendar}}}}{t}</button>' for k, t in p["book"][:1])
+    przyciski += "".join(f'<button class="btn btn--ghost" type="button" data-book="{k}">{t}</button>' for k, t in p["book"][1:])
+    nawiguj = f'https://www.google.com/maps/dir/?api=1&destination={p["cel"]}'
+    tlo = ["section section--soft", "section"]
+    sekcje = []
     if p.get("zaopatrzenie"):
         grupy = "".join(f'<li><a href="{g["slug"]}.html">{{{{ilu:{g["ikona"]}|}}}}<b>{g["nazwa"]}</b><span>{g["lead"].split(".")[0]}.</span></a></li>' for g in GRUPY[:4])
-        zao = f'''
-<section class="section">
+        sekcje.append(f"""
   <div class="wrap">
     <div class="head2">
       <h2>Strefa zaopatrzenia medycznego</h2>
       <p>W tej placówce działa strefa zaopatrzenia medycznego. O dostępność konkretnego produktu zapytaj na infolinii, wew. {p["wew"]}.</p>
     </div>
-    <ul class="linki-prog linki-prog--siatka">{grupy}</ul>
-    <p class="zao-mala"><a href="zaopatrzenie-medyczne.html">Wszystkie wyroby medyczne</a></p>
-  </div>
-</section>
-'''
-    return f'''<!-- title: {p["title"]} -->
+    <ul class="zao-oferta zao-oferta--4 zao-oferta--linki">{grupy}</ul>
+    <div class="sekcja-dalej"><a class="btn btn--ghost" href="zaopatrzenie-medyczne.html">Wszystkie wyroby medyczne {{{{icon:arrow}}}}</a></div>
+  </div>""")
+    kadra = "\n      ".join(karta_kadry(s) for s, _, _ in p["kadra"])
+    sekcje.append(f"""
+  <div class="wrap">
+    <div class="head2">
+      <h2>Kto przyjmuje w tej placówce</h2>
+      <p>Specjaliści, którzy na swoich profilach podają tę placówkę jako miejsce przyjęć.</p>
+    </div>
+    <div class="team-grid spec-grid spec-grid--plac">
+      {kadra}
+    </div>
+    <div class="sekcja-dalej"><a class="btn btn--ghost" href="kadra.html">Cały zespół Spondylus {{{{icon:arrow}}}}</a></div>
+  </div>""")
+    sekcje_html = "".join(f'\n<section class="{tlo[i % 2]}">{x}\n</section>\n' for i, x in enumerate(sekcje))
+    return f"""<!-- title: {p["title"]} -->
 <!-- desc: {p["desc"]} -->
 <!-- nav: placowki -->
 <!-- okruszki: {okruszki("Placówki=/placowki/", p["nazwa"])} -->
@@ -291,28 +313,23 @@ def strona_placowki(p):
 <section class="page-hero">
   <div class="wrap">
     {{{{okruszki}}}}
-    <h1>{p["pelna"]}, {p["ulica"]}</h1>
-    <p class="page-hero__lead">{p["opis"]}</p>
-  </div>
-</section>
-
-<section class="section section--soft">
-  <div class="wrap">
-    <div class="places places--jedna">{karta(p, szczegoly=False)}</div>
-  </div>
-</section>
-{zao}
-<section class="section">
-  <div class="wrap">
-    <div class="head2">
-      <h2>Kto przyjmuje w tej placówce</h2>
-      <p>Specjaliści, którzy na swoich profilach podają tę placówkę jako miejsce przyjęć.</p>
+    <div class="page-hero__grid">
+      <div>
+        <h1>{p["pelna"]}</h1>
+        <p class="page-hero__lead">{p["opis"]}</p>
+        <div class="plac-info">
+          <span class="otwarte" data-dni="1-5" data-od="{p["od"]}" data-do="{p["do"]}" hidden></span>
+          <address>{p["ulica"]}, {p["kod"]}</address>
+          <div class="place__godz">{{{{icon:clock}}}}{p["godz"]}</div>
+          <div class="place__ext">{{{{icon:phone}}}}<a href="tel:+48665035035">665 035 035</a> wew. {p["wew"]}</div>
+        </div>
+        <div class="page-hero__cta">{przyciski}<a class="btn btn--ghost" href="{nawiguj}" target="_blank" rel="noopener">{{{{icon:map}}}}Nawiguj</a></div>
+      </div>
+      <a class="page-hero__media plac-mapa" href="{nawiguj}" target="_blank" rel="noopener" aria-label="Mapa dojazdu: {p["ulica"]}, {p["kod"]}, otwiera Google Maps"><img src="assets/img/{p["mapa"]}" alt="" width="860" height="520"></a>
     </div>
-    <ul class="linki-prog linki-prog--kadra">{kadra}</ul>
-    <p class="zao-mala"><a href="kadra.html">Cały zespół Spondylus</a></p>
   </div>
 </section>
-
+{sekcje_html}
 <section style="padding-bottom:0">
   <div class="wrap">
     <div class="cta-band">
@@ -321,7 +338,7 @@ def strona_placowki(p):
     </div>
   </div>
 </section>
-'''
+"""
 
 
 def main():

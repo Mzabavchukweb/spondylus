@@ -7,25 +7,31 @@
 <section class="page-hero">
   <div class="wrap">
     {{okruszki}}
-    <h1>Spondylus Koszalin, ul. Jana Pawła II 21</h1>
-    <p class="page-hero__lead">Centrum Medyczne w Koszalinie łączy strefę zaopatrzenia medycznego i strefę gabinetową, w której realizowane są usługi medyczne.</p>
+    <div class="page-hero__grid">
+      <div>
+        <h1>Spondylus Koszalin</h1>
+        <p class="page-hero__lead">Centrum Medyczne w Koszalinie łączy strefę zaopatrzenia medycznego i strefę gabinetową, w której realizowane są usługi medyczne.</p>
+        <div class="plac-info">
+          <span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span>
+          <address>ul. Jana Pawła II 21, 75-452 Koszalin</address>
+          <div class="place__godz">{{icon:clock}}pon. do pt. 9:00 do 18:00</div>
+          <div class="place__ext">{{icon:phone}}<a href="tel:+48665035035">665 035 035</a> wew. 4</div>
+        </div>
+        <div class="page-hero__cta"><button class="btn btn--primary" type="button" data-book="koszalin-spec">{{icon:calendar}}Specjaliści</button><button class="btn btn--ghost" type="button" data-book="koszalin-uslugi">Usługi i zabiegi</button><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">{{icon:map}}Nawiguj</a></div>
+      </div>
+      <a class="page-hero__media plac-mapa" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener" aria-label="Mapa dojazdu: ul. Jana Pawła II 21, 75-452 Koszalin, otwiera Google Maps"><img src="assets/img/mapa-koszalin.webp" alt="" width="860" height="520"></a>
+    </div>
   </div>
 </section>
 
 <section class="section section--soft">
   <div class="wrap">
-    <div class="places places--jedna"><div class="place"><a class="map map--statyczna" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener" aria-label="Mapa dojazdu: ul. Jana Pawła II 21, 75-452 Koszalin, otwiera Google Maps"><img src="assets/img/mapa-koszalin.webp" alt="" width="860" height="520" loading="lazy"></a><h3>Koszalin</h3><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><address>ul. Jana Pawła II 21<br>75-452 Koszalin</address><div class="place__godz">{{icon:clock}}pon. do pt. 9:00 do 18:00</div><div class="place__ext">{{icon:phone}}<a href="tel:+48665035035">665 035 035</a> wew. 4</div><div class="place__actions"><button class="btn btn--primary btn--sm" type="button" data-book="koszalin-spec">Specjaliści</button><button class="btn btn--ghost btn--sm" type="button" data-book="koszalin-uslugi">Usługi i zabiegi</button><a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">{{icon:map}}Nawiguj</a></div></div></div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
     <div class="head2">
       <h2>Strefa zaopatrzenia medycznego</h2>
       <p>W tej placówce działa strefa zaopatrzenia medycznego. O dostępność konkretnego produktu zapytaj na infolinii, wew. 4.</p>
     </div>
-    <ul class="linki-prog linki-prog--siatka"><li><a href="wkladki-ortopedyczne.html">{{ilu:wkladka|}}<b>Wkładki ortopedyczne</b><span>Indywidualne, wykonywane na zamówienie, w tym dla diabetyków.</span></a></li><li><a href="obuwie-zdrowotne.html">{{ilu:obuwie|}}<b>Obuwie zdrowotne</b><span>Obuwie profilaktyczne i zindywidualizowane, także z refundacją NFZ.</span></a></li><li><a href="ortezy-i-stabilizatory.html">{{ilu:sprzet|}}<b>Ortezy i stabilizatory</b><span>Produkty ortopedyczne dobierane do problemu i rozmiaru.</span></a></li><li><a href="wozki-inwalidzkie.html">{{ilu:wozek|}}<b>Wózki inwalidzkie, balkoniki i kule</b><span>Wózki i sprzęt do domu, z doradztwem w doborze rozwiązań.</span></a></li></ul>
-    <p class="zao-mala"><a href="zaopatrzenie-medyczne.html">Wszystkie wyroby medyczne</a></p>
+    <ul class="zao-oferta zao-oferta--4 zao-oferta--linki"><li><a href="wkladki-ortopedyczne.html">{{ilu:wkladka|}}<b>Wkładki ortopedyczne</b><span>Indywidualne, wykonywane na zamówienie, w tym dla diabetyków.</span></a></li><li><a href="obuwie-zdrowotne.html">{{ilu:obuwie|}}<b>Obuwie zdrowotne</b><span>Obuwie profilaktyczne i zindywidualizowane, także z refundacją NFZ.</span></a></li><li><a href="ortezy-i-stabilizatory.html">{{ilu:sprzet|}}<b>Ortezy i stabilizatory</b><span>Produkty ortopedyczne dobierane do problemu i rozmiaru.</span></a></li><li><a href="wozki-inwalidzkie.html">{{ilu:wozek|}}<b>Wózki inwalidzkie, balkoniki i kule</b><span>Wózki i sprzęt do domu, z doradztwem w doborze rozwiązań.</span></a></li></ul>
+    <div class="sekcja-dalej"><a class="btn btn--ghost" href="zaopatrzenie-medyczne.html">Wszystkie wyroby medyczne {{icon:arrow}}</a></div>
   </div>
 </section>
 
@@ -35,8 +41,31 @@
       <h2>Kto przyjmuje w tej placówce</h2>
       <p>Specjaliści, którzy na swoich profilach podają tę placówkę jako miejsce przyjęć.</p>
     </div>
-    <ul class="linki-prog linki-prog--kadra"><li><a href="rafal-perkowski.html"><b>Rafał Perkowski</b><span>fizjoterapeuta</span></a></li><li><a href="olga-veremiienko.html"><b>Olga Veremiienko</b><span>stylistka paznokci i brwi</span></a></li></ul>
-    <p class="zao-mala"><a href="kadra.html">Cały zespół Spondylus</a></p>
+    <div class="team-grid spec-grid spec-grid--plac">
+      <article class="spec" data-group="fizjo">
+        <a class="spec__foto spec__foto--brak" href="rafal-perkowski.html" tabindex="-1" aria-hidden="true">{{ilu:kolo-rehabilitacja|}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Fizjoterapeuta</p>
+          <h3 class="spec__imie"><a href="rafal-perkowski.html">Rafał Perkowski</a></h3>
+          <p class="spec__opis">Terapia połączona z ćwiczeniami. Kursy PNF, terapii manualnej, tapingu i treningu medycznego kolana.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Terapia manualna</li><li>Kolano</li><li>Ćwiczenia</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Koszalin</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="koszalin-spec">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+      <article class="spec" data-group="uroda">
+        <a class="spec__foto" href="olga-veremiienko.html" tabindex="-1" aria-hidden="true">{{portret:olga-veremiienko}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Stylistka paznokci i brwi</p>
+          <h3 class="spec__imie"><a href="olga-veremiienko.html">Olga Veremiienko</a></h3>
+          <p class="spec__opis">Manicure, pedicure i stylizacja brwi oraz rzęs w placówce w Koszalinie.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Manicure</li><li>Pedicure</li><li>Brwi i rzęsy</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Koszalin</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="koszalin">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+    </div>
+    <div class="sekcja-dalej"><a class="btn btn--ghost" href="kadra.html">Cały zespół Spondylus {{icon:arrow}}</a></div>
   </div>
 </section>
 

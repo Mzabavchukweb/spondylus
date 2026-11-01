@@ -7,25 +7,109 @@
 <section class="page-hero">
   <div class="wrap">
     {{okruszki}}
-    <h1>Spondylus Szczecin Pogodno, ul. Unii Lubelskiej 2B</h1>
-    <p class="page-hero__lead">Placówka Spondylus na Pogodnie. Przyjmują tu lekarze specjaliści, fizjoterapeuci i podolog.</p>
+    <div class="page-hero__grid">
+      <div>
+        <h1>Spondylus Szczecin Pogodno</h1>
+        <p class="page-hero__lead">Placówka Spondylus na Pogodnie. Przyjmują tu lekarze specjaliści, fizjoterapeuci i podolog.</p>
+        <div class="plac-info">
+          <span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span>
+          <address>ul. Unii Lubelskiej 2B, 71-252 Szczecin</address>
+          <div class="place__godz">{{icon:clock}}pon. do pt. 8:00 do 19:00</div>
+          <div class="place__ext">{{icon:phone}}<a href="tel:+48665035035">665 035 035</a> wew. 2</div>
+        </div>
+        <div class="page-hero__cta"><button class="btn btn--primary" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button><a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">{{icon:map}}Nawiguj</a></div>
+      </div>
+      <a class="page-hero__media plac-mapa" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener" aria-label="Mapa dojazdu: ul. Unii Lubelskiej 2B, 71-252 Szczecin, otwiera Google Maps"><img src="assets/img/mapa-szczecin-pogodno.webp" alt="" width="860" height="520"></a>
+    </div>
   </div>
 </section>
 
 <section class="section section--soft">
   <div class="wrap">
-    <div class="places places--jedna"><div class="place"><a class="map map--statyczna" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener" aria-label="Mapa dojazdu: ul. Unii Lubelskiej 2B, 71-252 Szczecin, otwiera Google Maps"><img src="assets/img/mapa-szczecin-pogodno.webp" alt="" width="860" height="520" loading="lazy"></a><h3>Szczecin, Pogodno</h3><span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span><address>ul. Unii Lubelskiej 2B<br>71-252 Szczecin</address><div class="place__godz">{{icon:clock}}pon. do pt. 8:00 do 19:00</div><div class="place__ext">{{icon:phone}}<a href="tel:+48665035035">665 035 035</a> wew. 2</div><div class="place__actions"><button class="btn btn--primary btn--sm" type="button" data-book="szczecin-ul">Umów wizytę</button><a class="btn btn--ghost btn--sm" href="https://www.google.com/maps/dir/?api=1&destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">{{icon:map}}Nawiguj</a></div></div></div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
     <div class="head2">
       <h2>Kto przyjmuje w tej placówce</h2>
       <p>Specjaliści, którzy na swoich profilach podają tę placówkę jako miejsce przyjęć.</p>
     </div>
-    <ul class="linki-prog linki-prog--kadra"><li><a href="adam-kaminski.html"><b>Adam Kamiński</b><span>ortopeda</span></a></li><li><a href="piotr-salapa.html"><b>Piotr Sałapa</b><span>neurochirurg</span></a></li><li><a href="tomasz-dudzik.html"><b>Tomasz Dudzik</b><span>neurolog</span></a></li><li><a href="tomasz-gnus.html"><b>Tomasz Gnus</b><span>fizjoterapeuta</span></a></li><li><a href="tomasz-zdeb-fizjoterapeuta.html"><b>Tomasz Zdeb</b><span>fizjoterapeuta</span></a></li><li><a href="gabriela-majorczyk.html"><b>Gabriela Majorczyk</b><span>fizjoterapeutka</span></a></li><li><a href="marika-wachowiak-podolog.html"><b>Marika Wachowiak</b><span>podolog</span></a></li></ul>
-    <p class="zao-mala"><a href="kadra.html">Cały zespół Spondylus</a></p>
+    <div class="team-grid spec-grid spec-grid--plac">
+      <article class="spec" data-group="lekarz">
+        <a class="spec__foto" href="adam-kaminski.html" tabindex="-1" aria-hidden="true">{{portret:adam-kaminski}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Ortopeda, dr hab. n. med.</p>
+          <h3 class="spec__imie"><a href="adam-kaminski.html">Adam Kamiński</a></h3>
+          <p class="spec__opis">Konsultacje dla dorosłych i dzieci, szczególnie ortopedia dziecięca.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Ortopedia dziecięca</li><li>Wady postawy</li><li>Urazy</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin Pogodno</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+      <article class="spec" data-group="lekarz">
+        <a class="spec__foto" href="piotr-salapa.html" tabindex="-1" aria-hidden="true">{{portret:piotr-salapa}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Neurochirurg, dr n. med.</p>
+          <h3 class="spec__imie"><a href="piotr-salapa.html">Piotr Sałapa</a></h3>
+          <p class="spec__opis">Choroby i urazy kręgosłupa. Omawia wyniki rezonansu, tomografii i RTG.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Kręgosłup</li><li>Rwa kulszowa</li><li>Drętwienie</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin Pogodno</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+      <article class="spec" data-group="lekarz">
+        <a class="spec__foto" href="tomasz-dudzik.html" tabindex="-1" aria-hidden="true">{{portret:tomasz-dudzik}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Neurolog, dr n. med.</p>
+          <h3 class="spec__imie"><a href="tomasz-dudzik.html">Tomasz Dudzik</a></h3>
+          <p class="spec__opis">Dorośli z bólami i zawrotami głowy, drętwieniem rąk lub nóg, zaburzeniami równowagi.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Bóle głowy</li><li>Drętwienie</li><li>Zawroty głowy</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin Pogodno</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+      <article class="spec" data-group="fizjo">
+        <a class="spec__foto" href="tomasz-gnus.html" tabindex="-1" aria-hidden="true">{{portret:tomasz-gnus}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Fizjoterapeuta</p>
+          <h3 class="spec__imie"><a href="tomasz-gnus.html">Tomasz Gnus</a></h3>
+          <p class="spec__opis">Ponad 20 lat pracy z pacjentami po operacjach, urazach i z bólem kręgosłupa.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Po operacjach</li><li>Urazy i kontuzje</li><li>Kręgosłup</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin Pogodno</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+      <article class="spec" data-group="fizjo">
+        <a class="spec__foto" href="tomasz-zdeb-fizjoterapeuta.html" tabindex="-1" aria-hidden="true">{{portret:tomasz-zdeb}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Fizjoterapeuta</p>
+          <h3 class="spec__imie"><a href="tomasz-zdeb-fizjoterapeuta.html">Tomasz Zdeb</a></h3>
+          <p class="spec__opis">Powrót do sprawności po operacjach i urazach oraz przy problemach neurologicznych.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Po operacjach</li><li>Urazy stawów</li><li>Kręgosłup</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin Pogodno</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+      <article class="spec" data-group="fizjo">
+        <a class="spec__foto" href="gabriela-majorczyk.html" tabindex="-1" aria-hidden="true">{{portret:gabriela-majorczyk}}</a>
+        <div class="spec__body">
+          <p class="spec__rola">Fizjoterapeutka</p>
+          <h3 class="spec__imie"><a href="gabriela-majorczyk.html">Gabriela Majorczyk</a></h3>
+          <p class="spec__opis">Bóle kręgosłupa, zawroty głowy i napięcia w ciele. Dorośli i dzieci od 8 lat.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Kręgosłup</li><li>Zawroty głowy</li><li>Dyskopatia</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin, obie placówki</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book>{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+      <article class="spec" data-group="uroda">
+        <a class="spec__foto" href="marika-wachowiak-podolog.html" tabindex="-1" aria-hidden="true"><img src="assets/img/kadra/marika-wachowiak-podolog.webp" alt="" loading="lazy" width="600" height="600"></a>
+        <div class="spec__body">
+          <p class="spec__rola">Podolog, kosmetolog</p>
+          <h3 class="spec__imie"><a href="marika-wachowiak-podolog.html">Marika Wachowiak</a></h3>
+          <p class="spec__opis">Pedicure medyczny, usuwanie modzeli i odcisków, korekcja wrastających paznokci klamrami ortonyksyjnymi.</p>
+          <ul class="spec__tagi" aria-label="Pomaga przy"><li>Wrastające paznokcie</li><li>Odciski</li><li>Pedicure medyczny</li></ul>
+          <p class="spec__miejsce">{{icon:pin}}Szczecin Pogodno</p>
+          <button class="btn btn--ghost btn--sm" type="button" data-book="szczecin-ul">{{icon:calendar}}Umów wizytę</button>
+        </div>
+      </article>
+    </div>
+    <div class="sekcja-dalej"><a class="btn btn--ghost" href="kadra.html">Cały zespół Spondylus {{icon:arrow}}</a></div>
   </div>
 </section>
 
