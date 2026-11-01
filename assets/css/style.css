@@ -2744,3 +2744,86 @@ h3.etapy__kiedy { font-family: inherit; letter-spacing: 0; line-height: 1.3; }
   .spec-grid--plac .spec__opis, .spec-grid--plac .spec__tagi, .spec-grid--plac .spec__miejsce { display: none; }
   .spec-grid--plac .spec__imie { font-size: 18px; }
 }
+
+/* Dopracowanie UI (01.11.2026): dostępność w nagłówku zamiast pływającego przycisku, zwijana stopka na telefonie,
+   równe przyciski, okruszki w jednej linii, nagłówki sekcji wyrównane do góry, krótsza strona główna i kadra na telefonie */
+.a11y-btn { display: none !important; }
+.topbar__dostepnosc { margin-left: 8px; padding: 0 12px !important; border: 1px solid rgba(255, 255, 255, .28) !important; font-size: 14px !important; font-weight: 600 !important; }
+.topbar__dostepnosc[aria-expanded="true"] { background: rgba(255, 255, 255, .14); }
+.a11y-hdr { display: none; width: 48px; height: 48px; padding: 0; border-radius: 10px; border: 1px solid var(--line); background: #fff; color: var(--ink); align-items: center; justify-content: center; cursor: pointer; flex: none; }
+.a11y-hdr .ilu { width: 34px; height: 34px; }
+.a11y-hdr svg { width: 24px; height: 24px; }
+@media (max-width: 1180px) { .a11y-hdr { display: inline-flex; } }
+@media (max-width: 1500px) { html.a11y-txt-1 .a11y-hdr, html.a11y-txt-2 .a11y-hdr { display: inline-flex; } }
+.page-home .header:not(.is-scrolled) .a11y-hdr { background: transparent; border-color: rgba(255, 255, 255, .25); }
+.a11y-panel { top: 132px; bottom: auto !important; left: auto !important; right: max(16px, calc((100vw - 1240px) / 2)); transform-origin: top right; transform: translateY(-8px) scale(.98); }
+.a11y-panel.is-open { transform: none; }
+@media (max-width: 640px) { .a11y-panel { right: 12px; left: 12px !important; width: auto; max-height: calc(100vh - 100px); overflow-y: auto; } }
+/* przycisk telefonu nie zasłania banera cookies ani otwartego panelu dostępności */
+body:has(.cookies:not([hidden])) .tel-btn, body:has(.a11y-panel.is-open) .tel-btn { display: none; }
+@media (max-width: 760px) { .tel-btn { width: 48px; height: 48px; right: 14px; bottom: 14px; } .tel-btn .ilu { width: 36px; height: 36px; } .footer { padding-bottom: 84px; } }
+
+/* stopka: sekcje jako details; na szerokim ekranie wyglądają jak zwykłe nagłówki */
+.f-sekcja > summary { list-style: none; display: flex; align-items: center; justify-content: space-between; cursor: default; }
+.f-sekcja > summary::-webkit-details-marker { display: none; }
+.f-sekcja > summary svg { display: none; }
+.f-sekcja + .f-sekcja { margin-top: 28px; }
+.f-wszystkie { display: none; }
+@media (max-width: 760px) {
+  .footer__grid { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; }
+  .footer__marka { padding-bottom: 28px; }
+  .footer__kol { display: contents; }
+  .f-sekcja { border-top: 1px solid var(--line); }
+  .f-sekcja + .f-sekcja { margin-top: 0; }
+  .f-sekcja > summary { cursor: pointer; min-height: 56px; }
+  .f-sekcja > summary .f-title { margin: 0 !important; font-size: 16px !important; }
+  .f-sekcja > summary svg { display: block; width: 20px; height: 20px; color: var(--muted); transition: transform .2s; }
+  .f-sekcja[open] > summary svg { transform: rotate(180deg); }
+  .f-sekcja > ul { padding-bottom: 16px; }
+  .footer__grid > div:last-child { border-top: 1px solid var(--line); padding-top: 22px; }
+  .footer__placowki { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px !important; }
+  .footer__placowki .otwarte, .footer__placowki .f-godz, .footer__placowki .f-dojazd { display: none !important; }
+  .f-wszystkie { display: inline-block !important; margin-top: 14px; padding-block: 6px; font-size: 15px; font-weight: 700; color: var(--brand-600) !important; }
+  .footer__nfz { margin-top: 28px; }
+}
+
+/* okruszki: jedna linia, bieżąca strona skraca się wielokropkiem */
+@media (max-width: 640px) {
+  .crumbs { flex-wrap: nowrap; white-space: nowrap; min-width: 0; }
+  .crumbs > * { flex: none; }
+  .crumbs > [aria-current] { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; display: block; }
+}
+
+/* nagłówek sekcji: tytuł i opis wyrównane do góry */
+.head2 { align-items: start; }
+.head2 > p { margin-top: .5em; }
+
+/* przyciski w nagłówkach stron i kartach placówek: równe, bez przypadkowych szerokości */
+@media (max-width: 640px) {
+  .page-hero__cta { gap: 10px; }
+  .page-hero__cta > .btn, .os__cta > .btn, .cta-band__actions > .btn { flex: 1 1 0; justify-content: center; white-space: nowrap; }
+  .cta-band__actions { display: flex; flex-wrap: wrap; gap: 10px; width: 100%; }
+}
+.place__actions > .btn { flex: 1 1 0; justify-content: center; white-space: nowrap; }
+
+/* strona główna na telefonie: wyroby jako zwarte kafle 2 kolumny, mapy placówek jako niski pasek */
+@media (max-width: 640px) {
+  #wyroby .linki-prog--siatka { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+  #wyroby .linki-prog--siatka a { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; height: 100%; padding: 14px; }
+  #wyroby .linki-prog--siatka .ilu { width: 44px; height: 44px; }
+  #wyroby .linki-prog--siatka b { font-size: 15.5px; line-height: 1.3; }
+  #wyroby .linki-prog--siatka span { display: none; }
+  .places .map--statyczna { aspect-ratio: 16 / 7; }
+}
+
+/* kadra na telefonie: zwarte karty ze zdjęciem z boku */
+@media (max-width: 640px) {
+  .spec-grid { gap: 12px; }
+  .spec-grid .spec { display: grid; grid-template-columns: 108px minmax(0, 1fr); }
+  .spec-grid .spec__foto { aspect-ratio: auto; height: 100%; min-height: 168px; }
+  .spec-grid .spec__body { padding: 14px 16px 16px; gap: 6px; }
+  .spec-grid .spec__imie { font-size: 18px; }
+  .spec-grid .spec__opis { font-size: 14.5px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .spec-grid .spec__tagi { display: none; }
+  .spec-grid .spec__body > .btn { margin-top: 6px; }
+}

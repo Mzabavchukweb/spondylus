@@ -62,7 +62,7 @@
       poprzedni = document.activeElement;
       drawerSet(false);
       booking.classList.add('is-open'); booking.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
-      if (miejsce && PLACOWKI[miejsce]) wybierz(miejsce); else krok(1);
+      if (miejsce && (PLACOWKI[miejsce] || miejsce === 'koszalin')) wybierz(miejsce); else krok(1);
       setTimeout(() => $('.booking__close', booking).focus(), 50);
     };
     const zamknij = () => { booking.classList.remove('is-open'); booking.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; poprzedni && poprzedni.focus(); };
@@ -163,7 +163,7 @@
 
   /* Panel dostępności (WCAG): wielkość tekstu, kontrast, linki, odstępy, czcionka, animacje, kursor */
   const html = document.documentElement;
-  const a11yBtn = $('[data-a11y-open]'), a11yPanel = $('#a11y-panel');
+  const a11yBtny = $$('[data-a11y-open]'), a11yPanel = $('#a11y-panel');
   const A11Y_KEY = 'spondylus-a11y';
   const czytaj = () => { try { return JSON.parse(localStorage.getItem(A11Y_KEY)) || {}; } catch (e) { return {}; } };
   const zapisz = (st) => { try { localStorage.setItem(A11Y_KEY, JSON.stringify(st)); } catch (e) {} };
@@ -176,15 +176,34 @@
     $$('[data-a11y]').forEach(b => b.setAttribute('aria-pressed', String(!!st[b.dataset.a11y])));
   };
   let a11y = czytaj(); zastosuj(a11y);
-  if (a11yBtn && a11yPanel) {
-    const otworzA = (o) => { a11yPanel.classList.toggle('is-open', o); a11yBtn.setAttribute('aria-expanded', String(o)); if (o) setTimeout(() => $('[data-a11y-size]', a11yPanel).focus(), 60); };
-    a11yBtn.addEventListener('click', () => otworzA(!a11yPanel.classList.contains('is-open')));
-    $('[data-a11y-close]').addEventListener('click', () => { otworzA(false); a11yBtn.focus(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && a11yPanel.classList.contains('is-open')) { otworzA(false); a11yBtn.focus(); } });
+  if (a11yBtny.length && a11yPanel) {
+    // panel otwiera się pod nagłówkiem, przy przycisku, którym go otwarto (pasek górny albo nagłówek)
+    let a11yBtn = a11yBtny[0];
+    const widoczny = () => a11yBtny.find(b => b.offsetParent !== null) || a11yBtny[0];
+    const otworzA = (o) => {
+      if (o) {
+        const hdr = $('#header').getBoundingClientRect(), r = a11yBtn.getBoundingClientRect();
+        a11yPanel.style.top = Math.max(hdr.bottom, r.bottom) + 10 + 'px';
+      }
+      a11yPanel.classList.toggle('is-open', o);
+      a11yBtny.forEach(b => b.setAttribute('aria-expanded', String(o && b === a11yBtn)));
+      if (o) setTimeout(() => $('[data-a11y-size]', a11yPanel).focus(), 60);
+    };
+    a11yBtny.forEach(b => b.addEventListener('click', () => { a11yBtn = b; otworzA(!a11yPanel.classList.contains('is-open')); }));
+    $('[data-a11y-close]').addEventListener('click', () => { otworzA(false); widoczny().focus(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && a11yPanel.classList.contains('is-open')) { otworzA(false); widoczny().focus(); } });
     document.addEventListener('click', (e) => { if (!e.target.closest('#a11y-panel, [data-a11y-open]')) otworzA(false); });
     $$('[data-a11y-size]').forEach(b => b.addEventListener('click', () => { a11y.size = Number(b.dataset.a11ySize); zastosuj(a11y); zapisz(a11y); }));
     $$('[data-a11y]').forEach(b => b.addEventListener('click', () => { a11y[b.dataset.a11y] = !a11y[b.dataset.a11y]; zastosuj(a11y); zapisz(a11y); }));
     $('[data-a11y-reset]').addEventListener('click', () => { a11y = {}; zastosuj(a11y); zapisz(a11y); });
+  }
+
+  /* Stopka: na telefonie sekcje zwinięte (Oferta, Programy, Dla pacjenta), na szerszym ekranie zawsze rozwinięte */
+  const fSekcje = $$('.f-sekcja'), fMq = matchMedia('(max-width: 760px)');
+  if (fSekcje.length) {
+    const fUstaw = () => fSekcje.forEach(d => { d.open = !fMq.matches; });
+    fUstaw(); fMq.addEventListener('change', fUstaw);
+    fSekcje.forEach(d => $('summary', d).addEventListener('click', (e) => { if (!fMq.matches) e.preventDefault(); }));
   }
 
   /* Akordeony: płynne otwieranie i zamykanie */

@@ -148,6 +148,7 @@ def header(nav):
         <button type="button" aria-pressed="true" data-a11y-size="0" aria-label="A, tekst standardowy">A</button>
         <button type="button" aria-pressed="false" data-a11y-size="1" aria-label="A+, tekst większy">A+</button>
         <button type="button" aria-pressed="false" data-a11y-size="2" aria-label="A++, tekst największy">A++</button>
+        <button class="topbar__dostepnosc" type="button" aria-expanded="false" aria-controls="a11y-panel" data-a11y-open>Dostępność</button>
       </div>
     </div>
   </div>
@@ -167,6 +168,7 @@ def header(nav):
     <div class="header__actions">
       <a class="header__phone" href="tel:+48665035035"><small>Infolinia</small>665 035 035</a>
       <button class="btn btn--primary" type="button" data-book>{icon("calendar")}Umów wizytę</button>
+      <button class="a11y-hdr" type="button" aria-label="Ustawienia dostępności" aria-expanded="false" aria-controls="a11y-panel" data-a11y-open>{ikona_dostepnosci()}</button>
       <button class="burger" type="button" aria-label="Otwórz menu" data-drawer-open>{icon("menu")}</button>
     </div>
   </div>
@@ -226,14 +228,14 @@ def footer():
         </div>
         <button class="btn btn--primary btn--sm" type="button" data-book>{icon("calendar")}Umów wizytę</button>
       </div>
-      <div>
-        <h2 class="f-title">Oferta</h2>
-        <ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for h, i, t, d in OBSZARY)}</ul>
-        <h2 class="f-title" style="margin-top:28px">Programy</h2>
-        <ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for h, t in PROGRAMY)}</ul>
+      <div class="footer__kol">
+        <details class="f-sekcja" open><summary><h2 class="f-title">Oferta</h2>{icon("chev")}</summary>
+        <ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for h, i, t, d in OBSZARY)}</ul></details>
+        <details class="f-sekcja" open><summary><h2 class="f-title">Programy</h2>{icon("chev")}</summary>
+        <ul>{"".join(f'<li><a href="{h}">{t}</a></li>' for h, t in PROGRAMY)}</ul></details>
       </div>
-      <div>
-        <h2 class="f-title">Dla pacjenta</h2>
+      <div class="footer__kol">
+        <details class="f-sekcja" open><summary><h2 class="f-title">Dla pacjenta</h2>{icon("chev")}</summary>
         <ul>
           <li><a href="index.html#pierwsza-wizyta">Pierwsza wizyta</a></li>
           <li><a href="kadra.html">Nasza kadra</a></li>
@@ -243,16 +245,17 @@ def footer():
           <li><a href="blog.html">Poradniki</a></li>
           <li><a href="https://spondylus-sklep.pl/" target="_blank" rel="noopener">Sklep internetowy<span class="sr-only"> (otwiera się w nowej karcie)</span></a></li>
           <li><a href="rejestracja-online.html">Rejestracja online</a></li>
-        </ul>
+        </ul></details>
       </div>
       <div>
         <h2 class="f-title">Placówki</h2>
         <ul class="footer__placowki">
-          <li><b><a href="placowka-szczecin-centrum.html">Szczecin, centrum</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>al. Jana Pawła II 36</span><span>pon. do pt. 9:00 do 18:00, wew. 1</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b><a href="placowka-szczecin-pogodno.html">Szczecin, Pogodno</a></b><span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span><span>ul. Unii Lubelskiej 2B</span><span>pon. do pt. 8:00 do 19:00, wew. 2</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b><a href="placowka-koszalin.html">Koszalin</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>ul. Jana Pawła II 21</span><span>pon. do pt. 9:00 do 18:00, wew. 4</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b>Szczecin, Przychodnia Specjalistyczna</b><span>al. Jana Pawła II 39</span><a href="placowki.html">Wszystkie placówki</a></li>
+          <li><b><a href="placowka-szczecin-centrum.html">Szczecin, centrum</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>al. Jana Pawła II 36</span><span class="f-godz">pon. do pt. 9:00 do 18:00, wew. 1</span><a class="f-dojazd" href="https://www.google.com/maps/dir/?api=1&amp;destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b><a href="placowka-szczecin-pogodno.html">Szczecin, Pogodno</a></b><span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span><span>ul. Unii Lubelskiej 2B</span><span class="f-godz">pon. do pt. 8:00 do 19:00, wew. 2</span><a class="f-dojazd" href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b><a href="placowka-koszalin.html">Koszalin</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>ul. Jana Pawła II 21</span><span class="f-godz">pon. do pt. 9:00 do 18:00, wew. 4</span><a class="f-dojazd" href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b>Szczecin, Przychodnia Specjalistyczna</b><span>al. Jana Pawła II 39</span><a class="f-dojazd" href="placowki.html">Wszystkie placówki</a></li>
         </ul>
+        <a class="f-wszystkie" href="placowki.html">Godziny i dojazd do placówek</a>
       </div>
     </div>
     <div class="footer__nfz"><img src="assets/img/nfz.png" alt="Narodowy Fundusz Zdrowia" width="142" height="57"><span>Mamy umowę z NFZ na zaopatrzenie w wyroby medyczne: wózki, wkładki, obuwie i sprzęt na zlecenie.</span></div>
@@ -292,7 +295,6 @@ def footer():
     </div>
   </div>
 </div>
-<button class="a11y-btn" type="button" aria-label="Ustawienia dostępności" aria-expanded="false" aria-controls="a11y-panel" data-a11y-open>{ikona_dostepnosci()}</button>
 <section class="a11y-panel" id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-title">
   <h2 id="a11y-title">Dostępność <button type="button" aria-label="Zamknij ustawienia dostępności" data-a11y-close>{icon("close")}</button></h2>
   <p>Dostosuj stronę do swoich potrzeb. Ustawienia zapamiętamy na tym urządzeniu.</p>
@@ -669,7 +671,20 @@ def na_podglad(html):
     return html.replace("<body", '<body data-podglad="1"', 1)
 
 
+def bez_lamania(html):
+    """Numer infolinii i numer wewnętrzny nie łamią się między wierszami (tylko tekst w <body>, poza skryptami)."""
+    i = html.find("<body")
+    if i == -1:
+        return html
+    glowa, cialo = html[:i], html[i:]
+    czesci = re.split(r"(<script\b.*?</script>)", cialo, flags=re.S)
+    for k in range(0, len(czesci), 2):
+        czesci[k] = re.sub(r">([^<]+)<", lambda m: ">" + re.sub(r"(665) (035) (035)|(wew\.) (\d)", lambda n: "\u00a0".join(g for g in n.groups() if g), m.group(1)) + "<", czesci[k])
+    return glowa + "".join(czesci)
+
+
 def zapisz(url, html):
+    html = bez_lamania(html)
     if PODGLAD:
         html = na_podglad(html)
     cel = DIST / url.strip("/") / "index.html" if url != "/" else DIST / "index.html"

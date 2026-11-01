@@ -108,7 +108,7 @@ PLACOWKI = [
          desc="Spondylus Pogodno, ul. Unii Lubelskiej 2B: ortopeda, neurochirurg, neurolog, fizjoterapia i podolog. Pon. do pt. 8:00 do 19:00, tel. 665 035 035 wew. 2."),
     dict(slug="placowka-koszalin", nazwa="Koszalin", pelna="Spondylus Koszalin", ulica="ul. Jana Pawła II 21",
          kod="75-452 Koszalin", godz="pon. do pt. 9:00 do 18:00", od=9, do=18, wew="4",
-         book=[("koszalin-spec", "Specjaliści"), ("koszalin-uslugi", "Usługi i zabiegi")],
+         book=[("koszalin", "Umów wizytę")],
          mapa="mapa-koszalin.webp", cel="ul.+Jana+Pawła+II+21+Koszalin",
          opis="Centrum Medyczne w Koszalinie łączy strefę zaopatrzenia medycznego i strefę gabinetową, w której realizowane są usługi medyczne.",
          kadra=[("rafal-perkowski", "Rafał Perkowski", "fizjoterapeuta"), ("olga-veremiienko", "Olga Veremiienko", "stylistka paznokci i brwi")],
