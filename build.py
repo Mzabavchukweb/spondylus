@@ -137,9 +137,9 @@ def header(nav):
 <div class="topbar">
   <div class="wrap">
     <div class="topbar__places">
-      <span>{icon("pin")}Szczecin, al. Jana Pawła II 36</span>
-      <span>{icon("pin")}Szczecin Pogodno, ul. Unii Lubelskiej 2B</span>
-      <span>{icon("pin")}Koszalin, ul. Jana Pawła II 21</span>
+      <a href="placowka-szczecin-centrum.html">{icon("pin")}Szczecin, al. Jana Pawła II 36</a>
+      <a href="placowka-szczecin-pogodno.html">{icon("pin")}Szczecin Pogodno, ul. Unii Lubelskiej 2B</a>
+      <a href="placowka-koszalin.html">{icon("pin")}Koszalin, ul. Jana Pawła II 21</a>
     </div>
     <div class="topbar__right">
       <div>Jedna infolinia dla wszystkich placówek: <a href="tel:+48665035035">665 035 035</a></div>
@@ -157,8 +157,9 @@ def header(nav):
     <a class="header__logo" href="index.html" aria-label="Spondylus, strona główna"><img src="assets/img/logo.png" alt="Spondylus" width="312" height="97"></a>
     <nav class="nav" aria-label="Menu główne">
       <button type="button" aria-expanded="false" aria-controls="mega" data-mega{' class="is-current"' if nav == "oferta" else ""}>Oferta {icon("chev")}</button>
+      <a href="zaopatrzenie-medyczne.html"{cur("wyroby")}>Wyroby medyczne</a>
       <a href="kadra.html"{cur("kadra")}>Nasza kadra</a>
-      <a href="refundacja.html"{cur("nfz")}>Refundacja NFZ</a>
+      <a href="placowki.html"{cur("placowki")}>Placówki</a>
       <a href="blog.html"{cur("blog")}>Poradniki</a>
       <a href="o-nas.html"{cur("onas")}>O nas</a>
       <a href="kontakt.html"{cur("kontakt")}>Kontakt</a>
@@ -189,12 +190,14 @@ def header(nav):
       <div class="drawer__areas">{"".join(f'<a href="{h}"><img src="assets/img/ilu/kolo-{IKONA_OBSZARU[i]}.webp" alt="" width="256" height="256" loading="lazy"><span>{t}</span></a>' for h, i, t, d in OBSZARY)}</div>
       <nav class="drawer__nav" aria-label="Menu na telefonie">
         <a class="d-link" href="index.html#pierwsza-wizyta">Pierwsza wizyta {icon("chev-right")}</a>
-        <a class="d-link" href="kadra.html">Nasza kadra {icon("chev-right")}</a>
+        <a class="d-link" href="zaopatrzenie-medyczne.html">Wyroby medyczne {icon("chev-right")}</a>
         <a class="d-link" href="refundacja.html">Refundacja NFZ {icon("chev-right")}</a>
+        <a class="d-link" href="kadra.html">Nasza kadra {icon("chev-right")}</a>
+        <a class="d-link" href="placowki.html">Placówki {icon("chev-right")}</a>
         <a class="d-link" href="index.html#opinie">Opinie pacjentów {icon("chev-right")}</a>
         <a class="d-link" href="blog.html">Poradniki {icon("chev-right")}</a>
         <a class="d-link" href="o-nas.html">O nas {icon("chev-right")}</a>
-        <a class="d-link" href="kontakt.html">Kontakt i placówki {icon("chev-right")}</a>
+        <a class="d-link" href="kontakt.html">Kontakt {icon("chev-right")}</a>
         <a class="d-link" href="https://spondylus-sklep.pl/" target="_blank" rel="noopener">Sklep internetowy<span class="sr-only"> (otwiera się w nowej karcie)</span> {icon("chev-right")}</a>
       </nav>
       <p class="drawer__info">Infolinia dla wszystkich placówek, od poniedziałku do piątku: Szczecin, centrum i Koszalin 9:00 do 18:00, Pogodno 8:00 do 19:00.</p>
@@ -245,9 +248,10 @@ def footer():
       <div>
         <h2 class="f-title">Placówki</h2>
         <ul class="footer__placowki">
-          <li><b>Szczecin, centrum</b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>al. Jana Pawła II 36</span><span>pon. do pt. 9:00 do 18:00, wew. 1</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b>Szczecin, Pogodno</b><span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span><span>ul. Unii Lubelskiej 2B</span><span>pon. do pt. 8:00 do 19:00, wew. 2</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b>Koszalin</b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>ul. Jana Pawła II 21</span><span>pon. do pt. 9:00 do 18:00, wew. 4</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b><a href="placowka-szczecin-centrum.html">Szczecin, centrum</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>al. Jana Pawła II 36</span><span>pon. do pt. 9:00 do 18:00, wew. 1</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b><a href="placowka-szczecin-pogodno.html">Szczecin, Pogodno</a></b><span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span><span>ul. Unii Lubelskiej 2B</span><span>pon. do pt. 8:00 do 19:00, wew. 2</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b><a href="placowka-koszalin.html">Koszalin</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>ul. Jana Pawła II 21</span><span>pon. do pt. 9:00 do 18:00, wew. 4</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">Dojazd</a></li>
+          <li><b>Szczecin, Przychodnia Specjalistyczna</b><span>al. Jana Pawła II 39</span><a href="placowki.html">Wszystkie placówki</a></li>
         </ul>
       </div>
     </div>
@@ -511,6 +515,9 @@ def twarde_spacje(html):
     return "".join(czesci)
 
 
+STRONA_PLACOWKI = {"szczecin-jp": "/placowka-szczecin-centrum/", "szczecin-ul": "/placowka-szczecin-pogodno/", "koszalin": "/placowka-koszalin/"}
+
+
 def placowka_ld(k):
     p = PLACOWKI[k]
     adres = {"@type": "PostalAddress", "streetAddress": p["ulica"], "addressLocality": p["miasto"],
@@ -518,7 +525,7 @@ def placowka_ld(k):
     if p["kod"]:
         adres["postalCode"] = p["kod"]
     return {"@type": "MedicalClinic", "@id": f"{SITE}/#{k}", "name": p["nazwa"], "address": adres,
-            "telephone": "+48665035035", "email": "doktor@spondylus.pl", "url": f"{SITE}/kontakt/",
+            "telephone": "+48665035035", "email": "doktor@spondylus.pl", "url": f"{SITE}{STRONA_PLACOWKI[k]}",
             "parentOrganization": {"@id": f"{SITE}/#organizacja"},
             "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
                                            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -550,8 +557,10 @@ def faq_ld(body):
 
 def dane_strukturalne(m, url, body):
     ld = []
-    if url in ("/", "/kontakt/", "/o-nas/"):
+    if url in ("/", "/kontakt/", "/o-nas/", "/placowki/"):
         ld.append({"@context": "https://schema.org", "@graph": [ORGANIZACJA] + [placowka_ld(k) for k in PLACOWKI]})
+    elif m.get("placowka") in PLACOWKI:
+        ld.append({"@context": "https://schema.org", "@graph": [ORGANIZACJA, placowka_ld(m["placowka"])]})
     if m.get("okruszki"):
         ld.append(okruszki_ld(m["okruszki"], url))
     if m.get("osoba"):  # „Imię Nazwisko | rola | klucz placówki”
@@ -723,7 +732,7 @@ PRZEKIEROWANIA = [
     ("diagnostyka-komputerowa-stop", "/zakres-uslug-diagnostycznych/"),
     ("analiza-skladu-ciala", "/dietetyka/"),
     ("zabieg-bankietowy-na-twarz", "/medycyna-estetyczna/"),
-    ("centrum-medyczne-koszalin", "/kontakt/"),
+    ("centrum-medyczne-koszalin", "/placowka-koszalin/"),
     ("podologia/.+", "/podologia/"),
     ("korekta-wrastajacych-paznokci", "/podologia/"),
     ("pedicure-medyczny", "/podologia/"),
