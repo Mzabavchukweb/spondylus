@@ -3,7 +3,7 @@
 
 Dane wyłącznie z istniejących źródeł:
 - opisy grup: obecne strony /zaopatrzenie-medyczne/ i /refundacja/ (spondylus.pl),
-- marki i przykładowe produkty: kategorie spondylus-sklep.pl (../migracja/sklep-produkty/2026-11-01.json, pierwsza strona kategorii),
+- marki i przykładowe produkty: kategorie spondylus-sklep.pl (narzedzia/dane/sklep-produkty-2026-11-01.json, pierwsza strona kategorii, pobrane 1.11.2026),
 - placówki: adresy, godziny i numery wewnętrzne ze stopki i kontaktu, Jana Pawła II 39 i strefa zaopatrzenia w Koszalinie z tekstu „O nas”,
 - specjaliści placówki: „Miejsce przyjęć” z profili (tylko profile podlinkowane w kadrze).
 Punkty niepotwierdzone (ul. Ściegiennego 7, Przychodnia Portowa) celowo pominięte do odpowiedzi klienta.
@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src/pages"
-SKLEP = json.loads((ROOT.parent / "migracja/sklep-produkty/2026-11-01.json").read_text(encoding="utf-8"))
+SKLEP = json.loads((ROOT / "narzedzia/dane/sklep-produkty-2026-11-01.json").read_text(encoding="utf-8"))
 
 TEL = '<a class="btn btn--primary" href="tel:+48665035035">{{icon:phone}}665 035 035</a>'
 
