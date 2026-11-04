@@ -30,13 +30,13 @@ WERYFIKACJA = "lbUk6mZ_tkEB4CB4ezk1PtR3wNAIBQ8iYaYgEqLZlIA"   # Google Search Co
 
 PLACOWKI = {
     "szczecin-jp": {"nazwa": "Spondylus Szczecin, centrum", "ulica": "al. Jana Pawła II 36", "kod": "70-453",
-                    "miasto": "Szczecin", "wew": "1", "od": "09:00", "do": "18:00", "geo": (53.43460, 14.54550),
+                    "miasto": "Szczecin", "wew": "1", "od": "09:00", "do": "18:00", "geo": (53.43460, 14.54550), "wizytowka": "Spondylus - Fizjoterapia | Rehabilitacja | Podologia",
                     "mapa": "https://www.google.com/maps/dir/?api=1&destination=al.+Jana+Pawła+II+36+Szczecin"},
     "szczecin-ul": {"nazwa": "Spondylus Szczecin Pogodno", "ulica": "ul. Unii Lubelskiej 2B", "kod": "71-252",
-                    "miasto": "Szczecin", "wew": "2", "od": "08:00", "do": "19:00", "geo": (53.45115, 14.51100),
+                    "miasto": "Szczecin", "wew": "2", "od": "08:00", "do": "19:00", "geo": (53.45115, 14.51100), "wizytowka": "Spondylus Centrum Zaopatrzenia Medycznego i Przychodnia Specjalistyczna",
                     "mapa": "https://www.google.com/maps/dir/?api=1&destination=ul.+Unii+Lubelskiej+2B+Szczecin"},
     "koszalin": {"nazwa": "Spondylus Koszalin", "ulica": "ul. Jana Pawła II 21", "kod": "75-452",
-                 "miasto": "Koszalin", "wew": "4", "od": "09:00", "do": "18:00", "geo": (54.20543, 16.18616),
+                 "miasto": "Koszalin", "wew": "4", "od": "09:00", "do": "18:00", "geo": (54.20543, 16.18616), "wizytowka": "Spondylus Centrum Zaopatrzenia Medycznego i Gabinety Specjalistów",
                  "mapa": "https://www.google.com/maps/dir/?api=1&destination=ul.+Jana+Pawła+II+21+Koszalin"},
 }
 
@@ -256,7 +256,6 @@ def footer():
           <li><b><a href="placowka-szczecin-centrum.html">Szczecin, centrum</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>al. Jana Pawła II 36</span><span class="f-godz">pon. do pt. 9:00 do 18:00, wew. 1</span><a class="f-dojazd" href="https://www.google.com/maps/dir/?api=1&amp;destination=al.+Jana+Pawła+II+36+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
           <li><b><a href="placowka-szczecin-pogodno.html">Szczecin, Pogodno</a></b><span class="otwarte" data-dni="1-5" data-od="8" data-do="19" hidden></span><span>ul. Unii Lubelskiej 2B</span><span class="f-godz">pon. do pt. 8:00 do 19:00, wew. 2</span><a class="f-dojazd" href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Unii+Lubelskiej+2B+Szczecin" target="_blank" rel="noopener">Dojazd</a></li>
           <li><b><a href="placowka-koszalin.html">Koszalin</a></b><span class="otwarte" data-dni="1-5" data-od="9" data-do="18" hidden></span><span>ul. Jana Pawła II 21</span><span class="f-godz">pon. do pt. 9:00 do 18:00, wew. 4</span><a class="f-dojazd" href="https://www.google.com/maps/dir/?api=1&amp;destination=ul.+Jana+Pawła+II+21+Koszalin" target="_blank" rel="noopener">Dojazd</a></li>
-          <li><b>Szczecin, Przychodnia Specjalistyczna</b><span>al. Jana Pawła II 39</span><a class="f-dojazd" href="placowki.html">Wszystkie placówki</a></li>
         </ul>
         <a class="f-wszystkie" href="placowki.html">Godziny i dojazd do placówek</a>
       </div>
@@ -529,7 +528,7 @@ def placowka_ld(k):
              "addressRegion": "zachodniopomorskie", "addressCountry": "PL"}
     if p["kod"]:
         adres["postalCode"] = p["kod"]
-    return {"@type": "MedicalClinic", "@id": f"{SITE}/#{k}", "name": p["nazwa"], "address": adres,
+    return {"@type": "MedicalClinic", "@id": f"{SITE}/#{k}", "name": p["nazwa"], "alternateName": p["wizytowka"], "address": adres,
             "telephone": "+48665035035", "email": "doktor@spondylus.pl", "url": f"{SITE}{STRONA_PLACOWKI[k]}",
             "parentOrganization": {"@id": f"{SITE}/#organizacja"},
             # współrzędne budynków z OpenStreetMap (Nominatim, 4.11.2026)
