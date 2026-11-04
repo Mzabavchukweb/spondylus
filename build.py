@@ -30,11 +30,14 @@ WERYFIKACJA = "lbUk6mZ_tkEB4CB4ezk1PtR3wNAIBQ8iYaYgEqLZlIA"   # Google Search Co
 
 PLACOWKI = {
     "szczecin-jp": {"nazwa": "Spondylus Szczecin, centrum", "ulica": "al. Jana Pawła II 36", "kod": "70-453",
-                    "miasto": "Szczecin", "wew": "1", "od": "09:00", "do": "18:00"},
+                    "miasto": "Szczecin", "wew": "1", "od": "09:00", "do": "18:00", "geo": (53.43460, 14.54550),
+                    "mapa": "https://www.google.com/maps/dir/?api=1&destination=al.+Jana+Pawła+II+36+Szczecin"},
     "szczecin-ul": {"nazwa": "Spondylus Szczecin Pogodno", "ulica": "ul. Unii Lubelskiej 2B", "kod": "71-252",
-                    "miasto": "Szczecin", "wew": "2", "od": "08:00", "do": "19:00"},
+                    "miasto": "Szczecin", "wew": "2", "od": "08:00", "do": "19:00", "geo": (53.45115, 14.51100),
+                    "mapa": "https://www.google.com/maps/dir/?api=1&destination=ul.+Unii+Lubelskiej+2B+Szczecin"},
     "koszalin": {"nazwa": "Spondylus Koszalin", "ulica": "ul. Jana Pawła II 21", "kod": "75-452",
-                 "miasto": "Koszalin", "wew": "4", "od": "09:00", "do": "18:00"},
+                 "miasto": "Koszalin", "wew": "4", "od": "09:00", "do": "18:00", "geo": (54.20543, 16.18616),
+                 "mapa": "https://www.google.com/maps/dir/?api=1&destination=ul.+Jana+Pawła+II+21+Koszalin"},
 }
 
 
@@ -529,6 +532,8 @@ def placowka_ld(k):
     return {"@type": "MedicalClinic", "@id": f"{SITE}/#{k}", "name": p["nazwa"], "address": adres,
             "telephone": "+48665035035", "email": "doktor@spondylus.pl", "url": f"{SITE}{STRONA_PLACOWKI[k]}",
             "parentOrganization": {"@id": f"{SITE}/#organizacja"},
+            # współrzędne budynków z OpenStreetMap (Nominatim, 4.11.2026)
+            "geo": {"@type": "GeoCoordinates", "latitude": p["geo"][0], "longitude": p["geo"][1]}, "hasMap": p["mapa"],
             "openingHoursSpecification": [{"@type": "OpeningHoursSpecification",
                                            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                                            "opens": p["od"], "closes": p["do"]}]}
@@ -537,7 +542,10 @@ def placowka_ld(k):
 ORGANIZACJA = {"@type": "MedicalOrganization", "@id": f"{SITE}/#organizacja", "name": "Spondylus",
                "legalName": "Spondylus Wojciech Wetoszka sp.k.", "url": SITE + "/", "logo": f"{SITE}/assets/img/logo.png",
                "foundingDate": "1989", "telephone": "+48665035035", "email": "doktor@spondylus.pl",
-               "sameAs": ["https://www.facebook.com/doktor.spondylus/"]}
+               "sameAs": ["https://www.facebook.com/doktor.spondylus/"],
+               "founder": {"@type": "Person", "name": "Ryszard Wetoszka", "honorificPrefix": "dr"},
+               "areaServed": [{"@type": "City", "name": "Szczecin"}, {"@type": "City", "name": "Koszalin"}],
+               "department": [{"@id": f"{SITE}/#{k}"} for k in ("szczecin-jp", "szczecin-ul", "koszalin")]}
 
 
 def okruszki_ld(okruszki, url):
