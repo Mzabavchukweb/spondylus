@@ -1125,7 +1125,14 @@ def build():
         (DIST / "404").rmdir()
         mapa.pop("/404/", None)
 
-    (DIST / ".htaccess").write_text(htaccess(), encoding="utf-8")
+    ht = htaccess()
+    # reguła klienta: ten blok musi zostać w .htaccess dosłownie
+    for wymagane in ("RewriteEngine On",
+                     "RewriteRule ^podolog-koszalin/?$ https://booksy.com/pl-pl/358403_spondylus-podolog_podologia_19501_koszalin [R=302,L,QSD]",
+                     '<IfModule mod_headers.c>\n    Header always set Cache-Control "no-store" "expr=%{REQUEST_URI} =~ m#^/podolog-koszalin/?$#"\n</IfModule>'):
+        if wymagane not in ht:
+            sys.exit("BŁĄD: w .htaccess brakuje wymaganej reguły klienta (Booksy podolog-koszalin)")
+    (DIST / ".htaccess").write_text(ht, encoding="utf-8")
     (DIST / "sitemap.xml").write_text(sitemap(mapa), encoding="utf-8")
     boty = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot",
             "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "Googlebot"]
