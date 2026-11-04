@@ -2832,3 +2832,16 @@ body:has(.cookies:not([hidden])) .tel-btn, body:has(.a11y-panel.is-open) .tel-bt
   .spec-grid .spec__tagi { display: none; }
   .spec-grid .spec__body > .btn { margin-top: 6px; }
 }
+
+/* O nas: Spondylus dziś (placówki zamiast jednego długiego akapitu) */
+.dzis { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.dzis li { display: flex; flex-direction: column; gap: 6px; padding: clamp(20px, 2.2vw, 26px); background: var(--bg-soft); border-radius: 12px; }
+.dzis__nazwa { font-size: 18px; font-weight: 700; line-height: 1.3; color: var(--ink); }
+a.dzis__nazwa { color: var(--brand-600); text-decoration: none; }
+.dzis__adres { font-size: 16px; color: var(--ink); }
+.dzis li p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.55; color: var(--muted); }
+.dzis__linki { display: flex; flex-wrap: wrap; gap: 8px 40px; margin-top: 28px; font-size: 17px; }
+.dzis__linki p { margin: 0; }
+.dzis__linki a { font-weight: 600; color: var(--brand-600); }
+@media (max-width: 1000px) { .dzis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .dzis { grid-template-columns: 1fr; } .dzis__linki { flex-direction: column; } }
