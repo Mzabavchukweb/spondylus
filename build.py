@@ -260,7 +260,7 @@ def footer():
     </div>
     <div class="footer__nfz"><img src="assets/img/nfz.png" alt="Narodowy Fundusz Zdrowia" width="142" height="57"><span>Mamy umowę z NFZ na zaopatrzenie w wyroby medyczne: wózki, wkładki, obuwie i sprzęt na zlecenie.</span></div>
     <div class="footer__bottom">
-      <span>© 2026 Spondylus Wojciech Wetoszka sp.k., <span class="nowrap">NIP 852-182-32-11</span></span>
+      <span class="footer__prawa"><span>© 2026 Spondylus Wojciech Wetoszka sp.k., <span class="nowrap">NIP 852-182-32-11</span></span><span>Projekt i wykonanie: <a href="https://codingmaks.com">codingmaks.com</a></span></span>
       <span class="footer__linki"><a href="polityka-prywatnosci-i-plikow-cookies.html">Polityka prywatności i cookies</a><a href="regulamin-kart-podarunkowych.html">Regulamin kart podarunkowych</a><a href="regulamin-sportowych-pakietow-medycznych.html">Regulamin pakietów sportowych</a><button class="footer__cookies" type="button" data-cookies-open>Ustawienia cookies</button><a class="footer__fb" href="https://www.facebook.com/doktor.spondylus/" target="_blank" rel="noopener" aria-label="Spondylus na Facebooku">{icon("fb")}</a></span>
     </div>
   </div>
@@ -753,6 +753,10 @@ PRZEKIEROWANIA = [
     ("pedicure-medyczny", "/podologia/"),
     ("usuwanie-odciskow", "/podologia/"),
     ("category/blog", "/blog/"),
+    # mapy strony Yoast zgłoszone w Search Console → jedna mapa
+    ("sitemap_index\\.xml", "/sitemap.xml"),
+    ("page-sitemap\\.xml", "/sitemap.xml"),
+    ("post-sitemap\\.xml", "/sitemap.xml"),
 ]
 USUNIETE = ["koszyk", "produkty", "zamowienie", "login", "kion", "membership-account(/.*)?", "wp-admin(/.*)?",
             "wp-login\\.php", "xmlrpc\\.php", "wp-json(/.*)?", "author/.*", "tag/.*"]

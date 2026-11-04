@@ -1550,6 +1550,7 @@ section:has(> .wrap > .cta-band) { margin-top: 0; }
 .footer__nfz img { width: 64px; height: auto; flex: none; }
 .footer__bottom { margin-top: 24px; align-items: center; font-size: 13px; }
 .footer__linki { display: flex; align-items: center; gap: 6px 20px; flex-wrap: wrap; }
+.footer__prawa { display: flex; flex-direction: column; gap: 2px; }
 .footer__fb { display: grid !important; place-items: center; width: 40px; height: 40px; margin-block: -8px !important; padding: 0 !important; border: 1px solid var(--line); border-radius: 50%; }
 .footer__fb svg { width: 18px; height: 18px; }
 @media (max-width: 1100px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
@@ -2657,13 +2658,13 @@ html.a11y-still .tel-btn::after { animation: none; opacity: 0; }
 .profile .prose h2 { padding-top: 8px; }
 .prose table { border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; background: var(--bg-soft); font-size: 16px; }
 .prose th, .prose td { border: 0; padding: 14px 20px; }
-.prose tr:nth-child(even) td { background: #fff; }
-.prose td:first-child { width: 34%; color: var(--ink); }
+.prose tr:nth-child(even) :is(td, th) { background: #fff; }
+.prose td:first-child, .prose th[scope="row"] { width: 34%; color: var(--ink); font-weight: 700; }
 .prose td strong { font-weight: 700; }
 .prose .profile__faq { margin-top: 20px; }
 .prose .profile__faq .acc__body > * + * { margin-top: 12px; }
 .prose .profile__faq summary { margin: 0; }
-@media (max-width: 640px) { .prose table, .prose tbody, .prose tr, .prose td { display: block; width: 100%; } .prose td:first-child { width: 100%; padding-bottom: 2px; } .prose td + td { padding-top: 0; } .prose tr:nth-child(even) td { background: #fff; } }
+@media (max-width: 640px) { .prose table, .prose tbody, .prose tr, .prose td, .prose th { display: block; width: 100%; } .prose td:first-child, .prose th[scope="row"] { width: 100%; padding-bottom: 2px; } .prose :is(td, th) + td { padding-top: 0; } .prose tr:nth-child(even) :is(td, th) { background: #fff; } }
 @media (min-width: 1101px) { .profile .prose ul:has(> li:nth-child(7)) { columns: 2; column-gap: 36px; } .profile .prose ul:has(> li:nth-child(7)) > li { break-inside: avoid; } }
 .spec__foto--brak .ilu { width: 52%; height: auto; }
 .profile__foto--ilu { display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--bg-soft); }

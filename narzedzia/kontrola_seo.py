@@ -5,6 +5,8 @@ import collections, html, json, pathlib, re, sys
 DIST = pathlib.Path(__file__).resolve().parent.parent / "dist"
 uwagi, tytuly, opisy = [], collections.defaultdict(list), collections.defaultdict(list)
 for f in sorted(DIST.rglob("*.html")):
+    if re.fullmatch(r"google[0-9a-f]+\.html", f.name):  # plik weryfikacji Search Console, nie strona
+        continue
     url = "/" + str(f.parent.relative_to(DIST)).replace(".", "") + "/" if f.name == "index.html" else "/" + f.name
     url = url.replace("//", "/")
     s = f.read_text(encoding="utf-8")
